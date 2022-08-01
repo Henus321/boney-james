@@ -1,0 +1,46 @@
+.header {
+  grid-column: 1 / -1;
+  padding: 2rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  &__nav-list {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    grid-column-gap: 4rem;
+    height: 100%;
+    align-content: center;
+  }
+
+  &__nav-item {
+    justify-self: start;
+    font-size: 2rem;
+    list-style: none;
+    a:link,
+    a:visited {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: normal;
+    justify-self: center;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  &__profile {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    height: 100%;
+    align-content: center;
+    justify-self: end;
+    grid-column-gap: 4rem;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+  }
+}

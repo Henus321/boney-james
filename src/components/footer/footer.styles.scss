@@ -1,0 +1,37 @@
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: min-content 1fr min-content;
+  grid-row-gap: 2rem;
+  grid-column-gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  padding: 5rem 3rem;
+  text-align: center;
+
+  &__title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+
+  &__text {
+  }
+
+  &__social {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2rem;
+  }
+
+  &__social-item {
+    font-size: 4rem;
+  }
+
+  &__copyright {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+  }
+}
