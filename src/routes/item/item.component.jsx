@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import one from '../../assets/one.jpg';
+import five from '../../assets/five.jpg';
+import five_2 from '../../assets/five_2.jpg';
 
 import './item.styles.scss';
 
@@ -7,7 +8,10 @@ const Item = () => {
   return (
     <div className="item">
       <div className="item__slider">
-        <img className="item__photo" src={one} alt="One" />
+        <img className="item__photo" src={five_2} alt="One" />
+      </div>
+      <div className="item__slider">
+        <img className="item__photo" src={five} alt="One" />
       </div>
       <div className="item__info">
         <p>
