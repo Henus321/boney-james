@@ -69,4 +69,20 @@
     text-align: justify;
     margin-bottom: 0.5rem;
   }
+
+  &__description {
+    margin-bottom: 3rem;
+  }
+
+  &__button {
+    background-color: white;
+    border: 1px solid #555;
+    padding: 2rem;
+    margin-top: auto;
+    cursor: pointer;
+
+    &:hover {
+      background-color: whitesmoke;
+    }
+  }
 }
