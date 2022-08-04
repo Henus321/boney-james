@@ -8,6 +8,7 @@ export const CollectionContext = createContext({
 
 export const CollectionProvider = ({ children }) => {
   const [collections, setCollections] = useState({});
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchCollections = async () => {
@@ -27,8 +28,60 @@ export const CollectionProvider = ({ children }) => {
     fetchCollections();
   }, []);
 
+  const addToCart = (clickedItem, size) => {
+    let sameIdAndSize = false;
+
+    setCart((prev) => {
+      const allItems = prev.map((prevItem) => {
+        if (prevItem.id === clickedItem.id && prevItem.size === size) {
+          sameIdAndSize = true;
+          return { ...prevItem, quantity: prevItem.quantity + 1 };
+        }
+        return { ...prevItem };
+      });
+
+      if (sameIdAndSize) {
+        return [...allItems];
+      }
+      return [...prev, { ...clickedItem, size }];
+    });
+  };
+
+  const deleteFromCart = (clickedItem) => {
+    setCart((prev) =>
+      prev.filter(
+        (curItem) =>
+          curItem.id !== clickedItem.id || curItem.size !== clickedItem.size
+      )
+    );
+  };
+
+  const changeQuantity = (clickedItem, positiveOrNegativeOne) => {
+    setCart((prev) => {
+      const allItems = prev.map((prevItem) => {
+        if (
+          prevItem.id === clickedItem.id &&
+          prevItem.size === clickedItem.size &&
+          prevItem.quantity + positiveOrNegativeOne > 0
+        ) {
+          return {
+            ...prevItem,
+            quantity: prevItem.quantity + positiveOrNegativeOne,
+          };
+        }
+        return { ...prevItem };
+      });
+
+      return [...allItems];
+    });
+  };
+
   const value = {
     collections,
+    cart,
+    addToCart,
+    deleteFromCart,
+    changeQuantity,
   };
 
   return (

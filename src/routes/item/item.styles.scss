@@ -26,30 +26,43 @@
 
   &__colors {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 3.5rem);
     grid-column-gap: 1rem;
+    justify-items: center;
+    align-items: center;
   }
 
   &__color {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    margin-bottom: 0.5rem;
+    &--active {
+      border: 3px solid rgba(0, 0, 0, 0.2);
+    }
 
-    &--1 {
-      background-color: grey;
-    }
-    &--2 {
+    &--beige {
+      height: 2.8rem;
+      width: 2.8rem;
       background-color: bisque;
+      border-radius: 50%;
+      cursor: pointer;
     }
-    &--3 {
+    &--grey {
+      height: 2.8rem;
+      width: 2.8rem;
+      background-color: grey;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    &--brown {
+      height: 2.8rem;
+      width: 2.8rem;
       background-color: burlywood;
+      border-radius: 50%;
+      cursor: pointer;
     }
   }
 
   &__sizes {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(10, 4rem);
     grid-column-gap: 1rem;
     margin-bottom: 0.5rem;
   }
@@ -59,10 +72,22 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem;
-    background-color: #f1f1f1;
+    background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     height: 3rem;
     width: 100%;
+    cursor: pointer;
+
+    &--active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+      background-color: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      height: 3rem;
+      width: 100%;
+    }
   }
 
   &__item {

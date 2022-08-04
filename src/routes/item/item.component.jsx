@@ -6,15 +6,19 @@ import { v4 as uuidv4 } from 'uuid';
 import './item.styles.scss';
 
 const Item = () => {
-  const { collections } = useContext(CollectionContext);
+  const { collections, addToCart } = useContext(CollectionContext);
   const [item, setItem] = useState({});
+  const [colorId, setColorId] = useState([]);
+  const [curSize, setCurSize] = useState('42');
 
   const params = useParams();
   useEffect(() => {
     if (collections.length > 0) {
       const [coat] = collections.filter((item) => item.id === params.coatId);
-
       setItem(coat);
+
+      const colorAndId = collections.map((item) => [item.color, item.id]);
+      setColorId(colorAndId);
     }
   }, [collections, params.coatId]);
 
@@ -23,18 +27,10 @@ const Item = () => {
       {Object.keys(item).length && (
         <div className="item" key={uuidv4()}>
           <div className="item__slider">
-            <img
-              className="item__photo"
-              src={item.colors[0].photoUrls[0]}
-              alt="One"
-            />
+            <img className="item__photo" src={item.mainPhotoUrl} alt="One" />
           </div>
           <div className="item__slider">
-            <img
-              className="item__photo"
-              src={item.colors[0].photoUrls[1]}
-              alt="One"
-            />
+            <img className="item__photo" src={item.mainPhotoUrl} alt="One" />
           </div>
           <div className="item__info">
             <p>
@@ -51,19 +47,33 @@ const Item = () => {
             <span className="item__item">Подкладка: {item.lining}</span>
             <span className="item__item">Рост: {item.height}</span>
             <span className="item__item">Цвета:</span>
-            <div className="item__colors">
-              <div className="item__color item__color--1"></div>
-              <div className="item__color item__color--2"></div>
-              <div className="item__color item__color--3"></div>
+            <div className="item__item item__colors">
+              {colorId.map(([color, id]) => (
+                <Link
+                  to={`/collection/item/${id}`}
+                  className={
+                    id === params.coatId
+                      ? `item__color--${color} item__color--active`
+                      : `item__color--${color}`
+                  }
+                  key={id}
+                />
+              ))}
             </div>
             <span className="item__item">Размеры:</span>
-            <div className="item__sizes">
+            <form className="item__sizes">
               {item.sizes.map((size) => (
-                <div className="item__size" key={uuidv4()}>
+                <div
+                  onClick={() => setCurSize(size)}
+                  className={
+                    curSize === size ? 'item__size--active' : 'item__size'
+                  }
+                  key={uuidv4()}
+                >
                   {size}
                 </div>
               ))}
-            </div>
+            </form>
             <span className="item__item">
               Страна-производитель: {item.country}
             </span>
@@ -71,7 +81,14 @@ const Item = () => {
             <span className="item__item item__description">
               {item.description}
             </span>
-            <button className="item__button">Добавить в корзину</button>
+            <button
+              className="item__button"
+              onClick={() => {
+                addToCart(item, curSize);
+              }}
+            >
+              Добавить в корзину
+            </button>
           </div>
         </div>
       )}
