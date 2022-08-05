@@ -1,87 +1,43 @@
-import { useEffect, useState, createContext } from 'react';
-import { db } from '../firebase.config';
-import { collection, getDocs, query } from 'firebase/firestore';
+import { createContext, useReducer } from 'react';
 
-export const CollectionContext = createContext({
-  collections: {},
-});
+import { reducer } from './collection.reducer';
+
+export const CollectionContext = createContext();
+
+const initialState = {
+  collections: [],
+  cart: [],
+};
 
 export const CollectionProvider = ({ children }) => {
-  const [collections, setCollections] = useState({});
-  const [cart, setCart] = useState([]);
+  const [value, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    const fetchCollections = async () => {
-      try {
-        const collectionRef = collection(db, 'collections');
-        const q = query(collectionRef);
-
-        const querySnapshop = await getDocs(q);
-        const data = querySnapshop.docs.map((docSnapshot) =>
-          docSnapshot.data()
-        );
-        setCollections(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchCollections();
-  }, []);
-
-  const addToCart = (clickedItem, size) => {
-    let sameIdAndSize = false;
-
-    setCart((prev) => {
-      const allItems = prev.map((prevItem) => {
-        if (prevItem.id === clickedItem.id && prevItem.size === size) {
-          sameIdAndSize = true;
-          return { ...prevItem, quantity: prevItem.quantity + 1 };
-        }
-        return { ...prevItem };
-      });
-
-      if (sameIdAndSize) {
-        return [...allItems];
-      }
-      return [...prev, { ...clickedItem, size }];
+  value.setItems = (data) => {
+    dispatch({
+      type: 'SET_ITEMS',
+      payload: data,
     });
   };
 
-  const deleteFromCart = (clickedItem) => {
-    setCart((prev) =>
-      prev.filter(
-        (curItem) =>
-          curItem.id !== clickedItem.id || curItem.size !== clickedItem.size
-      )
-    );
-  };
-
-  const changeQuantity = (clickedItem, positiveOrNegativeOne) => {
-    setCart((prev) => {
-      const allItems = prev.map((prevItem) => {
-        if (
-          prevItem.id === clickedItem.id &&
-          prevItem.size === clickedItem.size &&
-          prevItem.quantity + positiveOrNegativeOne > 0
-        ) {
-          return {
-            ...prevItem,
-            quantity: prevItem.quantity + positiveOrNegativeOne,
-          };
-        }
-        return { ...prevItem };
-      });
-
-      return [...allItems];
+  value.addToCart = (clickedItem, size) => {
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: { clickedItem, size },
     });
   };
 
-  const value = {
-    collections,
-    cart,
-    addToCart,
-    deleteFromCart,
-    changeQuantity,
+  value.deleteFromCart = (clickedItem) => {
+    dispatch({
+      type: 'DELETE_FROM_CART',
+      payload: { clickedItem },
+    });
+  };
+
+  value.changeQuantity = (clickedItem, positiveOrNegativeOne) => {
+    dispatch({
+      type: 'CHANGE_QUANTITY',
+      payload: { clickedItem, positiveOrNegativeOne },
+    });
   };
 
   return (

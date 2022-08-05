@@ -1,14 +1,34 @@
+import { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import { FaHeart } from 'react-icons/fa';
-
-import './collection.styles.scss';
-import { useContext } from 'react';
+import { db } from '../../firebase.config';
+import { collection, getDocs, query } from 'firebase/firestore';
 import { CollectionContext } from '../../contexts/collection.context';
 
+import { FaHeart } from 'react-icons/fa';
+import './collection.styles.scss';
+
 const Collection = () => {
-  const { collections } = useContext(CollectionContext);
+  const { setItems, collections } = useContext(CollectionContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCollections = async () => {
+      try {
+        const collectionRef = collection(db, 'collections');
+        const q = query(collectionRef);
+
+        const querySnapshop = await getDocs(q);
+        const data = querySnapshop.docs.map((docSnapshot) =>
+          docSnapshot.data()
+        );
+        setItems(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchCollections();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="collection">

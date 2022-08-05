@@ -9,7 +9,7 @@ import { useState, useContext, useEffect } from 'react';
 import { CollectionContext } from '../../contexts/collection.context';
 
 const Header = () => {
-  const { cart, deleteFromCart, changeQuantity } =
+  const { deleteFromCart, changeQuantity, cart } =
     useContext(CollectionContext);
   const [cartActive, setCartActive] = useState(false);
   const [heartSpanActive, setHeartSpanActive] = useState(false);
@@ -22,6 +22,7 @@ const Header = () => {
     cart.length > 0 ? setHeartSpanActive(true) : setHeartSpanActive(false);
   }, [cart.length]);
 
+  console.log(cart);
   return (
     <header className="header">
       {cartActive && (

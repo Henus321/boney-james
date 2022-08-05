@@ -3,28 +3,44 @@ import { Link, useParams } from 'react-router-dom';
 import { CollectionContext } from '../../contexts/collection.context';
 import { v4 as uuidv4 } from 'uuid';
 
+import { db } from '../../firebase.config';
+import { collection, getDocs, query } from 'firebase/firestore';
+
 import './item.styles.scss';
 
 const Item = () => {
-  const { collections, addToCart } = useContext(CollectionContext);
+  const { addToCart } = useContext(CollectionContext);
   const [item, setItem] = useState({});
   const [colorId, setColorId] = useState([]);
   const [curSize, setCurSize] = useState('42');
 
   const params = useParams();
-  useEffect(() => {
-    if (collections.length > 0) {
-      const [coat] = collections.filter((item) => item.id === params.coatId);
-      setItem(coat);
 
-      const colorAndId = collections.map((item) => [item.color, item.id]);
-      setColorId(colorAndId);
-    }
-  }, [collections, params.coatId]);
+  useEffect(() => {
+    const fetchItem = async () => {
+      try {
+        const collectionRef = collection(db, 'collections');
+        const q = query(collectionRef);
+
+        const querySnapshop = await getDocs(q);
+        const data = querySnapshop.docs.map((docSnapshot) =>
+          docSnapshot.data()
+        );
+        const [coat] = data.filter((item) => item.id === params.coatId);
+        setItem(coat);
+
+        const colorAndId = data.map((item) => [item.color, item.id]);
+        setColorId(colorAndId);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchItem();
+  }, [params.coatId]);
 
   return (
     <>
-      {Object.keys(item).length && (
+      {item && (
         <div className="item" key={uuidv4()}>
           <div className="item__slider">
             <img className="item__photo" src={item.mainPhotoUrl} alt="One" />
@@ -62,17 +78,18 @@ const Item = () => {
             </div>
             <span className="item__item">Размеры:</span>
             <form className="item__sizes">
-              {item.sizes.map((size) => (
-                <div
-                  onClick={() => setCurSize(size)}
-                  className={
-                    curSize === size ? 'item__size--active' : 'item__size'
-                  }
-                  key={uuidv4()}
-                >
-                  {size}
-                </div>
-              ))}
+              {item.sizes &&
+                item.sizes.map((size) => (
+                  <div
+                    onClick={() => setCurSize(size)}
+                    className={
+                      curSize === size ? 'item__size--active' : 'item__size'
+                    }
+                    key={uuidv4()}
+                  >
+                    {size}
+                  </div>
+                ))}
             </form>
             <span className="item__item">
               Страна-производитель: {item.country}
