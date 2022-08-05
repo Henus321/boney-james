@@ -12,6 +12,7 @@ const Header = () => {
   const { deleteFromCart, changeQuantity, cart } =
     useContext(CollectionContext);
   const [cartActive, setCartActive] = useState(false);
+  const [cartTotal, setCartTotal] = useState(0);
   const [heartSpanActive, setHeartSpanActive] = useState(false);
 
   const toggleCart = () => {
@@ -20,77 +21,96 @@ const Header = () => {
 
   useEffect(() => {
     cart.length > 0 ? setHeartSpanActive(true) : setHeartSpanActive(false);
-  }, [cart.length]);
 
-  console.log(cart);
+    if (cart.length > 0) {
+      const total = cart.reduce((acc, item) => {
+        const curValue = item.price * item.quantity;
+        return acc + curValue;
+      }, 0);
+
+      setCartTotal(total);
+    }
+  }, [cart]);
+
   return (
     <header className="header">
-      {cartActive && (
-        <div className="header__cart">
-          <div className="header__cart-filter"></div>
-          <div className="header__cart-heading">
-            <h2 className="header__cart-title">Корзина</h2>
-            {/* <span>{cart.length} Товар</span> */}
-            <span
-              className="header__cart-close-btn"
-              onClick={() => toggleCart()}
-            >
-              x
-            </span>
-          </div>
-          {cart.length > 0 ? (
-            cart.map((cartItem) => (
-              <div className="header__cart-item" key={uuidv4()}>
-                <img
-                  src={cartItem.mainPhotoUrl}
-                  alt={cartItem.name}
-                  className="header__cart-photo"
-                />
-                <div className="header__cart-description">
-                  <span className="header__cart-item-name">
-                    {cartItem.name}
-                  </span>
-                  <span className="header__cart-text">
-                    {cartItem.price}&#8381;
-                  </span>
-                  <span className="header__cart-text">
-                    Цвет: {cartItem.color}
-                  </span>
-                  <span className="header__cart-text">
-                    Размер: {cartItem.size}
-                  </span>
-                  <div>
-                    <span className="header__cart-text">Количество: </span>
-                    <button
-                      className="header__cart-btn"
-                      onClick={() => changeQuantity(cartItem, -1)}
-                    >
-                      -
-                    </button>
-                    <span className="header__cart-text">
-                      {cartItem.quantity}
-                    </span>
-                    <button
-                      className="header__cart-btn"
-                      onClick={() => changeQuantity(cartItem, +1)}
-                    >
-                      +
-                    </button>
-                  </div>
+      <div
+        className={
+          cartActive
+            ? 'header__background-blur--active'
+            : 'header__background-blur'
+        }
+        onClick={() => toggleCart()}
+      ></div>
+      <div className={cartActive ? 'header__cart--active' : 'header__cart'}>
+        <div className="header__cart-heading">
+          <h2 className="header__cart-title">Корзина</h2>
+          {/* Добавить количество предметов */}
+          {/* <span>{cart.length} Товар</span> */}
+          <span className="header__cart-close-btn" onClick={() => toggleCart()}>
+            x
+          </span>
+        </div>
+        {cart.length > 0 ? (
+          cart.map((cartItem) => (
+            <div className="header__cart-item" key={uuidv4()}>
+              <img
+                src={cartItem.mainPhotoUrl}
+                alt={cartItem.name}
+                className="header__cart-photo"
+              />
+              <div className="header__cart-description">
+                <span className="header__cart-item-name">{cartItem.name}</span>
+                <span className="header__cart-text">
+                  {cartItem.price}&#8381;
+                </span>
+                <span className="header__cart-text">
+                  Цвет: {cartItem.color}
+                </span>
+                <span className="header__cart-text">
+                  Размер: {cartItem.size}
+                </span>
+                <div>
+                  <span className="header__cart-text">Количество: </span>
                   <button
-                    className="header__cart-delete-btn"
-                    onClick={() => deleteFromCart(cartItem)}
+                    className="header__cart-btn"
+                    onClick={() => changeQuantity(cartItem, -1)}
                   >
-                    x
+                    -
+                  </button>
+                  <span className="header__cart-text">{cartItem.quantity}</span>
+                  <button
+                    className="header__cart-btn"
+                    onClick={() => changeQuantity(cartItem, +1)}
+                  >
+                    +
                   </button>
                 </div>
+                <button
+                  className="header__cart-delete-btn"
+                  onClick={() => deleteFromCart(cartItem)}
+                >
+                  x
+                </button>
               </div>
-            ))
-          ) : (
-            <h2 className="header__cart-warning">В корзине нет товаров</h2>
-          )}
-        </div>
-      )}
+            </div>
+          ))
+        ) : (
+          <h2 className="header__cart-warning">В корзине нет товаров</h2>
+        )}
+        {cart.length > 0 && (
+          <div className="header__cart-order">
+            <div className="header__cart-order-price">
+              <span>Итого</span>
+              <span>{cartTotal}&#8381;</span>
+            </div>
+            <button className="header__cart-order-accept">
+              Оформить заказ
+            </button>
+          </div>
+        )}
+      </div>
+
       <nav className="header__nav">
         <ul className="header__nav-list">
           <li className="header__nav-item">
@@ -106,11 +126,11 @@ const Header = () => {
       </nav>
       <h2 className="header__title">Boney James</h2>
       <div className="header__profile">
-        <div className="header__icon">
-          <FaHeart />
+        <div className="header__icon-container">
+          <FaHeart className="header__icon" />
           <span className="header__heart-span"></span>
         </div>
-        <div className="header__icon">
+        <div className="header__icon-container">
           <FaShoppingBag
             className="header__icon"
             onClick={() => toggleCart()}
@@ -121,7 +141,7 @@ const Header = () => {
             }
           ></span>
         </div>
-        <div className="header__icon">
+        <div className="header__icon-container">
           <FaUser className="header__icon" />
           <span className="header__user-span"></span>
         </div>
