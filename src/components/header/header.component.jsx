@@ -29,13 +29,13 @@ const Header = () => {
       <nav className="header__nav">
         <ul className="header__nav-list">
           <li className="header__nav-item">
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/">Главная</NavLink>
           </li>
           <li className="header__nav-item">
-            <NavLink to="/collection">Collections</NavLink>
+            <NavLink to="/collection">Каталог</NavLink>
           </li>
           <li className="header__nav-item">
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/about">Покупателям</NavLink>
           </li>
         </ul>
       </nav>

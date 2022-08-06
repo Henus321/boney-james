@@ -37,11 +37,13 @@ const Item = () => {
           </div>
           <div className="item__info">
             <p>
-              <Link to="/collection">Back</Link>
-              <span> - </span>
-              <span>Весна</span>
-              <span> - </span>
-              <span>Пальто-Халат</span>
+              <Link className="item__back-link" to="/collection">
+                Коллекция
+              </Link>
+              <span className="item__span-text"> - </span>
+              <span className="item__span-text">Весна</span>
+              <span className="item__span-text"> - </span>
+              <span className="item__span-text">Пальто-Халат</span>
             </p>
             <h2 className="item__title">{item.name}</h2>
             <span className="item__item">{item.price}&#8381;</span>

@@ -105,11 +105,6 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  &__item-name {
-    font-size: 1.8rem;
-    white-space: nowrap;
-  }
-
   &__photo {
     height: 20vh;
     width: auto;
@@ -123,9 +118,48 @@
     flex-direction: column;
   }
 
+  &__item-name {
+    font-size: 1.8rem;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+  }
+
   &__text {
     font-size: 1.4rem;
     color: #777;
+    margin-bottom: 0.5rem;
+  }
+
+  &__color {
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+
+    &--beige {
+      height: 2.8rem;
+      width: 2.8rem;
+      background-color: bisque;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      margin: 0 0.5rem;
+    }
+    &--grey {
+      height: 2.8rem;
+      width: 2.8rem;
+      background-color: grey;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      margin: 0 0.5rem;
+    }
+    &--brown {
+      height: 2.8rem;
+      width: 2.8rem;
+      background-color: burlywood;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      margin: 0 0.5rem;
+    }
   }
 
   &__btn {

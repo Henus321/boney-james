@@ -1,11 +1,12 @@
 @import '../../sass/variables.styles.scss';
 
 .header {
-  grid-column: 1 / -1;
-  padding: 2rem 3rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   height: $header-height;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 3rem;
+  background-color: white;
 
   &__background-blur {
     position: fixed;

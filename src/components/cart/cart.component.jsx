@@ -54,9 +54,10 @@ const Cart = () => {
             />
             <div className="cart__description">
               <span className="cart__item-name">{cartItem.name}</span>
+
               <span className="cart__text">{cartItem.price}&#8381;</span>
-              <span className="cart__text">Цвет: {cartItem.color}</span>
               <span className="cart__text">Размер: {cartItem.size}</span>
+
               <div>
                 <span className="cart__text">Количество: </span>
                 <button
@@ -72,6 +73,10 @@ const Cart = () => {
                 >
                   +
                 </button>
+              </div>
+              <div className="cart__color-container">
+                <span className="cart__text">Цвет:</span>
+                <span className={`cart__color--${cartItem.color}`}></span>
               </div>
               <button
                 className="cart__delete-btn"
