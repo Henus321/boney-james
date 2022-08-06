@@ -1,0 +1,5 @@
+export const CART_ACTION_TYPES = {
+  CHANGE_QUANTITY: '@@cart/CHANGE_QUANTITY',
+  DELETE_FROM_CART: '@@cart/DELETE_FROM_CART',
+  ADD_TO_CART: '@@cart/ADD_TO_CART',
+};

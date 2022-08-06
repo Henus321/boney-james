@@ -1,34 +1,22 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { db } from '../../firebase.config';
-import { collection, getDocs, query } from 'firebase/firestore';
-import { CollectionContext } from '../../contexts/collection.context';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCollections } from '../../store/collection/collection.selector';
+import { loadCollection } from '../../store/collection/collection.actions';
 
 import { FaHeart } from 'react-icons/fa';
 import './collection.styles.scss';
 
 const Collection = () => {
-  const { setItems, collections } = useContext(CollectionContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const { currentCollection, qty } = useSelector(selectCollections);
   useEffect(() => {
-    const fetchCollections = async () => {
-      try {
-        const collectionRef = collection(db, 'collections');
-        const q = query(collectionRef);
-
-        const querySnapshop = await getDocs(q);
-        const data = querySnapshop.docs.map((docSnapshot) =>
-          docSnapshot.data()
-        );
-        setItems(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchCollections();
-    // eslint-disable-next-line
-  }, []);
+    if (!qty) {
+      dispatch(loadCollection());
+    }
+  }, [qty, dispatch]);
 
   return (
     <div className="collection">
@@ -40,8 +28,8 @@ const Collection = () => {
       <h2 className="collection__title">Коллекция женских пальто - 2022</h2>
 
       <div className="collection__body">
-        {collections.length > 0 &&
-          collections.map((coat) => (
+        {currentCollection.length > 0 &&
+          currentCollection.map((coat) => (
             <div
               onClick={() => {
                 navigate(`/collection/item/${coat.id}`);

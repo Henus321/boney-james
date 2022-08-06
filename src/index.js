@@ -1,18 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { CollectionProvider } from './contexts/collection.context';
+
+import { Provider } from 'react-redux';
 
 import './index.scss';
 import App from './App';
 
+import { store } from './store/store.js';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <CollectionProvider>
+    <Provider store={store}>
+      <BrowserRouter>
         <App />
-      </CollectionProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );

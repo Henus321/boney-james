@@ -1,19 +1,23 @@
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { FaShoppingBag } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteFromCart, changeQuantity } from '../../store/cart/cart.actions';
+import { selectCart } from '../../store/cart/cart.selectors';
 
 import './header.styles.scss';
-import { useState, useContext, useEffect } from 'react';
-import { CollectionContext } from '../../contexts/collection.context';
 
 const Header = () => {
-  const { deleteFromCart, changeQuantity, cart } =
-    useContext(CollectionContext);
   const [cartActive, setCartActive] = useState(false);
   const [cartTotal, setCartTotal] = useState(0);
   const [heartSpanActive, setHeartSpanActive] = useState(false);
+
+  const { cart } = useSelector(selectCart);
+
+  const dispatch = useDispatch();
 
   const toggleCart = () => {
     setCartActive(!cartActive);
@@ -21,13 +25,11 @@ const Header = () => {
 
   useEffect(() => {
     cart.length > 0 ? setHeartSpanActive(true) : setHeartSpanActive(false);
-
     if (cart.length > 0) {
       const total = cart.reduce((acc, item) => {
         const curValue = item.price * item.quantity;
         return acc + curValue;
       }, 0);
-
       setCartTotal(total);
     }
   }, [cart]);
@@ -74,21 +76,21 @@ const Header = () => {
                   <span className="header__cart-text">Количество: </span>
                   <button
                     className="header__cart-btn"
-                    onClick={() => changeQuantity(cartItem, -1)}
+                    onClick={() => dispatch(changeQuantity(cartItem, -1))}
                   >
                     -
                   </button>
                   <span className="header__cart-text">{cartItem.quantity}</span>
                   <button
                     className="header__cart-btn"
-                    onClick={() => changeQuantity(cartItem, +1)}
+                    onClick={() => dispatch(changeQuantity(cartItem, +1))}
                   >
                     +
                   </button>
                 </div>
                 <button
                   className="header__cart-delete-btn"
-                  onClick={() => deleteFromCart(cartItem)}
+                  onClick={() => dispatch(deleteFromCart(cartItem))}
                 >
                   x
                 </button>

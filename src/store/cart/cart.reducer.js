@@ -1,12 +1,13 @@
-export const reducer = (state, { type, payload }) => {
-  switch (type) {
-    case 'SET_ITEMS':
-      return {
-        ...state,
-        collections: payload,
-      };
+import { CART_ACTION_TYPES } from './cart.types';
 
-    case 'CHANGE_QUANTITY':
+export const CART_INITIAL_STATE = {
+  cart: [],
+  // loading: false,
+};
+
+export const cartReducer = (state = CART_INITIAL_STATE, { type, payload }) => {
+  switch (type) {
+    case CART_ACTION_TYPES.CHANGE_QUANTITY:
       return {
         ...state,
         cart: state.cart.map((prevItem) => {
@@ -24,7 +25,7 @@ export const reducer = (state, { type, payload }) => {
         }),
       };
 
-    case 'DELETE_FROM_CART':
+    case CART_ACTION_TYPES.DELETE_FROM_CART:
       return {
         ...state,
         cart: state.cart.filter(
@@ -34,7 +35,7 @@ export const reducer = (state, { type, payload }) => {
         ),
       };
 
-    case 'ADD_TO_CART':
+    case CART_ACTION_TYPES.ADD_TO_CART:
       let sameIdAndSize = false;
       const allItems = state.cart.map((prevItem) => {
         if (

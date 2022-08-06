@@ -1,20 +1,20 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { CollectionContext } from '../../contexts/collection.context';
 import { v4 as uuidv4 } from 'uuid';
-
 import { db } from '../../firebase.config';
 import { collection, getDocs, query } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../store/cart/cart.actions';
 
 import './item.styles.scss';
 
 const Item = () => {
-  const { addToCart } = useContext(CollectionContext);
   const [item, setItem] = useState({});
   const [colorId, setColorId] = useState([]);
   const [curSize, setCurSize] = useState('42');
 
   const params = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -101,7 +101,7 @@ const Item = () => {
             <button
               className="item__button"
               onClick={() => {
-                addToCart(item, curSize);
+                dispatch(addToCart(item, curSize));
               }}
             >
               Добавить в корзину
