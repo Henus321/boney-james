@@ -1,42 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { db } from '../../firebase.config';
-import { collection, getDocs, query } from 'firebase/firestore';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../store/cart/cart.actions';
+import {
+  loadItem,
+  setCurrentSize,
+  clearDetails,
+} from '../../store/item/item.actions';
+import { selectItem } from '../../store/item/item.selector';
 
 import './item.styles.scss';
 
 const Item = () => {
-  const [item, setItem] = useState({});
-  const [colorId, setColorId] = useState([]);
-  const [curSize, setCurSize] = useState('42');
-
+  const { item, colorId, currentSize } = useSelector(selectItem);
   const params = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchItem = async () => {
-      try {
-        const collectionRef = collection(db, 'collections');
-        const q = query(collectionRef);
+    dispatch(loadItem(params));
 
-        const querySnapshop = await getDocs(q);
-        const data = querySnapshop.docs.map((docSnapshot) =>
-          docSnapshot.data()
-        );
-        const [coat] = data.filter((item) => item.id === params.coatId);
-        setItem(coat);
-
-        const colorAndId = data.map((item) => [item.color, item.id]);
-        setColorId(colorAndId);
-      } catch (error) {
-        console.log(error.message);
-      }
+    return () => {
+      dispatch(clearDetails());
     };
-    fetchItem();
-  }, [params.coatId]);
+  }, [dispatch, params]);
 
   return (
     <>
@@ -81,9 +68,9 @@ const Item = () => {
               {item.sizes &&
                 item.sizes.map((size) => (
                   <div
-                    onClick={() => setCurSize(size)}
+                    onClick={() => dispatch(setCurrentSize(size))}
                     className={
-                      curSize === size ? 'item__size--active' : 'item__size'
+                      currentSize === size ? 'item__size--active' : 'item__size'
                     }
                     key={uuidv4()}
                   >
@@ -101,7 +88,7 @@ const Item = () => {
             <button
               className="item__button"
               onClick={() => {
-                dispatch(addToCart(item, curSize));
+                dispatch(addToCart(item, currentSize));
               }}
             >
               Добавить в корзину

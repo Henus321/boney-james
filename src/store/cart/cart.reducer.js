@@ -2,6 +2,9 @@ import { CART_ACTION_TYPES } from './cart.types';
 
 export const CART_INITIAL_STATE = {
   cart: [],
+  cartTotal: 0,
+  isCartActive: false,
+  cartStatus: false,
   // loading: false,
 };
 
@@ -58,6 +61,22 @@ export const cartReducer = (state = CART_INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         cart: [...state.cart, { ...payload.clickedItem, size: payload.size }],
+      };
+
+    case CART_ACTION_TYPES.TOGGLE_CART:
+      return {
+        ...state,
+        isCartActive: payload,
+      };
+    case CART_ACTION_TYPES.SET_CART_TOTAL:
+      return {
+        ...state,
+        cartTotal: payload,
+      };
+    case CART_ACTION_TYPES.TOGGLE_CART_STATUS:
+      return {
+        ...state,
+        cartStatus: payload,
       };
     default:
       return state;

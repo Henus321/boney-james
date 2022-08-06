@@ -1,0 +1,6 @@
+export const ITEM_ACTION_TYPES = {
+  SET_ITEM: '@@item/SET_ITEM',
+  SET_COLOR_AND_ID: '@@item/SET_COLOR_AND_ID',
+  SET_CURRENT_SIZE: '@@item/SET_CURRENT_SIZE',
+  CLEAR_ITEM: '@@item/CLEAR_ITEM',
+};

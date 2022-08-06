@@ -1,55 +1,59 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { FaShoppingBag } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteFromCart, changeQuantity } from '../../store/cart/cart.actions';
+import {
+  deleteFromCart,
+  changeQuantity,
+  toggleCart,
+  setCartTotal,
+  toggleCartStatus,
+} from '../../store/cart/cart.actions';
 import { selectCart } from '../../store/cart/cart.selectors';
 
 import './header.styles.scss';
 
 const Header = () => {
-  const [cartActive, setCartActive] = useState(false);
-  const [cartTotal, setCartTotal] = useState(0);
-  const [heartSpanActive, setHeartSpanActive] = useState(false);
-
-  const { cart } = useSelector(selectCart);
-
+  const { cart, isCartActive, cartTotal, cartStatus } = useSelector(selectCart);
   const dispatch = useDispatch();
 
-  const toggleCart = () => {
-    setCartActive(!cartActive);
-  };
-
   useEffect(() => {
-    cart.length > 0 ? setHeartSpanActive(true) : setHeartSpanActive(false);
+    const defaultCartTotal = 0;
+    cart.length > 0
+      ? dispatch(toggleCartStatus(true))
+      : dispatch(toggleCartStatus(false));
     if (cart.length > 0) {
       const total = cart.reduce((acc, item) => {
         const curValue = item.price * item.quantity;
         return acc + curValue;
       }, 0);
-      setCartTotal(total);
+      dispatch(setCartTotal(total));
     }
-  }, [cart]);
+    if (cart.length === 0) dispatch(setCartTotal(defaultCartTotal));
+  }, [dispatch, cart]);
 
   return (
     <header className="header">
       <div
         className={
-          cartActive
+          isCartActive
             ? 'header__background-blur--active'
             : 'header__background-blur'
         }
-        onClick={() => toggleCart()}
+        onClick={() => dispatch(toggleCart(!isCartActive))}
       ></div>
-      <div className={cartActive ? 'header__cart--active' : 'header__cart'}>
+      <div className={isCartActive ? 'header__cart--active' : 'header__cart'}>
         <div className="header__cart-heading">
           <h2 className="header__cart-title">Корзина</h2>
           {/* Добавить количество предметов */}
           {/* <span>{cart.length} Товар</span> */}
-          <span className="header__cart-close-btn" onClick={() => toggleCart()}>
+          <span
+            className="header__cart-close-btn"
+            onClick={() => dispatch(toggleCart(!isCartActive))}
+          >
             x
           </span>
         </div>
@@ -135,11 +139,11 @@ const Header = () => {
         <div className="header__icon-container">
           <FaShoppingBag
             className="header__icon"
-            onClick={() => toggleCart()}
+            onClick={() => dispatch(toggleCart(!isCartActive))}
           />
           <span
             className={
-              heartSpanActive ? 'header__bag-span--active' : 'header__bag-span'
+              cartStatus ? 'header__bag-span--active' : 'header__bag-span'
             }
           ></span>
         </div>

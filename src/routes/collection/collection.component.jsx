@@ -12,6 +12,7 @@ const Collection = () => {
   const dispatch = useDispatch();
 
   const { currentCollection, qty } = useSelector(selectCollections);
+
   useEffect(() => {
     if (!qty) {
       dispatch(loadCollection());
