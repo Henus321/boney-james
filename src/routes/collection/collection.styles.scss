@@ -1,32 +1,7 @@
+@import '../../sass/mixins.styles.scss';
+@import '../../sass/variables.styles.scss';
+@import '../../sass/typography.styles.scss';
+
 .collection {
-  display: grid;
-  margin: 0 auto 10rem;
-
-  padding: 0 1rem;
-
-  &__title {
-    font-size: 3rem;
-    font-weight: normal;
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 4rem;
-  }
-
-  &__menu {
-    font-size: 1.6rem;
-    text-align: center;
-    color: grey;
-
-    a {
-      text-decoration: none;
-      color: black;
-    }
-  }
-
-  &__body {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 2rem;
-    grid-row-gap: 5rem;
-  }
+  @include collection-grid();
 }

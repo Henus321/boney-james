@@ -1,3 +1,7 @@
+@import '../../sass/mixins.styles.scss';
+@import '../../sass/variables.styles.scss';
+@import '../../sass/typography.styles.scss';
+
 .cart {
   // need media on width 1600px
   position: fixed;
@@ -66,7 +70,6 @@
       padding: 2rem;
       background-color: #555;
       color: #fff;
-      font-size: 1.6rem;
       width: 100%;
       text-transform: uppercase;
       border: none;
@@ -88,7 +91,7 @@
 
   &__close-btn {
     padding: 2rem 3rem;
-    font-size: 2rem;
+    font-size: $medium-font-size;
     cursor: pointer;
     border-left: 1px solid rgba(0, 0, 0, 0.05);
 
@@ -119,13 +122,12 @@
   }
 
   &__item-name {
-    font-size: 1.8rem;
+    font-size: $medium-font-size;
     white-space: nowrap;
     margin-bottom: 0.5rem;
   }
 
   &__text {
-    font-size: 1.4rem;
     color: #777;
     margin-bottom: 0.5rem;
   }

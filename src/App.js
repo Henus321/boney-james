@@ -8,8 +8,6 @@ import Collection from './routes/collection/collection.component';
 import Item from './routes/item/item.component';
 import Bookmarks from './routes/bookmarks/bookmarks.component';
 
-import './sass/container.styles.scss';
-
 function App() {
   return (
     <div className="container">

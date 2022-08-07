@@ -6,8 +6,7 @@ import Card from '../../components/card/card.component';
 import './bookmarks.styles.scss';
 
 const Bookmarks = () => {
-  const { currentCollection, qty: collectionQty } =
-    useSelector(selectCollections);
+  const { currentCollection } = useSelector(selectCollections);
 
   const bookmarks = currentCollection.filter((item) => {
     return item.bookmarked;
@@ -22,7 +21,7 @@ const Bookmarks = () => {
       </span>
       <h2 className="bookmarks__title">Ваши закладки</h2>
       <div className="bookmarks__body">
-        {collectionQty ? (
+        {bookmarks.length > 0 ? (
           <Card collection={bookmarks} />
         ) : (
           <span className="bookmarks__no-items">В закладках нет товаров</span>

@@ -1,7 +1,11 @@
+@import '../../sass/mixins.styles.scss';
+@import '../../sass/variables.styles.scss';
+@import '../../sass/typography.styles.scss';
+
 .card {
   &__item {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 50% 50%;
 
     transition: filter 1s ease;
 
@@ -20,18 +24,25 @@
     cursor: pointer;
   }
 
-  &__span {
+  &__name {
     grid-column: 1 / 3;
-    //temporary?
+    font-size: $medium-font-size;
     white-space: nowrap;
-    font-size: 2rem;
+  }
+
+  &__cost,
+  &__sizes {
+    color: #777;
+    white-space: nowrap;
+  }
+
+  &__cost {
+    justify-self: end;
   }
 
   &__color-circles {
     grid-column: 1 / 2;
     align-self: center;
-
-    //temporary
     display: flex;
     margin-top: 1rem;
   }
@@ -40,37 +51,22 @@
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-
-    //temporary
     margin-right: 1rem;
 
-    &--1 {
-      background-color: grey;
-    }
-    &--2 {
-      background-color: bisque;
-    }
-    &--3 {
-      background-color: burlywood;
-    }
+    @include colors();
   }
 
   &__icon {
     grid-column: 2 / 3;
+    grid-row: 4 / 5;
     justify-self: end;
-    font-size: 2.2rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
+    align-self: end;
+    font-size: $big-font-size;
+    color: #333;
     cursor: pointer;
 
     &--active {
-      grid-column: 2 / 3;
-      justify-self: end;
-      font-size: 2.2rem;
-      margin-right: 1rem;
-      margin-top: 1rem;
-      cursor: pointer;
-      color: red;
+      color: $red-color;
     }
   }
 }

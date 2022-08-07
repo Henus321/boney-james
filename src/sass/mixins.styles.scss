@@ -1,0 +1,53 @@
+@import './variables.styles.scss';
+@import './typography.styles.scss';
+
+@mixin colors() {
+  &--beige {
+    background-color: bisque;
+  }
+  &--grey {
+    background-color: grey;
+  }
+  &--brown {
+    background-color: burlywood;
+  }
+  &--white {
+    background-color: rgb(245, 236, 225);
+  }
+
+  &--black {
+    background-color: rgb(75, 75, 75);
+  }
+}
+
+@mixin collection-grid() {
+  display: grid;
+  margin: 0 auto 10rem;
+  padding: 0 1rem;
+
+  &__title {
+    font-size: $large-font-size;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  &__menu {
+    text-align: center;
+    color: grey;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 2rem;
+    grid-row-gap: 5rem;
+    margin-bottom: 4rem;
+  }
+}

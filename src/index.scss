@@ -1,3 +1,7 @@
+@import './sass/mixins.styles.scss';
+@import './sass/variables.styles.scss';
+@import './sass/typography.styles.scss';
+
 *,
 *::before,
 *::after {
@@ -16,9 +20,15 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: $default-font-size;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
 }

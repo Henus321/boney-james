@@ -58,8 +58,8 @@ const Item = () => {
                   to={`/collection/item/${id}`}
                   className={
                     id === params.coatId
-                      ? `item__color--${color} item__color--active`
-                      : `item__color--${color}`
+                      ? `item__color item__color--${color} item__color--active`
+                      : `item__color item__color--${color}`
                   }
                   key={id}
                 />

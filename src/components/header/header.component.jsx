@@ -51,7 +51,7 @@ const Header = () => {
       <div className="header__profile">
         <div className="header__icon-container">
           <FaHeart
-            className="header__icon"
+            className="header__icon header__icon-heart"
             onClick={() => navigate('/bookmarks')}
           />
           <span

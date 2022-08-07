@@ -1,3 +1,7 @@
+@import '../../sass/mixins.styles.scss';
+@import '../../sass/variables.styles.scss';
+@import '../../sass/typography.styles.scss';
+
 .footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -11,12 +15,9 @@
   background-color: #f7f7f7;
 
   &__title {
-    font-size: 2.5rem;
+    font-size: $big-font-size;
     text-transform: uppercase;
     font-weight: normal;
-  }
-
-  &__text {
   }
 
   &__social {
