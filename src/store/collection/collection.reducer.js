@@ -15,6 +15,18 @@ export const collectionReducer = (
         ...state,
         currentCollection: payload,
       };
+    case COLLECTION_ACTION_TYPES.TOGGLE_BOOKMARK:
+      return {
+        ...state,
+        currentCollection: [
+          ...state.currentCollection.map((item) => {
+            if (item.id === payload.id && item.bookmarked === true)
+              return { ...payload, bookmarked: false };
+            if (item.id === payload.id) return { ...payload, bookmarked: true };
+            return item;
+          }),
+        ],
+      };
     default:
       return state;
   }

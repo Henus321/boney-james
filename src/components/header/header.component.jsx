@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { FaShoppingBag } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
@@ -6,6 +6,7 @@ import { FaUser } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleCart } from '../../store/cart/cart.actions';
 import { selectCart } from '../../store/cart/cart.selectors';
+import { selectCollections } from '../../store/collection/collection.selector';
 
 import Cart from '../cart/cart.component';
 
@@ -13,7 +14,14 @@ import './header.styles.scss';
 
 const Header = () => {
   const { isCartActive, cartStatus } = useSelector(selectCart);
+  const { currentCollection } = useSelector(selectCollections);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  let isBookmarks = false;
+  currentCollection.forEach((item) => {
+    if (item.bookmarked === true) isBookmarks = true;
+  });
 
   return (
     <header className="header">
@@ -42,8 +50,15 @@ const Header = () => {
       <h2 className="header__title">Boney James</h2>
       <div className="header__profile">
         <div className="header__icon-container">
-          <FaHeart className="header__icon" />
-          <span className="header__heart-span"></span>
+          <FaHeart
+            className="header__icon"
+            onClick={() => navigate('/bookmarks')}
+          />
+          <span
+            className={
+              isBookmarks ? 'header__heart-span--active' : 'header__heart-span'
+            }
+          ></span>
         </div>
         <div className="header__icon-container">
           <FaShoppingBag

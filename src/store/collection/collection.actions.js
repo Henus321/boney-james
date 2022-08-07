@@ -8,6 +8,11 @@ export const setItems = (data) => ({
   payload: data,
 });
 
+export const toggleBookmark = (item) => ({
+  type: COLLECTION_ACTION_TYPES.TOGGLE_BOOKMARK,
+  payload: item,
+});
+
 export const loadCollection = () => {
   return async (dispatch) => {
     try {

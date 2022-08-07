@@ -31,7 +31,9 @@ export const loadItem = (params) => {
       const data = querySnapshop.docs.map((docSnapshot) => docSnapshot.data());
       const [coat] = data.filter((item) => item.id === params.coatId);
       dispatch(setItem(coat));
-      const colorAndId = data.map((item) => [item.color, item.id]);
+      const colorAndId = data
+        .filter((item) => item.article === coat.article)
+        .map((item) => [item.color, item.id]);
       dispatch(setColorId(colorAndId));
       dispatch(setCurrentSize());
     } catch (error) {
