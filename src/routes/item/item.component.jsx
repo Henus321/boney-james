@@ -13,6 +13,7 @@ import {
   selectColorId,
   selectCurrentSize,
 } from '../../store/item/item.selector';
+import Slider from '../../components/slider/slider.component';
 
 import './item.styles.scss';
 
@@ -36,12 +37,7 @@ const Item = () => {
     <>
       {item && (
         <div className="item" key={uuidv4()}>
-          <div className="item__slider">
-            <img className="item__photo" src={item.mainPhotoUrl} alt="One" />
-          </div>
-          <div className="item__slider">
-            <img className="item__photo" src={item.mainPhotoUrl} alt="One" />
-          </div>
+          <Slider photoUrls={item.photoUrls} />
           <div className="item__info">
             <p>
               <Link className="item__back-link" to="/collection">

@@ -38,10 +38,29 @@ const Cart = () => {
     if (cart.length === 0) dispatch(setCartTotal(defaultCartTotal));
   }, [dispatch, cart]);
 
+  const itemsQuantityName = (cartLength) => {
+    switch (cartLength) {
+      case 1:
+        return 'Товар';
+      case 2:
+      case 3:
+      case 4:
+        return 'Товара';
+      default:
+        return 'Товаров';
+    }
+  };
+
   return (
     <div className={isCartActive ? 'cart--active' : 'cart'}>
       <div className="cart__heading">
-        <h2 className="cart__title">Корзина</h2>
+        <h2 className="cart__title">
+          Корзина&nbsp;
+          <span className="cart__items-quantity">
+            -&nbsp;{cart.length ? cart.length : '0'}&nbsp;
+            {itemsQuantityName(cart.length)}
+          </span>
+        </h2>
         {/* Добавить количество предметов */}
         {/* <span>{cart.length} Товар</span> */}
         <span
@@ -51,52 +70,54 @@ const Cart = () => {
           x
         </span>
       </div>
-      {cart.length > 0 ? (
-        cart.map((cartItem) => (
-          <div className="cart__item" key={uuidv4()}>
-            <img
-              src={cartItem.mainPhotoUrl}
-              alt={cartItem.name}
-              className="cart__photo"
-            />
-            <div className="cart__description">
-              <span className="cart__item-name">{cartItem.name}</span>
+      <div className="cart__items-container">
+        {cart.length > 0 ? (
+          cart.map((cartItem) => (
+            <div className="cart__item" key={uuidv4()}>
+              <img
+                src={cartItem.mainPhotoUrl}
+                alt={cartItem.name}
+                className="cart__photo"
+              />
+              <div className="cart__description">
+                <span className="cart__item-name">{cartItem.name}</span>
 
-              <span className="cart__text">{cartItem.price}&#8381;</span>
-              <span className="cart__text">Размер: {cartItem.size}</span>
+                <span className="cart__text">{cartItem.price}&#8381;</span>
+                <span className="cart__text">Размер: {cartItem.size}</span>
 
-              <div>
-                <span className="cart__text">Количество: </span>
+                <div>
+                  <span className="cart__text">Количество: </span>
+                  <button
+                    className="cart__btn"
+                    onClick={() => dispatch(changeQuantity(cartItem, -1))}
+                  >
+                    -
+                  </button>
+                  <span className="cart__text">{cartItem.quantity}</span>
+                  <button
+                    className="cart__btn"
+                    onClick={() => dispatch(changeQuantity(cartItem, +1))}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="cart__color-container">
+                  <span className="cart__text">Цвет:</span>
+                  <span className={`cart__color--${cartItem.color}`}></span>
+                </div>
                 <button
-                  className="cart__btn"
-                  onClick={() => dispatch(changeQuantity(cartItem, -1))}
+                  className="cart__delete-btn"
+                  onClick={() => dispatch(deleteFromCart(cartItem))}
                 >
-                  -
-                </button>
-                <span className="cart__text">{cartItem.quantity}</span>
-                <button
-                  className="cart__btn"
-                  onClick={() => dispatch(changeQuantity(cartItem, +1))}
-                >
-                  +
+                  x
                 </button>
               </div>
-              <div className="cart__color-container">
-                <span className="cart__text">Цвет:</span>
-                <span className={`cart__color--${cartItem.color}`}></span>
-              </div>
-              <button
-                className="cart__delete-btn"
-                onClick={() => dispatch(deleteFromCart(cartItem))}
-              >
-                x
-              </button>
             </div>
-          </div>
-        ))
-      ) : (
-        <h2 className="cart__warning">В корзине нет товаров</h2>
-      )}
+          ))
+        ) : (
+          <h2 className="cart__warning">В корзине нет товаров</h2>
+        )}
+      </div>
       {cart.length > 0 && (
         <div className="cart__order">
           <div className="cart__order-price">

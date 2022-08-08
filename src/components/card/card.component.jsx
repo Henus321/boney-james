@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { FaHeart } from 'react-icons/fa';
 import './card.styles.scss';
+import Cart from '../cart/cart.component';
 
 const Card = ({ collection }) => {
   const navigate = useNavigate();
@@ -24,9 +25,7 @@ const Card = ({ collection }) => {
               }}
             />
             <span className="card__name">{card.name}</span>
-            <span className="card__sizes">
-              Размеры: {card.sizes.map((size) => size + ' ')}
-            </span>
+            <span className="card__article">Арт.: {card.article}</span>
             <span className="card__cost">{card.price}&#8381;</span>
             <div className="card__color-circles">
               {card.possibleColors.map((color) => (
