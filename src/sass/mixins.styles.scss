@@ -1,6 +1,10 @@
 @import './variables.styles.scss';
 
 @mixin colors() {
+  &--active {
+    border: 3px solid rgba(0, 0, 0, 0.2);
+  }
+
   &--beige {
     background-color: bisque;
   }

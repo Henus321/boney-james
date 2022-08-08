@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { FaHeart } from 'react-icons/fa';
 import './card.styles.scss';
-import Cart from '../cart/cart.component';
 
 const Card = ({ collection }) => {
   const navigate = useNavigate();
@@ -31,7 +30,11 @@ const Card = ({ collection }) => {
               {card.possibleColors.map((color) => (
                 <div
                   key={uuidv4()}
-                  className={`card__color card__color--${color}`}
+                  className={
+                    color === card.color
+                      ? `card__color card__color--${color} card__color--active`
+                      : `card__color card__color--${color}`
+                  }
                 ></div>
               ))}
             </div>
