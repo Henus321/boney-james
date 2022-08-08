@@ -6,14 +6,21 @@ import {
   setCartTotal,
   toggleCartStatus,
 } from '../../store/cart/cart.actions';
-import { selectCart } from '../../store/cart/cart.selectors';
+import {
+  selectCart,
+  selectCartTotal,
+  selectIsCartActive,
+} from '../../store/cart/cart.selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 import './cart.styles.scss';
 
 const Cart = () => {
-  const { cart, isCartActive, cartTotal } = useSelector(selectCart);
+  const cart = useSelector(selectCart);
+  const cartTotal = useSelector(selectCartTotal);
+  const isCartActive = useSelector(selectIsCartActive);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

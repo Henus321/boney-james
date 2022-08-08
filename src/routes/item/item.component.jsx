@@ -8,12 +8,19 @@ import {
   setCurrentSize,
   clearDetails,
 } from '../../store/item/item.actions';
-import { selectItem } from '../../store/item/item.selector';
+import {
+  selectCurrentItem,
+  selectColorId,
+  selectCurrentSize,
+} from '../../store/item/item.selector';
 
 import './item.styles.scss';
 
 const Item = () => {
-  const { item, colorId, currentSize } = useSelector(selectItem);
+  const item = useSelector(selectCurrentItem);
+  const colorId = useSelector(selectColorId);
+  const currentSize = useSelector(selectCurrentSize);
+
   const params = useParams();
   const dispatch = useDispatch();
 

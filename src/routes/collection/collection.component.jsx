@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCollections } from '../../store/collection/collection.selector';
+import {
+  selectCurrentCollection,
+  selectCollectionQty,
+} from '../../store/collection/collection.selector';
 import { loadCollection } from '../../store/collection/collection.actions';
 import { Link } from 'react-router-dom';
 import Card from '../../components/card/card.component';
@@ -8,10 +11,11 @@ import Card from '../../components/card/card.component';
 import './collection.styles.scss';
 
 const Collection = () => {
+  const currentCollection = useSelector(selectCurrentCollection);
+  const collectionQty = useSelector(selectCollectionQty);
+
   const dispatch = useDispatch();
 
-  const { currentCollection, qty: collectionQty } =
-    useSelector(selectCollections);
   useEffect(() => {
     if (!collectionQty) {
       dispatch(loadCollection());

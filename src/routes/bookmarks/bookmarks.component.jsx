@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-import { selectCollections } from '../../store/collection/collection.selector';
+import { selectCurrentCollection } from '../../store/collection/collection.selector';
 import { Link } from 'react-router-dom';
 import Card from '../../components/card/card.component';
 
 import './bookmarks.styles.scss';
 
 const Bookmarks = () => {
-  const { currentCollection } = useSelector(selectCollections);
+  const currentCollection = useSelector(selectCurrentCollection);
 
   const bookmarks = currentCollection.filter((item) => {
     return item.bookmarked;

@@ -5,16 +5,21 @@ import { FaUser } from 'react-icons/fa';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleCart } from '../../store/cart/cart.actions';
-import { selectCart } from '../../store/cart/cart.selectors';
-import { selectCollections } from '../../store/collection/collection.selector';
+import {
+  selectIsCartActive,
+  selectCartStatus,
+} from '../../store/cart/cart.selectors';
+import { selectCurrentCollection } from '../../store/collection/collection.selector';
 
 import Cart from '../cart/cart.component';
 
 import './header.styles.scss';
 
 const Header = () => {
-  const { isCartActive, cartStatus } = useSelector(selectCart);
-  const { currentCollection } = useSelector(selectCollections);
+  const cartStatus = useSelector(selectCartStatus);
+  const isCartActive = useSelector(selectIsCartActive);
+
+  const currentCollection = useSelector(selectCurrentCollection);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

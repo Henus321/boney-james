@@ -1,6 +1,23 @@
-export const selectCart = (state) => ({
-  cart: state.cart.cart,
-  cartTotal: state.cart.cartTotal,
-  isCartActive: state.cart.isCartActive,
-  cartStatus: state.cart.cartStatus,
-});
+import { createSelector } from 'reselect';
+
+const selectCartReducer = (state) => state.cart;
+
+export const selectCart = createSelector(
+  [selectCartReducer],
+  (cart) => cart.cart
+);
+
+export const selectCartTotal = createSelector(
+  [selectCartReducer],
+  (cart) => cart.cartTotal
+);
+
+export const selectIsCartActive = createSelector(
+  [selectCartReducer],
+  (cart) => cart.isCartActive
+);
+
+export const selectCartStatus = createSelector(
+  [selectCartReducer],
+  (cart) => cart.cartStatus
+);
