@@ -2,55 +2,34 @@
 @import '../../sass/variables.styles.scss';
 
 .cart {
-  position: fixed;
-  max-height: 100vh;
-  width: 40vw;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  z-index: 10;
-  background-color: white;
-  visibility: hidden;
-  animation: cartDisappear 0.5s ease;
-
-  &--active {
-    position: fixed;
-    height: 100vh;
-    width: 40vw;
-    top: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    z-index: 10;
-    background-color: white;
-    animation: cartAppear 0.5s ease;
-  }
-
-  @keyframes cartAppear {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  @keyframes cartDisappear {
-    0% {
-      visibility: visible;
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(100%);
-      visibility: hidden;
-    }
-  }
+  @include sideMenu();
 
   &__heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__title {
+    font-weight: normal;
+    padding: 2rem;
+  }
+
+  &__items-quantity {
+    color: #777;
+  }
+
+  &__close-btn {
+    padding: 2rem 3rem;
+    font-size: $medium-font-size;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: rgba(0, 0, 0, 0.05);
+    }
   }
 
   &__warning {
@@ -77,26 +56,6 @@
       display: flex;
       justify-content: space-between;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
-    }
-  }
-
-  &__title {
-    font-weight: normal;
-    padding: 2rem;
-  }
-
-  &__items-quantity {
-    color: #777;
-  }
-
-  &__close-btn {
-    padding: 2rem 3rem;
-    font-size: $medium-font-size;
-    cursor: pointer;
-    border-left: 1px solid rgba(0, 0, 0, 0.05);
-
-    &:hover {
-      transform: scale(1.05);
     }
   }
 

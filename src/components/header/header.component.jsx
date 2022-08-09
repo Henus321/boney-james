@@ -2,7 +2,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { FaShoppingBag } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleCart } from '../../store/cart/cart.actions';
 import {
@@ -10,14 +9,18 @@ import {
   selectCartStatus,
 } from '../../store/cart/cart.selectors';
 import { selectCurrentCollection } from '../../store/collection/collection.selector';
+import { selectIsProfileMenuActive } from '../../store/user/user.selector';
+import { toggleProfileMenu } from '../../store/user/user.actions';
 
 import Cart from '../cart/cart.component';
+import Profile from '../profile/profile.component';
 
 import './header.styles.scss';
 
 const Header = () => {
   const cartStatus = useSelector(selectCartStatus);
   const isCartActive = useSelector(selectIsCartActive);
+  const isProfileMenuActive = useSelector(selectIsProfileMenuActive);
 
   const currentCollection = useSelector(selectCurrentCollection);
   const dispatch = useDispatch();
@@ -39,6 +42,7 @@ const Header = () => {
         onClick={() => dispatch(toggleCart(!isCartActive))}
       ></div>
       <Cart />
+      <Profile />
       <nav className="header__nav">
         <ul className="header__nav-list">
           <li className="header__nav-item">
@@ -77,7 +81,10 @@ const Header = () => {
           ></span>
         </div>
         <div className="header__icon-container">
-          <FaUser className="header__icon" />
+          <FaUser
+            className="header__icon"
+            onClick={() => dispatch(toggleProfileMenu(!isProfileMenuActive))}
+          />
           <span className="header__user-span"></span>
         </div>
       </div>

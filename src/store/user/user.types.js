@@ -1,0 +1,3 @@
+export const USER_ACTION_TYPES = {
+  TOGGLE_PROFILE_MENU: '@@user/TOGGLE_PROFILE_MENU',
+};

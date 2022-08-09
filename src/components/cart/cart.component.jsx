@@ -52,7 +52,7 @@ const Cart = () => {
   };
 
   return (
-    <div className={isCartActive ? 'cart--active' : 'cart'}>
+    <div className={isCartActive ? 'cart cart--active' : 'cart'}>
       <div className="cart__heading">
         <h2 className="cart__title">
           Корзина&nbsp;
@@ -61,8 +61,6 @@ const Cart = () => {
             {itemsQuantityName(cart.length)}
           </span>
         </h2>
-        {/* Добавить количество предметов */}
-        {/* <span>{cart.length} Товар</span> */}
         <span
           className="cart__close-btn"
           onClick={() => dispatch(toggleCart(!isCartActive))}

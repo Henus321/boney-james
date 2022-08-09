@@ -1,0 +1,70 @@
+@import '../../sass/mixins.styles.scss';
+@import '../../sass/variables.styles.scss';
+
+.profile {
+  @include sideMenu();
+  height: 100vh;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+  }
+
+  &__title {
+    padding: 2rem;
+    width: 100%;
+    font-weight: normal;
+    text-align: center;
+    color: #999;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    cursor: pointer;
+
+    &--active {
+      color: #111;
+      border-bottom: 1px solid #111;
+    }
+  }
+
+  &__close-btn {
+    padding: 2rem 3rem;
+    font-size: $medium-font-size;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &__input-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 2rem auto;
+  }
+
+  &__input {
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #999;
+    transition: border 0.3s linear;
+    font-size: $medium-font-size;
+
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid #111;
+    }
+  }
+
+  &__label {
+    padding: 0.5rem;
+    color: #999;
+    font-size: 1.4rem;
+    cursor: text;
+  }
+}
