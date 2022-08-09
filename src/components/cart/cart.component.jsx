@@ -57,7 +57,7 @@ const Cart = () => {
         <h2 className="cart__title">
           Корзина&nbsp;
           <span className="cart__items-quantity">
-            -&nbsp;{cart.length ? cart.length : '0'}&nbsp;
+            -&nbsp;{cart.length > 0 ? cart.length : '0'}&nbsp;
             {itemsQuantityName(cart.length)}
           </span>
         </h2>

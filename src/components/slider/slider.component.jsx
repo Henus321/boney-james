@@ -20,7 +20,7 @@ const Slider = ({ photoUrls = [] }) => {
     >
       {photoUrls.map((photo, index) => (
         <SwiperSlide key={uuidv4()}>
-          <img className="slider__image" src={photo} alt={`Photo ${index}`} />
+          <img className="slider__image" src={photo} alt={`Coat ${index}`} />
         </SwiperSlide>
       ))}
     </Swiper>
