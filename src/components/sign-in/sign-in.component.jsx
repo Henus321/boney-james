@@ -1,8 +1,8 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleProfileMenu } from '../../store/user/user.actions';
-import { selectIsProfileMenuActive } from '../../store/user/user.selector';
+import { toggleProfileMenu } from '../../store/profile/profile.actions';
+import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
 import Button from '../button/button.component';
 import './sign-in.styles.scss';
 
@@ -16,9 +16,6 @@ const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  // const auth = getAuth();
-  // console.log(auth.currentUser);
-
   const dispatch = useDispatch();
 
   const toggleProfileMenuHandler = () => {
@@ -29,7 +26,7 @@ const SignIn = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleSubmit = async (e) => {
+  const signInHandler = async (e) => {
     e.preventDefault();
 
     try {
@@ -60,7 +57,7 @@ const SignIn = () => {
     <>
       <form
         id="sign-in__form"
-        onSubmit={handleSubmit}
+        onSubmit={signInHandler}
         className="sign-in__form"
       >
         <label className="sign-in__label" htmlFor="signin-email">

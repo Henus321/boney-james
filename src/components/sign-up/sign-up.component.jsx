@@ -6,8 +6,8 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { toggleProfileMenu } from '../../store/user/user.actions';
-import { selectIsProfileMenuActive } from '../../store/user/user.selector';
+import { toggleProfileMenu } from '../../store/profile/profile.actions';
+import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../button/button.component';
@@ -35,7 +35,7 @@ const SignUp = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleSubmit = async (e) => {
+  const signUpHandler = async (e) => {
     e.preventDefault();
 
     try {
@@ -75,7 +75,7 @@ const SignUp = () => {
     <>
       <form
         id="sign-up__form"
-        onSubmit={handleSubmit}
+        onSubmit={signUpHandler}
         className="sign-up__form"
       >
         <label className="sign-up__label" htmlFor="signup-name">

@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 const selectUserReducer = (state) => state.user;
 
-export const selectIsProfileMenuActive = createSelector(
+export const selectCurrentUser = createSelector(
   [selectUserReducer],
-  (item) => item.isProfileMenuActive
+  (user) => user.currentUser
 );

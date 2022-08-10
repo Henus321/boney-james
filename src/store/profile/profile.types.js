@@ -1,0 +1,4 @@
+export const PROFILE_ACTION_TYPES = {
+  TOGGLE_PROFILE_MENU: '@@profile/TOGGLE_PROFILE_MENU',
+  SET_MENU_TYPE: '@@profile/TOGGLE_MENU_TYPE',
+};

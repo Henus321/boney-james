@@ -1,16 +1,18 @@
 import { USER_ACTION_TYPES } from './user.types';
 
 export const USER_INITIAL_STATE = {
-  isProfileMenuActive: false,
+  currentUser: {},
 };
 
 export const userReducer = (state = USER_INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case USER_ACTION_TYPES.TOGGLE_PROFILE_MENU:
+    case USER_ACTION_TYPES.SET_CURRENT_USER:
       return {
         ...state,
-        isProfileMenuActive: payload,
+        currentUser: payload,
       };
+    case USER_ACTION_TYPES.SET_USER_TO_DEFAULT:
+      return USER_INITIAL_STATE;
     default:
       return state;
   }

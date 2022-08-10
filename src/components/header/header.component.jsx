@@ -9,8 +9,8 @@ import {
   selectCartStatus,
 } from '../../store/cart/cart.selectors';
 import { selectCurrentCollection } from '../../store/collection/collection.selector';
-import { selectIsProfileMenuActive } from '../../store/user/user.selector';
-import { toggleProfileMenu } from '../../store/user/user.actions';
+import { toggleProfileMenu } from '../../store/profile/profile.actions';
+import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
 
 import Cart from '../cart/cart.component';
 import Profile from '../profile/profile.component';
