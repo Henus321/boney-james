@@ -33,14 +33,6 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div
-        className={
-          isCartActive || isProfileMenuActive
-            ? 'header__background-blur--active'
-            : 'header__background-blur'
-        }
-        onClick={() => dispatch(toggleCart(!isCartActive))}
-      ></div>
       <Cart />
       <Profile />
       <nav className="header__nav">

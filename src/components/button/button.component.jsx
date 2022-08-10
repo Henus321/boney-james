@@ -1,8 +1,12 @@
 import './button.styles.scss';
 
-const Button = ({ handler, buttonText, type = 'ckeckout' }) => {
+const Button = ({ handler, buttonText, buttonType, form }) => {
   return (
-    <button className={`button button--${type}`} onClick={handler}>
+    <button
+      form={form}
+      className={`button button--${buttonType}`}
+      onClick={handler}
+    >
       {buttonText}
     </button>
   );

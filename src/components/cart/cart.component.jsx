@@ -56,40 +56,50 @@ const Cart = () => {
   };
 
   return (
-    <div className={isCartActive ? 'cart cart--active' : 'cart'}>
-      <div className="cart__heading">
-        <h2 className="cart__title">
-          Корзина&nbsp;
-          <span className="cart__items-quantity">
-            -&nbsp;{cart.length > 0 ? cart.length : '0'}&nbsp;
-            {itemsQuantityName(cart.length)}
-          </span>
-        </h2>
-        <Button type="close" handler={toggleCartMenu} buttonText="x" />
-      </div>
-      <div className="cart__items-container">
-        {cart.length > 0 ? (
-          cart.map((cartItem) => (
-            <CartItem cartItem={cartItem} key={uuidv4()} />
-          ))
-        ) : (
-          <h2 className="cart__warning">В корзине нет товаров</h2>
+    <>
+      <div
+        className={
+          isCartActive
+            ? 'header__background-blur--active'
+            : 'header__background-blur'
+        }
+        onClick={toggleCartMenu}
+      ></div>
+      <div className={isCartActive ? 'cart cart--active' : 'cart'}>
+        <div className="cart__heading">
+          <h2 className="cart__title">
+            Корзина&nbsp;
+            <span className="cart__items-quantity">
+              -&nbsp;{cart.length > 0 ? cart.length : '0'}&nbsp;
+              {itemsQuantityName(cart.length)}
+            </span>
+          </h2>
+          <Button buttonType="close" handler={toggleCartMenu} buttonText="x" />
+        </div>
+        <div className="cart__items-container">
+          {cart.length > 0 ? (
+            cart.map((cartItem) => (
+              <CartItem cartItem={cartItem} key={uuidv4()} />
+            ))
+          ) : (
+            <h2 className="cart__warning">В корзине нет товаров</h2>
+          )}
+        </div>
+        {cart.length > 0 && (
+          <div className="cart__order">
+            <div className="cart__order-price">
+              <span>Итого</span>
+              <span>{cartTotal}&#8381;</span>
+            </div>
+            <Button
+              handler={() => {}}
+              buttonText="Оформить заказ"
+              buttonType="wide-black"
+            />
+          </div>
         )}
       </div>
-      {cart.length > 0 && (
-        <div className="cart__order">
-          <div className="cart__order-price">
-            <span>Итого</span>
-            <span>{cartTotal}&#8381;</span>
-          </div>
-          <Button
-            handler={() => {}}
-            buttonText="Оформить заказ"
-            type="wide-black"
-          />
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 

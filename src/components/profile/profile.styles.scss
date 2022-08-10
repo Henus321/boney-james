@@ -27,32 +27,4 @@
       border-bottom: 1px solid #111;
     }
   }
-
-  &__input-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 2rem auto;
-  }
-
-  &__input {
-    padding: 0.5rem;
-    border: none;
-    border-bottom: 1px solid #999;
-    transition: border 0.3s linear;
-    font-size: $medium-font-size;
-
-    &:focus {
-      outline: none;
-      border-bottom: 1px solid #111;
-    }
-  }
-
-  &__label {
-    padding: 0.5rem;
-    color: #999;
-    font-size: 1.4rem;
-    cursor: text;
-  }
 }

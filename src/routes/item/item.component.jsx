@@ -97,7 +97,7 @@ const Item = () => {
             </span>
             <Button
               handler={addToCartHandler}
-              type="item"
+              buttonType="item"
               buttonText="Добавить в корзину"
             />
           </div>
