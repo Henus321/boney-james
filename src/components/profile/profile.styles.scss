@@ -28,18 +28,6 @@
     }
   }
 
-  &__close-btn {
-    padding: 2rem 3rem;
-    font-size: $medium-font-size;
-    border-left: 1px solid rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.05);
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-  }
-
   &__input-container {
     position: relative;
     display: flex;

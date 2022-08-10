@@ -35,7 +35,7 @@ const Header = () => {
     <header className="header">
       <div
         className={
-          isCartActive
+          isCartActive || isProfileMenuActive
             ? 'header__background-blur--active'
             : 'header__background-blur'
         }

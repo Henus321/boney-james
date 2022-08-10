@@ -13,8 +13,9 @@ import {
   selectColorId,
   selectCurrentSize,
 } from '../../store/item/item.selector';
-import Slider from '../../components/slider/slider.component';
 
+import Button from '../../components/button/button.component';
+import Slider from '../../components/slider/slider.component';
 import './item.styles.scss';
 
 const Item = () => {
@@ -32,6 +33,10 @@ const Item = () => {
       dispatch(clearDetails());
     };
   }, [dispatch, params]);
+
+  const addToCartHandler = () => {
+    dispatch(addToCart(item, currentSize));
+  };
 
   return (
     <>
@@ -90,14 +95,11 @@ const Item = () => {
             <span className="item__item item__description">
               {item.description}
             </span>
-            <button
-              className="item__button"
-              onClick={() => {
-                dispatch(addToCart(item, currentSize));
-              }}
-            >
-              Добавить в корзину
-            </button>
+            <Button
+              handler={addToCartHandler}
+              type="item"
+              buttonText="Добавить в корзину"
+            />
           </div>
         </div>
       )}

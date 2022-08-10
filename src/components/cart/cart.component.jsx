@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 import {
-  deleteFromCart,
-  changeQuantity,
   toggleCart,
   setCartTotal,
   toggleCartStatus,
@@ -14,6 +12,8 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
+import CartItem from '../cart-item/cart-item.component';
+import Button from '../button/button.component';
 import './cart.styles.scss';
 
 const Cart = () => {
@@ -51,6 +51,10 @@ const Cart = () => {
     }
   };
 
+  const toggleCartMenu = () => {
+    dispatch(toggleCart(!isCartActive));
+  };
+
   return (
     <div className={isCartActive ? 'cart cart--active' : 'cart'}>
       <div className="cart__heading">
@@ -61,56 +65,12 @@ const Cart = () => {
             {itemsQuantityName(cart.length)}
           </span>
         </h2>
-        <span
-          className="cart__close-btn"
-          onClick={() => dispatch(toggleCart(!isCartActive))}
-        >
-          x
-        </span>
+        <Button type="close" handler={toggleCartMenu} buttonText="x" />
       </div>
       <div className="cart__items-container">
         {cart.length > 0 ? (
           cart.map((cartItem) => (
-            <div className="cart__item" key={uuidv4()}>
-              <img
-                src={cartItem.mainPhotoUrl}
-                alt={cartItem.name}
-                className="cart__photo"
-              />
-              <div className="cart__description">
-                <span className="cart__item-name">{cartItem.name}</span>
-
-                <span className="cart__text">{cartItem.price}&#8381;</span>
-                <span className="cart__text">Размер: {cartItem.size}</span>
-
-                <div>
-                  <span className="cart__text">Количество: </span>
-                  <button
-                    className="cart__btn"
-                    onClick={() => dispatch(changeQuantity(cartItem, -1))}
-                  >
-                    -
-                  </button>
-                  <span className="cart__text">{cartItem.quantity}</span>
-                  <button
-                    className="cart__btn"
-                    onClick={() => dispatch(changeQuantity(cartItem, +1))}
-                  >
-                    +
-                  </button>
-                </div>
-                <div className="cart__color-container">
-                  <span className="cart__text">Цвет:</span>
-                  <span className={`cart__color--${cartItem.color}`}></span>
-                </div>
-                <button
-                  className="cart__delete-btn"
-                  onClick={() => dispatch(deleteFromCart(cartItem))}
-                >
-                  x
-                </button>
-              </div>
-            </div>
+            <CartItem cartItem={cartItem} key={uuidv4()} />
           ))
         ) : (
           <h2 className="cart__warning">В корзине нет товаров</h2>
@@ -122,7 +82,11 @@ const Cart = () => {
             <span>Итого</span>
             <span>{cartTotal}&#8381;</span>
           </div>
-          <button className="cart__order-accept">Оформить заказ</button>
+          <Button
+            handler={() => {}}
+            buttonText="Оформить заказ"
+            type="wide-black"
+          />
         </div>
       )}
     </div>

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsProfileMenuActive } from '../../store/user/user.selector';
 import { toggleProfileMenu } from '../../store/user/user.actions';
+
+import Button from '../button/button.component';
 import './profile.styles.scss';
 
 const Profile = () => {
@@ -34,12 +36,11 @@ const Profile = () => {
         >
           Регистрация
         </h2>
-        <span
-          className="profile__close-btn"
-          onClick={() => dispatch(toggleProfileMenu(!isProfileMenuActive))}
-        >
-          x
-        </span>
+        <Button
+          type="close"
+          handler={() => dispatch(toggleProfileMenu(!isProfileMenuActive))}
+          buttonText="x"
+        />
       </div>
       {menuType ? (
         <>
@@ -59,6 +60,7 @@ const Profile = () => {
               id="signin-password"
             />
           </div>
+          <Button handler={() => {}} buttonText="Войти" type="wide-black" />
         </>
       ) : (
         <>
@@ -94,6 +96,11 @@ const Profile = () => {
               id="signup-password-repeat"
             />
           </div>
+          <Button
+            handler={() => {}}
+            buttonText="Создать Аккаунт"
+            type="wide-black"
+          />
         </>
       )}
     </div>

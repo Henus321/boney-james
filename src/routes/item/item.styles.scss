@@ -91,17 +91,4 @@
   &__description {
     margin-bottom: 3rem;
   }
-
-  &__button {
-    margin-top: auto;
-    align-self: flex-start;
-    background-color: white;
-    border: 1px solid #555;
-    padding: 2rem 4rem;
-    cursor: pointer;
-
-    &:hover {
-      background-color: whitesmoke;
-    }
-  }
 }
