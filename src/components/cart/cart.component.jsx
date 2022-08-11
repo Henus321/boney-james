@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   toggleCart,
   setCartTotal,
@@ -21,6 +22,7 @@ const Cart = () => {
   const cartTotal = useSelector(selectCartTotal);
   const isCartActive = useSelector(selectIsCartActive);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -54,6 +56,11 @@ const Cart = () => {
   const toggleCartMenu = () => {
     dispatch(toggleCart(!isCartActive));
   };
+
+  const navigateToCheckout = () => {
+    navigate('/checkout')
+    dispatch(toggleCart(!isCartActive));
+  }
 
   return (
     <>
@@ -92,7 +99,7 @@ const Cart = () => {
               <span>{cartTotal}&#8381;</span>
             </div>
             <Button
-              handler={() => {}}
+              handler={navigateToCheckout}
               buttonText="Оформить заказ"
               buttonType="wide-black"
             />

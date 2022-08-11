@@ -7,6 +7,7 @@ import About from './routes/about/about.component';
 import Collection from './routes/collection/collection.component';
 import Item from './routes/item/item.component';
 import Bookmarks from './routes/bookmarks/bookmarks.component';
+import Checkout from './routes/checkout/checkout.component';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/collection" element={<Collection />} />
         <Route path="/collection/item/:coatId" element={<Item />} />
         <Route path="/bookmarks" element={<Bookmarks />} />
+        <Route path='checkout' element={<Checkout/>}/>
       </Routes>
       <Footer />
     </div>
