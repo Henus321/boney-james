@@ -7,6 +7,7 @@ import {
 } from '../../store/cart/cart.actions';
 import {
   selectCart,
+  selectCartQuantity,
   selectCartTotal,
   selectIsCartActive,
 } from '../../store/cart/cart.selectors';
@@ -19,6 +20,7 @@ import './cart.styles.scss';
 
 const Cart = () => {
   const cart = useSelector(selectCart);
+  const cartQuantity = useSelector(selectCartQuantity);
   const cartTotal = useSelector(selectCartTotal);
   const isCartActive = useSelector(selectIsCartActive);
 
@@ -58,9 +60,9 @@ const Cart = () => {
   };
 
   const navigateToCheckout = () => {
-    navigate('/checkout')
+    navigate('/checkout');
     dispatch(toggleCart(!isCartActive));
-  }
+  };
 
   return (
     <>
@@ -77,8 +79,8 @@ const Cart = () => {
           <h2 className="cart__title">
             Корзина&nbsp;
             <span className="cart__items-quantity">
-              -&nbsp;{cart.length > 0 ? cart.length : '0'}&nbsp;
-              {itemsQuantityName(cart.length)}
+              -&nbsp;{cart.length > 0 ? cartQuantity : '0'}&nbsp;
+              {itemsQuantityName(cartQuantity)}
             </span>
           </h2>
           <Button buttonType="close" handler={toggleCartMenu} buttonText="x" />

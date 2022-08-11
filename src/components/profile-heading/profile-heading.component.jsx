@@ -2,13 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   selectIsProfileMenuActive,
   selectMenuType,
-} from '../../../store/profile/profile.selector';
+} from '../../store/profile/profile.selector';
 import {
   setMenuType,
   toggleProfileMenu,
-} from '../../../store/profile/profile.actions';
+} from '../../store/profile/profile.actions';
 
-import Button from '../../button/button.component';
+import Button from '../button/button.component';
 import './profile-heading.styles.scss';
 
 const ProfileHeading = () => {

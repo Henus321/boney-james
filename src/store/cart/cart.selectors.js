@@ -21,3 +21,9 @@ export const selectCartStatus = createSelector(
   [selectCartReducer],
   (cart) => cart.cartStatus
 );
+
+export const selectCartQuantity = createSelector([selectCartReducer], (cart) =>
+  cart.cart.reduce((acc, item) => {
+    return acc + item.quantity;
+  }, 0)
+);

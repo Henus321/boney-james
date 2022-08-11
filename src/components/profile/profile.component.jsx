@@ -9,7 +9,7 @@ import { getAuth } from 'firebase/auth';
 import SignIn from '../sign-in/sign-in.component';
 import SignUp from '../sign-up/sign-up.component';
 import UserDetails from '../user-details/user-details.component';
-import ProfileHeading from './profile-heading/profile-heading.component';
+import ProfileHeading from '../profile-heading/profile-heading.component';
 import './profile.styles.scss';
 
 const Profile = () => {

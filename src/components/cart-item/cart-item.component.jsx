@@ -1,8 +1,10 @@
 import { deleteFromCart, changeQuantity } from '../../store/cart/cart.actions';
 import { useDispatch } from 'react-redux';
 
+import './cart-item.styles.scss';
+
 const CartItem = ({ cartItem }) => {
-  const { name, price, size, quantity, color } = cartItem;
+  const { name, price, size, quantity, color, mainPhotoUrl } = cartItem;
 
   const dispatch = useDispatch();
 
@@ -19,34 +21,35 @@ const CartItem = ({ cartItem }) => {
   };
 
   return (
-    <div className="cart__item">
-      <img
-        src={cartItem.mainPhotoUrl}
-        alt={cartItem.name}
-        className="cart__photo"
-      />
-      <div className="cart__description">
-        <span className="cart__item-name">{name}</span>
+    <div className="cart-item">
+      <img src={mainPhotoUrl} alt={name} className="cart-item__photo" />
+      <div className="cart-item__description">
+        <span className="cart-item__item-name">{name}</span>
 
-        <span className="cart__text">{price}&#8381;</span>
-        <span className="cart__text">Размер: {size}</span>
+        <span className="cart-item__text">{price}&#8381;</span>
+        <span className="cart-item__text">Размер: {size}</span>
 
         <div>
-          <span className="cart__text">Количество: </span>
-          <button className="cart__btn" onClick={decreaseQuantityHandler}>
+          <span className="cart-item__text">Количество: </span>
+          <button className="cart-item__btn" onClick={decreaseQuantityHandler}>
             -
           </button>
-          <span className="cart__text">{quantity}</span>
-          <button className="cart__btn" onClick={increaseQuantityHandler}>
+          <span className="cart-item__text">{quantity}</span>
+          <button className="cart-item__btn" onClick={increaseQuantityHandler}>
             +
           </button>
         </div>
-        <div className="cart__color-container">
-          <span className="cart__text">Цвет:</span>
-          <span className={`cart__color--${color}`}></span>
+        <div className="cart-item__color-container">
+          <span className="cart-item__text">Цвет:</span>
+          <span
+            className={`cart-item__color cart-item__color--${color}`}
+          ></span>
         </div>
 
-        <button className="cart__delete-btn" onClick={deleteFromCartHandler}>
+        <button
+          className="cart-item__delete-btn"
+          onClick={deleteFromCartHandler}
+        >
           x
         </button>
       </div>

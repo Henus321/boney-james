@@ -57,7 +57,7 @@
 
 @mixin sideMenu() {
   position: fixed;
-  max-height: 100vh;
+  height: 100vh;
   width: 40vw;
   top: 0;
   right: 0;
