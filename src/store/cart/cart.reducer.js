@@ -62,7 +62,8 @@ export const cartReducer = (state = CART_INITIAL_STATE, { type, payload }) => {
         ...state,
         cart: [...state.cart, { ...payload.clickedItem, size: payload.size }],
       };
-
+    case CART_ACTION_TYPES.CART_TO_INITIAL_STATE:
+      return CART_INITIAL_STATE;
     case CART_ACTION_TYPES.TOGGLE_CART:
       return {
         ...state,

@@ -10,6 +10,10 @@ export const deleteFromCart = (clickedItem) => ({
   payload: { clickedItem },
 });
 
+export const cartToInitialState = () => ({
+  type: CART_ACTION_TYPES.CART_TO_INITIAL_STATE,
+});
+
 export const changeQuantity = (clickedItem, positiveOrNegativeOne) => ({
   type: CART_ACTION_TYPES.CHANGE_QUANTITY,
   payload: { clickedItem, positiveOrNegativeOne },

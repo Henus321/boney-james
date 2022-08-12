@@ -3,55 +3,31 @@
 
 .checkout-item {
   display: grid;
-  grid-template-columns: 25% repeat(3, 1fr) min-content;
-  grid-template-rows: repeat(6, max-content);
+  grid-template-columns: 1.2fr repeat(6, 1fr) 0.3fr;
   grid-column-gap: 2rem;
-  grid-row-gap: 0.5rem;
-  width: 100%;
-  height: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: center;
 
   &__photo {
-    grid-row: 1 / -1;
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
   }
 
-  &__name {
-    grid-column: 2 / 5;
-    font-size: 2rem;
-    margin-top: 2rem;
-    color: #000;
-  }
-
-  &__price,
-  &__size {
-    grid-column: 2 / 4;
-  }
-
-  &__quantity {
-    grid-row: 4 / 5;
-    grid-column: 2 / 4;
-  }
-
   &__quantity-buttons {
-    grid-row: 4 / 5;
-    grid-column: 3 / 5;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    grid-column-gap: 1rem;
+    align-items: center;
   }
 
   &__quantity-button {
-    margin: 0 1rem;
     padding: 0.5rem 1rem;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.05);
     cursor: pointer;
-  }
-
-  &__color-container {
-    display: flex;
-    grid-column: 2 / 4;
   }
 
   &__color {
@@ -65,13 +41,11 @@
   }
 
   &__delete-btn {
-    grid-row: 1 / 2;
-    grid-column: 5 / 6;
     background-color: transparent;
     width: 2.8rem;
     height: 2.8rem;
-    margin: 1rem 1rem 0 0;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    justify-self: end;
     cursor: pointer;
   }
 }
