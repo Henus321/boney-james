@@ -1,16 +1,28 @@
-import { useSelector } from 'react-redux';
-import { selectCurrentCollection } from '../../store/collection/collection.selector';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectFullCollection,
+  selectBookmarksId,
+} from '../../store/collection/collection.selector';
 import { Link } from 'react-router-dom';
-import Card from '../../components/card/card.component';
+import { v4 as uuidv4 } from 'uuid';
+import { loadFullCollection } from '../../store/collection/collection.actions';
+import { useEffect } from 'react';
 
+import Card from '../../components/card/card.component';
 import './bookmarks.styles.scss';
 
 const Bookmarks = () => {
-  const currentCollection = useSelector(selectCurrentCollection);
+  const bookmarksId = useSelector(selectBookmarksId);
+  const fullCollection = useSelector(selectFullCollection);
+  const bookmarks = fullCollection.filter((item) =>
+    bookmarksId.includes(item.id)
+  );
 
-  const bookmarks = currentCollection.filter((item) => {
-    return item.bookmarked;
-  });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadFullCollection());
+  }, [dispatch]);
 
   return (
     <div className="bookmarks">
@@ -22,7 +34,9 @@ const Bookmarks = () => {
       <h2 className="bookmarks__title">Ваши закладки</h2>
       <div className="bookmarks__body">
         {bookmarks.length > 0 ? (
-          <Card collection={bookmarks} />
+          bookmarks.map((bookmarkedItem) => (
+            <Card collectionItem={bookmarkedItem} key={uuidv4()} />
+          ))
         ) : (
           <span className="bookmarks__no-items">В закладках нет товаров</span>
         )}

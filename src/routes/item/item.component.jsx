@@ -6,7 +6,7 @@ import { addToCart } from '../../store/cart/cart.actions';
 import {
   loadItem,
   setCurrentSize,
-  clearDetails,
+  clearItem,
 } from '../../store/item/item.actions';
 import {
   selectCurrentItem,
@@ -27,10 +27,10 @@ const Item = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadItem(params));
+    dispatch(loadItem(params.coatId));
 
     return () => {
-      dispatch(clearDetails());
+      dispatch(clearItem());
     };
   }, [dispatch, params]);
 
@@ -45,7 +45,10 @@ const Item = () => {
           <Slider photoUrls={item.photoUrls} />
           <div className="item__info">
             <p>
-              <Link className="item__back-link" to="/collection">
+              <Link
+                className="item__back-link"
+                to={`/collection/${params.season}`}
+              >
                 Коллекция
               </Link>
               <span className="item__span-text"> - </span>
@@ -63,7 +66,7 @@ const Item = () => {
             <div className="item__item item__colors">
               {colorId.map(([color, id]) => (
                 <Link
-                  to={`/collection/item/${id}`}
+                  to={`/collection/${params.season}/item/${id}`}
                   className={
                     id === params.coatId
                       ? `item__color item__color--${color} item__color--active`

@@ -2,6 +2,8 @@ import { COLLECTION_ACTION_TYPES } from './collection.types';
 
 export const COLLECTIONS_INITIAL_STATE = {
   currentCollection: [],
+  fullCollection: [],
+  bookmarksId: [],
   // loading: false,
 };
 
@@ -10,21 +12,23 @@ export const collectionReducer = (
   { type, payload }
 ) => {
   switch (type) {
-    case COLLECTION_ACTION_TYPES.SET_ITEMS:
+    case COLLECTION_ACTION_TYPES.SET_CURRENT_COLLECTION:
       return {
         ...state,
         currentCollection: payload,
       };
-    case COLLECTION_ACTION_TYPES.TOGGLE_BOOKMARK:
+    case COLLECTION_ACTION_TYPES.SET_FULL_COLLECTION:
       return {
         ...state,
-        currentCollection: [
-          ...state.currentCollection.map((item) => {
-            if (item.id === payload.id && item.bookmarked === true)
-              return { ...payload, bookmarked: false };
-            if (item.id === payload.id) return { ...payload, bookmarked: true };
-            return item;
-          }),
+        fullCollection: payload,
+      };
+    case COLLECTION_ACTION_TYPES.TOGGLE_BOOKMARK:
+      console.log(payload);
+      return {
+        ...state,
+        bookmarksId: [
+          ...state.bookmarksId.filter((id) => id !== payload),
+          payload,
         ],
       };
     default:

@@ -18,7 +18,7 @@ export const setCurrentSize = (size) => ({
   payload: size,
 });
 
-export const clearDetails = () => ({
+export const clearItem = () => ({
   type: ITEM_ACTION_TYPES.CLEAR_ITEM,
 });
 
@@ -29,10 +29,13 @@ export const loadItem = (params) => {
       const q = query(collectionRef);
       const querySnapshop = await getDocs(q);
       const data = querySnapshop.docs.map((docSnapshot) => docSnapshot.data());
-      const [coat] = data.filter((item) => item.id === params.coatId);
+      const [coat] = data.filter((item) => item.id === params);
       dispatch(setItem(coat));
+
       const colorAndId = data
-        .filter((item) => item.article === coat.article)
+        .filter(
+          (item) => item.article === coat.article && item.season === coat.season
+        )
         .map((item) => [item.color, item.id]);
       dispatch(setColorId(colorAndId));
       dispatch(setCurrentSize());

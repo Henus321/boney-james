@@ -9,11 +9,11 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
   &__photo {
-    height: 20vh;
-    width: auto;
-    object-fit: contain;
+    height: auto;
+    width: 10vw;
+    display: block;
+    object-fit: cover;
     grid-row: 1 / -1;
-    object-position: left;
   }
 
   &__description {
@@ -36,7 +36,6 @@
     height: 2.8rem;
     width: 2.8rem;
     border-radius: 50%;
-    border: 3px solid rgba(0, 0, 0, 0.2);
     margin: 0 0.5rem;
 
     &-container {

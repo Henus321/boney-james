@@ -16,10 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/collection" element={<Collection />} />
-        <Route path="/collection/item/:coatId" element={<Item />} />
+        <Route path="/collection/:season" element={<Collection />} />
+        <Route path="/collection/:season/item/:coatId" element={<Item />} />
         <Route path="/bookmarks" element={<Bookmarks />} />
-        <Route path='checkout' element={<Checkout/>}/>
+        <Route path="checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </div>

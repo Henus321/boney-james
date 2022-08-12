@@ -8,11 +8,11 @@
   &--beige {
     background-color: bisque;
   }
+  &--dark-beige {
+    background-color: burlywood;
+  }
   &--grey {
     background-color: grey;
-  }
-  &--brown {
-    background-color: burlywood;
   }
   &--white {
     background-color: rgb(245, 236, 225);
@@ -125,10 +125,10 @@
 }
 
 @mixin plug() {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: $medium-font-size;
-    min-height: 50vh;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $medium-font-size;
+  min-height: 50vh;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
