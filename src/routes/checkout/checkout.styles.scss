@@ -28,13 +28,7 @@
     margin-bottom: 2rem;
     margin-top: 1rem;
   }
-
   &__plug {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: $medium-font-size;
-    min-height: 50vh;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    @include plug();
   }
 }

@@ -10,7 +10,7 @@ const Home = () => {
     <div className="home">
       <Link className="home__item" to="/collection">
         <img className="home__item-image" src={home_two} alt="" />
-        <h2 className="home__item-title">Распродажа</h2>
+        <h2 className="home__item-title">Коллекция 2021</h2>
       </Link>
       <Link className="home__item" to="/collection">
         <img className="home__item-image" src={home_one} alt="" />

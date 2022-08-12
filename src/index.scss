@@ -29,5 +29,5 @@ code {
 
 .container {
   display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  grid-template-rows: min-content minmax(60vh, 1fr) min-content;
 }
