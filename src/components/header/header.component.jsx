@@ -8,7 +8,10 @@ import {
   selectIsCartActive,
   selectCartStatus,
 } from '../../store/cart/cart.selectors';
-import { selectCurrentCollection } from '../../store/collection/collection.selector';
+import {
+  selectBookmarksId,
+  selectCurrentCollection,
+} from '../../store/collection/collection.selector';
 import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
 
@@ -18,6 +21,7 @@ import Profile from '../profile/profile.component';
 import './header.styles.scss';
 
 const Header = () => {
+  const bookmarksId = useSelector(selectBookmarksId);
   const cartStatus = useSelector(selectCartStatus);
   const isCartActive = useSelector(selectIsCartActive);
   const isProfileMenuActive = useSelector(selectIsProfileMenuActive);
@@ -28,7 +32,7 @@ const Header = () => {
 
   let isBookmarks = false;
   currentCollection.forEach((item) => {
-    if (item.bookmarked === true) isBookmarks = true;
+    if (bookmarksId.includes(item.id)) isBookmarks = true;
   });
 
   return (

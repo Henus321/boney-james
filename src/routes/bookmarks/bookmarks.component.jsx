@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  selectFullCollection,
   selectBookmarksId,
+  selectCurrentCollection,
 } from '../../store/collection/collection.selector';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { loadFullCollection } from '../../store/collection/collection.actions';
+import { loadCurrentCollection } from '../../store/collection/collection.actions';
 import { useEffect } from 'react';
 
 import Card from '../../components/card/card.component';
@@ -13,15 +13,16 @@ import './bookmarks.styles.scss';
 
 const Bookmarks = () => {
   const bookmarksId = useSelector(selectBookmarksId);
-  const fullCollection = useSelector(selectFullCollection);
-  const bookmarks = fullCollection.filter((item) =>
+  const currentCollection = useSelector(selectCurrentCollection);
+
+  const bookmarks = currentCollection.filter((item) =>
     bookmarksId.includes(item.id)
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadFullCollection());
+    dispatch(loadCurrentCollection());
   }, [dispatch]);
 
   return (

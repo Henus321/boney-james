@@ -11,12 +11,17 @@ import './collection.styles.scss';
 const Collection = () => {
   const currentCollection = useSelector(selectCurrentCollection);
 
-  const dispatch = useDispatch();
   const params = useParams();
 
+  const seasonCollection = currentCollection.filter(
+    (item) => item.season === params.season
+  );
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(loadCurrentCollection(params.season));
-  }, [params.season, dispatch]);
+    dispatch(loadCurrentCollection());
+  }, [dispatch]);
 
   const seasonFromParams = (season) => {
     switch (season) {
@@ -39,8 +44,8 @@ const Collection = () => {
       <h2 className="collection__title">Коллекция женских пальто - 2022</h2>
 
       <div className="collection__body">
-        {currentCollection.length > 0 &&
-          currentCollection.map((collectionItem) => (
+        {seasonCollection.length > 0 &&
+          seasonCollection.map((collectionItem) => (
             <Card collectionItem={collectionItem} key={uuidv4()} />
           ))}
       </div>

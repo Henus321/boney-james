@@ -7,11 +7,6 @@ export const selectCurrentCollection = createSelector(
   (collections) => collections.currentCollection
 );
 
-export const selectFullCollection = createSelector(
-  [selectCollectionsReducer],
-  (collections) => collections.fullCollection
-);
-
 export const selectCollectionQty = createSelector(
   [selectCollectionsReducer],
   (collections) => collections.currentCollection.length
