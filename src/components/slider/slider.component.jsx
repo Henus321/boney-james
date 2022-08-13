@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y } from 'swiper';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -25,6 +26,10 @@ const Slider = ({ photoUrls = [] }) => {
       ))}
     </Swiper>
   );
+};
+
+Slider.propTypes = {
+  photoUrls: PropTypes.array,
 };
 
 export default Slider;

@@ -32,6 +32,18 @@ const Header = () => {
     if (bookmarksId.includes(item.id)) isBookmarks = true;
   });
 
+  const bookmarksNavigateHandler = () => {
+    navigate('/bookmarks');
+  };
+
+  const toggleCartHandler = () => {
+    dispatch(toggleCart(!isCartActive));
+  };
+
+  const toggleProfileMenuHandler = () => {
+    dispatch(toggleProfileMenu(!isProfileMenuActive));
+  };
+
   return (
     <header className="header">
       <Cart />
@@ -54,7 +66,7 @@ const Header = () => {
         <div className="header__icon-container">
           <FaHeart
             className="header__icon header__icon-heart"
-            onClick={() => navigate('/bookmarks')}
+            onClick={bookmarksNavigateHandler}
           />
           <span
             className={
@@ -63,10 +75,7 @@ const Header = () => {
           ></span>
         </div>
         <div className="header__icon-container">
-          <FaShoppingBag
-            className="header__icon"
-            onClick={() => dispatch(toggleCart(!isCartActive))}
-          />
+          <FaShoppingBag className="header__icon" onClick={toggleCartHandler} />
           <span
             className={
               cartStatus ? 'header__bag-span--active' : 'header__bag-span'
@@ -74,10 +83,7 @@ const Header = () => {
           ></span>
         </div>
         <div className="header__icon-container">
-          <FaUser
-            className="header__icon"
-            onClick={() => dispatch(toggleProfileMenu(!isProfileMenuActive))}
-          />
+          <FaUser className="header__icon" onClick={toggleProfileMenuHandler} />
           <span className="header__user-span"></span>
         </div>
       </div>

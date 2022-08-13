@@ -23,15 +23,17 @@ const CollectionItem = ({ collectionItem }) => {
     dispatch(toggleBookmark(id));
   };
 
+  const navigateToItemHandler = () => {
+    navigate(`/collection/${params.season}/item/${id}`);
+  };
+
   return (
     <div className="collection-item" key={id}>
       <img
         className="collection-item__image"
         src={mainPhotoUrl}
         alt={name}
-        onClick={() => {
-          navigate(`/collection/${params.season}/item/${id}`);
-        }}
+        onClick={navigateToItemHandler}
       />
       <span className="collection-item__name">{name}</span>
       <span className="collection-item__article">Арт.: {article}</span>

@@ -47,14 +47,13 @@ const Footer = () => {
         </a>
       </div>
       <p className="footer__text">
-        Продукцию нашего бренда вы можете приобрести, в магазинах торговых сетей
+        Продукцию нашего бренда вы можете приобрести, в магазинах торговых сетей{' '}
         <a
           className="footer__social-link"
           rel="noopener noreferrer"
           target="_blank"
           href="https://www.fashouse.ru/shops"
         >
-          {' '}
           Fashouse
         </a>{' '}
         и Familia
