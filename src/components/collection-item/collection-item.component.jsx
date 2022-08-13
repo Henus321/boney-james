@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
+import PropTypes from 'prop-types';
 
 import { FaHeart } from 'react-icons/fa';
 import './collection-item.styles.scss';
@@ -57,6 +58,10 @@ const CollectionItem = ({ collectionItem }) => {
       />
     </div>
   );
+};
+
+CollectionItem.propTypes = {
+  collectionItem: PropTypes.object.isRequired,
 };
 
 export default CollectionItem;

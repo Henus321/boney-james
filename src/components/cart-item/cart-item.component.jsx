@@ -1,5 +1,6 @@
 import { deleteFromCart, changeQuantity } from '../../store/cart/cart.actions';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './cart-item.styles.scss';
 
@@ -55,6 +56,10 @@ const CartItem = ({ cartItem }) => {
       </div>
     </div>
   );
+};
+
+CartItem.propTypes = {
+  cartItem: PropTypes.object.isRequired,
 };
 
 export default CartItem;

@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { changeQuantity, deleteFromCart } from '../../store/cart/cart.actions';
+import PropTypes from 'prop-types';
+
 import './checkout-item.styles.scss';
 
 const CheckoutItem = ({ cartItem }) => {
@@ -57,6 +59,10 @@ const CheckoutItem = ({ cartItem }) => {
       </button>
     </div>
   );
+};
+
+CheckoutItem.propTypes = {
+  cartItem: PropTypes.object.isRequired,
 };
 
 export default CheckoutItem;
