@@ -51,25 +51,6 @@
     }
   }
 
-  &__nav-list {
-    display: grid;
-    grid-template-columns: repeat(3, min-content);
-    grid-column-gap: 4rem;
-    height: 100%;
-    align-content: center;
-  }
-
-  &__nav-item {
-    justify-self: start;
-    font-size: $medium-font-size;
-    list-style: none;
-    a:link,
-    a:visited {
-      text-decoration: none;
-      color: black;
-    }
-  }
-
   &__title {
     font-size: $large-font-size;
     font-weight: normal;

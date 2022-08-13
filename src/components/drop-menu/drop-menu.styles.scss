@@ -1,0 +1,55 @@
+.drop-menu {
+  position: relative;
+  cursor: pointer;
+
+  &__list {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    white-space: nowrap;
+    z-index: 20;
+    transition: all 1s ease;
+    animation: hideMenu 1s ease;
+  }
+
+  &:hover &__list {
+    visibility: visible;
+    animation: showMenu 1s ease;
+  }
+
+  @keyframes showMenu {
+    0% {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hideMenu {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+  }
+
+  &__item {
+    padding: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+
+    &:hover {
+      background-color: whitesmoke;
+    }
+  }
+}
