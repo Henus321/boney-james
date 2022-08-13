@@ -1,11 +1,16 @@
 import { deleteFromCart, changeQuantity } from '../../store/cart/cart.actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
+import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 import PropTypes from 'prop-types';
 
+import { FaHeart } from 'react-icons/fa';
 import './cart-item.styles.scss';
 
 const CartItem = ({ cartItem }) => {
-  const { name, price, size, quantity, color, mainPhotoUrl } = cartItem;
+  const { name, id, price, size, quantity, color, mainPhotoUrl } = cartItem;
+  const bookmarksId = useSelector(selectBookmarksId);
+  const bookmarked = bookmarksId.includes(id);
 
   const dispatch = useDispatch();
 
@@ -19,6 +24,10 @@ const CartItem = ({ cartItem }) => {
 
   const deleteFromCartHandler = () => {
     dispatch(deleteFromCart(cartItem));
+  };
+
+  const toggleBookmarkHandler = () => {
+    dispatch(toggleBookmark(id));
   };
 
   return (
@@ -53,6 +62,14 @@ const CartItem = ({ cartItem }) => {
         >
           x
         </button>
+        <FaHeart
+          onClick={toggleBookmarkHandler}
+          className={
+            bookmarked
+              ? 'cart-item__icon cart-item__icon--active'
+              : 'cart-item__icon'
+          }
+        />
       </div>
     </div>
   );

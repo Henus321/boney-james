@@ -17,12 +17,12 @@
   }
 
   &__description {
+    position: relative;
     display: flex;
     flex-direction: column;
   }
 
   &__item-name {
-    font-size: $medium-font-size;
     white-space: nowrap;
     margin-bottom: 0.5rem;
   }
@@ -54,11 +54,25 @@
   }
 
   &__delete-btn {
-    margin-top: auto;
-    align-self: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: 0.5rem 1rem;
     background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.05);
     cursor: pointer;
+  }
+
+  &__icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: $large-font-size;
+    color: #333;
+    cursor: pointer;
+
+    &--active {
+      color: $red-color;
+    }
   }
 }

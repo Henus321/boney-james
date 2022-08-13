@@ -13,18 +13,24 @@ import {
   selectColorId,
   selectCurrentSize,
 } from '../../store/item/item.selector';
+import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
+import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 
+import { FaHeart } from 'react-icons/fa';
 import Button from '../../components/button/button.component';
 import Slider from '../../components/slider/slider.component';
 import './item.styles.scss';
 
 const Item = () => {
+  const bookmarksId = useSelector(selectBookmarksId);
   const item = useSelector(selectCurrentItem);
   const colorId = useSelector(selectColorId);
   const currentSize = useSelector(selectCurrentSize);
 
   const params = useParams();
   const dispatch = useDispatch();
+
+  const bookmarked = bookmarksId.includes(params.coatId);
 
   useEffect(() => {
     dispatch(loadItem(params.coatId));
@@ -36,6 +42,14 @@ const Item = () => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(item, currentSize));
+  };
+
+  const setCurrentSizeHandler = (size) => {
+    dispatch(setCurrentSize(size));
+  };
+
+  const toggleBookmarkHandler = () => {
+    dispatch(toggleBookmark(params.coatId));
   };
 
   return (
@@ -81,7 +95,7 @@ const Item = () => {
               {item.sizes &&
                 item.sizes.map((size) => (
                   <div
-                    onClick={() => dispatch(setCurrentSize(size))}
+                    onClick={() => setCurrentSizeHandler(size)}
                     className={
                       currentSize === size ? 'item__size--active' : 'item__size'
                     }
@@ -98,11 +112,19 @@ const Item = () => {
             <span className="item__item item__description">
               {item.description}
             </span>
-            <Button
-              handler={addToCartHandler}
-              buttonType="item"
-              buttonText="Добавить в корзину"
-            />
+            <div className="item__buttons-container">
+              <Button
+                handler={addToCartHandler}
+                buttonType="item"
+                buttonText="Добавить в корзину"
+              />
+              <FaHeart
+                onClick={toggleBookmarkHandler}
+                className={
+                  bookmarked ? 'item__icon item__icon--active' : 'item__icon'
+                }
+              />
+            </div>
           </div>
         </div>
       )}

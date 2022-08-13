@@ -15,6 +15,7 @@
   }
 
   &__info {
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 0 2rem;
@@ -90,5 +91,22 @@
 
   &__description {
     margin-bottom: 3rem;
+  }
+
+  &__buttons-container {
+    display: flex;
+    margin-top: auto;
+  }
+
+  &__icon {
+    margin: 0 2.5rem;
+    align-self: center;
+    font-size: $large-font-size;
+    color: #333;
+    cursor: pointer;
+
+    &--active {
+      color: $red-color;
+    }
   }
 }
