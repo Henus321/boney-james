@@ -1,5 +1,5 @@
 import { FaVk } from 'react-icons/fa';
-import { FaInstagram } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
 
 import './footer.styles.scss';
@@ -16,23 +16,51 @@ const Footer = () => {
         <h2 className="footer__title">Где купить?</h2>
       </div>
       <span>
-        Тел.: 8(800)800-00-00
+        Тел.: 8 (800) 000-000-00
         <br />
-        Почта: Abrakadabra@gmail.com
+        Почта: Tyrantbud@yandex.ru
       </span>
       <div className="footer__social">
-        <FaVk className="footer__social-item" />
-        <FaInstagram className="footer__social-item" />
-        <FaYoutube className="footer__social-item" />
+        <a
+          className="footer__social-item"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://youtube.com/"
+        >
+          <FaYoutube />
+        </a>
+        <a
+          className="footer__social-item"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://vk.com/"
+        >
+          <FaVk />
+        </a>
+        <a
+          className="footer__social-item"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://github.com/Henus321"
+        >
+          <FaGithub />
+        </a>
       </div>
       <p className="footer__text">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi
-        molestias explicabo quam quaerat eos temporibus neque eum! Quae facere
-        rem harum aliquid ducimus! Repellat esse quae fugiat. Atque, architecto
-        corporis?
+        Продукцию нашего бренда вы можете приобрести, в магазинах торговых сетей
+        <a
+          className="footer__social-link"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://www.fashouse.ru/shops"
+        >
+          {' '}
+          Fashouse
+        </a>{' '}
+        и Familia
       </p>
       <span className="footer__copyright">
-        Copyright &#169; No Rights Reserved 2022
+        2022 &#169; Developed by Alexandr Erkhov
       </span>
     </footer>
   );

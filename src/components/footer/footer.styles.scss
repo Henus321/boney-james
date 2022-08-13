@@ -27,6 +27,11 @@
 
   &__social-item {
     font-size: 4rem;
+    color: #111;
+
+    &:hover {
+      color: #333;
+    }
   }
 
   &__copyright {
@@ -34,5 +39,13 @@
     width: 100%;
     padding-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
+  &__text {
+    text-align: justify;
+  }
+
+  &__social-link {
+    color: #111;
   }
 }
