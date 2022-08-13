@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { loadCurrentCollection } from '../../store/collection/collection.actions';
 import { useEffect } from 'react';
 
-import Card from '../../components/card/card.component';
+import CollectionItem from '../../components/collection-item/collection-item.component';
 import './bookmarks.styles.scss';
 
 const Bookmarks = () => {
@@ -34,7 +34,7 @@ const Bookmarks = () => {
       <div className="bookmarks__body">
         {bookmarks.length > 0 ? (
           bookmarks.map((bookmarkedItem) => (
-            <Card collectionItem={bookmarkedItem} key={uuidv4()} />
+            <CollectionItem collectionItem={bookmarkedItem} key={uuidv4()} />
           ))
         ) : (
           <span className="bookmarks__no-items">В закладках нет товаров</span>

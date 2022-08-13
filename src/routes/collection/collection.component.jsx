@@ -5,7 +5,7 @@ import { loadCurrentCollection } from '../../store/collection/collection.actions
 import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
-import Card from '../../components/card/card.component';
+import CollectionItem from '../../components/collection-item/collection-item.component';
 import './collection.styles.scss';
 
 const Collection = () => {
@@ -46,7 +46,7 @@ const Collection = () => {
       <div className="collection__body">
         {seasonCollection.length > 0 &&
           seasonCollection.map((collectionItem) => (
-            <Card collectionItem={collectionItem} key={uuidv4()} />
+            <CollectionItem collectionItem={collectionItem} key={uuidv4()} />
           ))}
       </div>
     </div>

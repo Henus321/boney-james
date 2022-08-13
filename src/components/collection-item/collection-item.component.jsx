@@ -5,9 +5,9 @@ import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
 
 import { FaHeart } from 'react-icons/fa';
-import './card.styles.scss';
+import './collection-item.styles.scss';
 
-const Card = ({ collectionItem }) => {
+const CollectionItem = ({ collectionItem }) => {
   const bookmarksId = useSelector(selectBookmarksId);
   const { id, mainPhotoUrl, name, article, price, possibleColors, color } =
     collectionItem;
@@ -23,36 +23,40 @@ const Card = ({ collectionItem }) => {
   };
 
   return (
-    <div className="card__item" key={id}>
+    <div className="collection-item" key={id}>
       <img
-        className="card__image"
+        className="collection-item__image"
         src={mainPhotoUrl}
         alt={name}
         onClick={() => {
           navigate(`/collection/${params.season}/item/${id}`);
         }}
       />
-      <span className="card__name">{name}</span>
-      <span className="card__article">Арт.: {article}</span>
-      <span className="card__cost">{price}&#8381;</span>
-      <div className="card__color-circles">
+      <span className="collection-item__name">{name}</span>
+      <span className="collection-item__article">Арт.: {article}</span>
+      <span className="collection-item__cost">{price}&#8381;</span>
+      <div className="collection-item__color-circles">
         {possibleColors.map((posColor) => (
           <div
             key={uuidv4()}
             className={
               posColor === color
-                ? `card__color card__color--${posColor} card__color--active`
-                : `card__color card__color--${posColor}`
+                ? `collection-item__color collection-item__color--${posColor} collection-item__color--active`
+                : `collection-item__color collection-item__color--${posColor}`
             }
           ></div>
         ))}
       </div>
       <FaHeart
         onClick={toggleBookmarkHandler}
-        className={bookmarked ? 'card__icon card__icon--active' : 'card__icon'}
+        className={
+          bookmarked
+            ? 'collection-item__icon collection-item__icon--active'
+            : 'collection-item__icon'
+        }
       />
     </div>
   );
 };
 
-export default Card;
+export default CollectionItem;
