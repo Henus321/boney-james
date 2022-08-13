@@ -1,8 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  selectBookmarksId,
-  selectCurrentCollection,
-} from '../../store/collection/collection.selector';
+import { selectCurrentCollection } from '../../store/collection/collection.selector';
+import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { loadCurrentCollection } from '../../store/collection/collection.actions';

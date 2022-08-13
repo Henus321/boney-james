@@ -8,16 +8,13 @@ import {
   selectIsCartActive,
   selectCartStatus,
 } from '../../store/cart/cart.selectors';
-import {
-  selectBookmarksId,
-  selectCurrentCollection,
-} from '../../store/collection/collection.selector';
+import { selectCurrentCollection } from '../../store/collection/collection.selector';
 import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
+import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 
 import Cart from '../cart/cart.component';
 import Profile from '../profile/profile.component';
-
 import './header.styles.scss';
 
 const Header = () => {

@@ -2,7 +2,6 @@ import { COLLECTION_ACTION_TYPES } from './collection.types';
 
 export const COLLECTIONS_INITIAL_STATE = {
   currentCollection: [],
-  bookmarksId: [],
 };
 
 export const collectionReducer = (

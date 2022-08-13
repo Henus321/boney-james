@@ -8,11 +8,6 @@ export const setCurrentCollection = (data) => ({
   payload: data,
 });
 
-export const toggleBookmark = (id) => ({
-  type: COLLECTION_ACTION_TYPES.TOGGLE_BOOKMARK,
-  payload: id,
-});
-
 export const loadCurrentCollection = () => {
   return async (dispatch) => {
     try {

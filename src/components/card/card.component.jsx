@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleBookmark } from '../../store/collection/collection.actions';
 import { v4 as uuidv4 } from 'uuid';
+import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
+import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
 
 import { FaHeart } from 'react-icons/fa';
 import './card.styles.scss';
-import { selectBookmarksId } from '../../store/collection/collection.selector';
 
 const Card = ({ collectionItem }) => {
   const bookmarksId = useSelector(selectBookmarksId);

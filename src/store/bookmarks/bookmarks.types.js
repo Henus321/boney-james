@@ -1,0 +1,3 @@
+export const BOOKMARKS_ACTION_TYPES = {
+  TOGGLE_BOOKMARK: '@@bookmarks/TOGGLE_BOOKMARK',
+};
