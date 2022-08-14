@@ -13,6 +13,7 @@ import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
 import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 
+import Plug from '../plug/plug.component';
 import Cart from '../cart/cart.component';
 import Profile from '../profile/profile.component';
 import HeaderNavigation from '../header-navigation/header-navigation.component';
@@ -47,6 +48,7 @@ const Header = () => {
 
   return (
     <header className="header">
+      <Plug />
       <Cart />
       <Profile />
       <HeaderNavigation />

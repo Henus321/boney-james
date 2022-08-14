@@ -70,6 +70,7 @@
   z-index: 10;
   background-color: white;
   visibility: hidden;
+  animation-fill-mode: backwards;
   animation: menuDisappear 0.5s ease;
 
   &--active {
