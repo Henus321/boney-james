@@ -108,11 +108,6 @@
     margin: 0 2.5rem;
     align-self: center;
     font-size: $large-font-size;
-    color: #333;
-    cursor: pointer;
-
-    &--active {
-      color: $red-color;
-    }
+    @include togglingHeart();
   }
 }

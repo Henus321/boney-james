@@ -58,11 +58,6 @@
     justify-self: end;
     align-self: end;
     font-size: $big-font-size;
-    color: #333;
-    cursor: pointer;
-
-    &--active {
-      color: $red-color;
-    }
+    @include togglingHeart();
   }
 }
