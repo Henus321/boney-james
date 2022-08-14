@@ -1,17 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCurrentCollection } from '../../store/collection/collection.selector';
+import {
+  selectCurrentCollection,
+  selectIsCollectionLoading,
+} from '../../store/collection/collection.selector';
 import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { loadCurrentCollection } from '../../store/collection/collection.actions';
+import { fetchCollectionStartAsync } from '../../store/collection/collection.actions';
 import { useEffect } from 'react';
 
+import Loader from '../../components/loader/loader.component';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 import './bookmarks.styles.scss';
 
 const Bookmarks = () => {
   const bookmarksId = useSelector(selectBookmarksId);
   const currentCollection = useSelector(selectCurrentCollection);
+  const isLoading = useSelector(selectIsCollectionLoading);
 
   const bookmarks = currentCollection.filter((item) =>
     bookmarksId.includes(item.id)
@@ -20,7 +25,7 @@ const Bookmarks = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadCurrentCollection());
+    dispatch(fetchCollectionStartAsync());
   }, [dispatch]);
 
   return (
@@ -32,7 +37,9 @@ const Bookmarks = () => {
       </span>
       <h2 className="bookmarks__title">Ваши закладки</h2>
       <div className="bookmarks__body">
-        {bookmarks.length > 0 ? (
+        {isLoading ? (
+          <Loader />
+        ) : bookmarks.length > 0 ? (
           bookmarks.map((bookmarkedItem) => (
             <CollectionItem collectionItem={bookmarkedItem} key={uuidv4()} />
           ))

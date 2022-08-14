@@ -18,3 +18,8 @@ export const selectCurrentSize = createSelector(
   [selectItemReducer],
   (item) => item.currentSize || DEFAULT_SIZE
 );
+
+export const selectIsItemLoading = createSelector(
+  [selectItemReducer],
+  (item) => item.isLoading
+);

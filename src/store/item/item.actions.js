@@ -3,9 +3,18 @@ import { collection, getDocs, query } from 'firebase/firestore';
 
 import { ITEM_ACTION_TYPES } from './item.types';
 
-export const setItem = (data) => ({
-  type: ITEM_ACTION_TYPES.SET_ITEM,
-  payload: data,
+export const fetchItemStart = () => ({
+  type: ITEM_ACTION_TYPES.FETCH_ITEM_START,
+});
+
+export const fetchItemFailure = (error) => ({
+  type: ITEM_ACTION_TYPES.FETCH_ITEM_FAILURE,
+  payload: error,
+});
+
+export const fetchItemSuccess = (collectionItem) => ({
+  type: ITEM_ACTION_TYPES.FETCH_ITEM_SUCCESS,
+  payload: collectionItem,
 });
 
 export const setColorId = (colorId) => ({
@@ -22,19 +31,22 @@ export const clearItem = () => ({
   type: ITEM_ACTION_TYPES.CLEAR_ITEM,
 });
 
-export const loadItem = (params) => {
+export const fetchItemStartAsync = (params) => {
   return async (dispatch) => {
+    dispatch(fetchItemStart());
     try {
       const collectionRef = collection(db, 'collections');
       const q = query(collectionRef);
       const querySnapshop = await getDocs(q);
       const data = querySnapshop.docs.map((docSnapshot) => docSnapshot.data());
-      const [coat] = data.filter((item) => item.id === params);
-      dispatch(setItem(coat));
+      const [collectionItem] = data.filter((item) => item.id === params);
+      dispatch(fetchItemSuccess(collectionItem));
 
       const colorAndId = data
         .filter(
-          (item) => item.article === coat.article && item.season === coat.season
+          (item) =>
+            item.article === collectionItem.article &&
+            item.season === collectionItem.season
         )
         .map((item) => [item.color, item.id]);
       dispatch(setColorId(colorAndId));

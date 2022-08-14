@@ -1,15 +1,20 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCurrentCollection } from '../../store/collection/collection.selector';
-import { loadCurrentCollection } from '../../store/collection/collection.actions';
+import {
+  selectCurrentCollection,
+  selectIsCollectionLoading,
+} from '../../store/collection/collection.selector';
+import { fetchCollectionStartAsync } from '../../store/collection/collection.actions';
 import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
+import Loader from '../../components/loader/loader.component';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 import './collection.styles.scss';
 
 const Collection = () => {
   const currentCollection = useSelector(selectCurrentCollection);
+  const isLoading = useSelector(selectIsCollectionLoading);
 
   const params = useParams();
 
@@ -20,7 +25,7 @@ const Collection = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadCurrentCollection());
+    dispatch(fetchCollectionStartAsync());
   }, [dispatch]);
 
   const seasonFromParams = (season) => {
@@ -42,12 +47,15 @@ const Collection = () => {
         <span>{seasonFromParams(params.season)}</span>
       </span>
       <h2 className="collection__title">Коллекция женских пальто - 2022</h2>
-
       <div className="collection__body">
-        {seasonCollection.length > 0 &&
+        {isLoading ? (
+          <Loader />
+        ) : (
+          seasonCollection.length > 0 &&
           seasonCollection.map((collectionItem) => (
             <CollectionItem collectionItem={collectionItem} key={uuidv4()} />
-          ))}
+          ))
+        )}
       </div>
     </div>
   );
