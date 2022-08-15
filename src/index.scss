@@ -32,6 +32,6 @@ code {
 }
 
 .container {
-  display: grid;
-  grid-template-rows: max-content 1fr max-content;
+  display: flex;
+  flex-direction: column;
 }
