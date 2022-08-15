@@ -1,10 +1,7 @@
 import { getAuth } from 'firebase/auth';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchUserSuccess,
-  setUserToDefault,
-} from '../../store/user/user.actions';
+import { setUser, setUserToDefault } from '../../store/user/user.actions';
 import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { selectCurrentUser } from '../../store/user/user.selector';
 
@@ -24,7 +21,7 @@ const UserDetails = () => {
         name: auth.currentUser.displayName,
         email: auth.currentUser.email,
       };
-      dispatch(fetchUserSuccess(curUser));
+      dispatch(setUser(curUser));
     }
   }, [dispatch, auth.currentUser]);
 
