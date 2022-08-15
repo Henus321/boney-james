@@ -16,10 +16,14 @@
     text-decoration: none;
     text-transform: uppercase;
     transition: opacity 1s ease;
-    opacity: 0.75;
+    opacity: 0.8;
     filter: grayscale(15%);
 
     &:hover {
+      opacity: 1;
+    }
+
+    @media only screen and (max-width: $bp-large) {
       opacity: 1;
     }
   }

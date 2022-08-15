@@ -46,6 +46,7 @@ const Header = () => {
       <Profile />
       <HeaderNavigation />
       <h2 className="header__title">Boney James</h2>
+      <h2 className="header__title--small">BJ</h2>
       <div className="header__profile">
         <div className="header__icon-container">
           <FaHeart

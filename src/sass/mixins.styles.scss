@@ -56,13 +56,20 @@
     grid-row-gap: 5rem;
     margin-bottom: 4rem;
     align-content: center;
+
+    @media only screen and (max-width: $bp-large) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 
 @mixin sideMenu() {
   position: fixed;
   height: 100vh;
-  width: 40vw;
+  width: 40%;
   top: 0;
   right: 0;
   display: flex;
@@ -93,6 +100,57 @@
     }
     100% {
       transform: translateX(100%);
+      visibility: hidden;
+    }
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    width: 50%;
+  }
+  @media only screen and (max-width: $bp-small) {
+    width: 100%;
+  }
+}
+
+@mixin backgroundBlur() {
+  &__background-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: backgroundBlurDisappear 0.5s ease;
+    visibility: hidden;
+    z-index: 9;
+
+    &--active {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: backgroundBlurAppear 0.5s ease;
+      z-index: 9;
+    }
+  }
+
+  @keyframes backgroundBlurAppear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes backgroundBlurDisappear {
+    0% {
+      opacity: 1;
+      visibility: visible;
+    }
+    100% {
+      opacity: 0;
       visibility: hidden;
     }
   }

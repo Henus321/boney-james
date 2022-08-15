@@ -5,9 +5,24 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(3, min-content);
-    grid-column-gap: 4rem;
+    grid-column-gap: 2rem;
     height: 100%;
     align-content: center;
+
+    @media only screen and (max-width: $bp-large) {
+      display: none;
+    }
+  }
+
+  &__list-mobile {
+    display: flex;
+
+    &--active {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      padding: 2rem;
+    }
   }
 
   &__item {

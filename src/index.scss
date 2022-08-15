@@ -12,6 +12,10 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  @media only screen and (max-width: $bp-large) {
+    font-size: 50%;
+  }
 }
 
 body {
@@ -29,5 +33,13 @@ code {
 
 .container {
   display: grid;
-  grid-template-rows: min-content minmax(65vh, 1fr) min-content;
+  grid-template-rows: min-content minmax(60vh, 1fr) min-content;
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-rows: min-content minmax(50vh, 1fr) min-content;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    grid-template-rows: min-content minmax(40vh, 1fr) min-content;
+  }
 }
