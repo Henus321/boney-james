@@ -109,7 +109,7 @@ const Item = () => {
                 ))}
               </div>
               <span className="item__item">Размеры:</span>
-              <form className="item__sizes">
+              <div className="item__sizes">
                 {item.sizes &&
                   item.sizes.map((size) => (
                     <div
@@ -124,7 +124,7 @@ const Item = () => {
                       {size}
                     </div>
                   ))}
-              </form>
+              </div>
               <span className="item__item">
                 Страна-производитель: {item.country}
               </span>

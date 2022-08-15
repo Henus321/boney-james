@@ -14,6 +14,13 @@
     display: block;
     object-fit: cover;
     grid-row: 1 / -1;
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 20vw;
+    }
+    @media only screen and (max-width: $bp-small) {
+      width: 30vw;
+    }
   }
 
   &__description {

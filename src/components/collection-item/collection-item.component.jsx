@@ -36,12 +36,14 @@ const CollectionItem = ({ collectionItem }) => {
 
   return (
     <div className="collection-item" key={id}>
-      <img
-        className="collection-item__image"
-        src={mainPhotoUrl}
-        alt={name}
-        onClick={navigateToItemHandler}
-      />
+      <div className="collection-item__image-container">
+        <img
+          className="collection-item__image"
+          src={mainPhotoUrl}
+          alt={name}
+          onClick={navigateToItemHandler}
+        />
+      </div>
       <span className="collection-item__name">{name}</span>
       <span className="collection-item__article">Арт.: {article}</span>
       <span className="collection-item__cost">{price}&#8381;</span>

@@ -40,7 +40,7 @@ const CartItem = ({ cartItem }) => {
         <span className="cart-item__text">Размер: {size}</span>
 
         <div>
-          <span className="cart-item__text">Количество: </span>
+          <span className="cart-item__text">Кол-во: </span>
           <button className="cart-item__btn" onClick={decreaseQuantityHandler}>
             -
           </button>

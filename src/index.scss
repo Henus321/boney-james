@@ -32,6 +32,11 @@ code {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content;
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-rows: min-content minmax(50vh, 1fr) min-content;
+  }
 }

@@ -8,12 +8,29 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__contacts">
-        <h2 className="footer__title">Контакты</h2>
+        <h2 className="footer__title-contacts">Контакты</h2>
         <span>
           Тел.: 8 (800) 000-000-00
           <br />
           Почта: Tyrantbud@yandex.ru
         </span>
+      </div>
+
+      <div>
+        <h2 className="footer__title">Где купить?</h2>
+        <p className="footer__text">
+          Продукцию нашего бренда вы можете приобрести, в магазинах торговых
+          сетей{' '}
+          <a
+            className="footer__social-link"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.fashouse.ru/shops"
+          >
+            Fashouse
+          </a>{' '}
+          и Familia
+        </p>
       </div>
 
       <div className="footer__social-media">
@@ -44,23 +61,6 @@ const Footer = () => {
             <FaGithub />
           </a>
         </div>
-      </div>
-
-      <div>
-        <h2 className="footer__title">Где купить?</h2>
-        <p className="footer__text">
-          Продукцию нашего бренда вы можете приобрести, в магазинах торговых
-          сетей{' '}
-          <a
-            className="footer__social-link"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.fashouse.ru/shops"
-          >
-            Fashouse
-          </a>{' '}
-          и Familia
-        </p>
       </div>
 
       <span className="footer__copyright">
