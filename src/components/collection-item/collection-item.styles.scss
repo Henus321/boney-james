@@ -4,7 +4,7 @@
 .collection-item {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr repeat(3, min-content);
 
   &:link,
   &:visited {
@@ -23,7 +23,6 @@
 
   &__name {
     grid-column: 1 / 3;
-    white-space: nowrap;
   }
 
   &__cost,
