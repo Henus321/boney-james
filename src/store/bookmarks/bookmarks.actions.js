@@ -1,4 +1,3 @@
-
 import { BOOKMARKS_ACTION_TYPES } from './bookmarks.types';
 
 export const toggleBookmark = (id) => ({

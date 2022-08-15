@@ -8,10 +8,9 @@ import {
   selectIsCartActive,
   selectCartStatus,
 } from '../../store/cart/cart.selectors';
-import { selectCurrentCollection } from '../../store/collection/collection.selector';
 import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
-import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
+import { selectBookmarksQty } from '../../store/bookmarks/bookmarks.selector';
 
 import Plug from '../plug/plug.component';
 import Cart from '../cart/cart.component';
@@ -20,19 +19,13 @@ import HeaderNavigation from '../header-navigation/header-navigation.component';
 import './header.styles.scss';
 
 const Header = () => {
-  const bookmarksId = useSelector(selectBookmarksId);
   const cartStatus = useSelector(selectCartStatus);
+  const bookmarksQty = useSelector(selectBookmarksQty);
   const isCartActive = useSelector(selectIsCartActive);
   const isProfileMenuActive = useSelector(selectIsProfileMenuActive);
 
-  const currentCollection = useSelector(selectCurrentCollection);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  let isBookmarks = false;
-  currentCollection.forEach((item) => {
-    if (bookmarksId.includes(item.id)) isBookmarks = true;
-  });
 
   const bookmarksNavigateHandler = () => {
     navigate('/bookmarks');
@@ -61,7 +54,9 @@ const Header = () => {
           />
           <span
             className={
-              isBookmarks ? 'header__heart-span--active' : 'header__heart-span'
+              bookmarksQty > 0
+                ? 'header__heart-span--active'
+                : 'header__heart-span'
             }
           ></span>
         </div>

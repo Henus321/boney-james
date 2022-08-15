@@ -2,6 +2,7 @@ import { BOOKMARKS_ACTION_TYPES } from './bookmarks.types';
 
 export const BOOKMARKS_INITIAL_STATE = {
   bookmarksId: [],
+  isBookmarks: false,
 };
 
 export const bookmarksReducer = (

@@ -10,7 +10,7 @@ const Notification = ({
     const timer = setTimeout(() => setNotification(false), 1500);
 
     return () => clearTimeout(timer);
-  }, [notification]);
+  }, [notification, setNotification]);
 
   return (
     <div

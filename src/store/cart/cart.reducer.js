@@ -5,7 +5,6 @@ export const CART_INITIAL_STATE = {
   cartTotal: 0,
   isCartActive: false,
   cartStatus: false,
-  // loading: false,
 };
 
 export const cartReducer = (state = CART_INITIAL_STATE, { type, payload }) => {
