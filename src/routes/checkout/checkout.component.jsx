@@ -14,7 +14,7 @@ const Checkout = () => {
   return (
     <div className="checkout">
       <span className="checkout__menu">
-        <Link to="/collection">Коллекция</Link>
+        <Link to="/">На главную</Link>
         <span> - </span>
         <span>Оформление</span>
       </span>
