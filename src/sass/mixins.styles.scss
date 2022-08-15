@@ -141,35 +141,13 @@
 @mixin togglingHeart() {
   color: #333;
   cursor: pointer;
-  animation: toggle2 0.3s ease-out;
   transition: all 0.3s ease-out;
+
+  &:active {
+    transform: scale(90%);
+  }
 
   &--active {
     color: $red-color;
-    animation: toggle 0.3s ease-out;
-  }
-
-  @keyframes toggle {
-    0% {
-      transform: scale(100%);
-    }
-    30% {
-      transform: scale(95%);
-    }
-    100% {
-      transform: scale(100%);
-    }
-  }
-
-  @keyframes toggle2 {
-    0% {
-      transform: scale(100%);
-    }
-    50% {
-      transform: scale(95%);
-    }
-    100% {
-      transform: scale(100%);
-    }
   }
 }
