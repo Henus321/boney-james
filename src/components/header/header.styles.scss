@@ -2,7 +2,7 @@
 @import '../../sass/variables.styles.scss';
 
 .header {
-  height: 10rem;
+  height: $header-height-big;
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: repeat(3, 1fr);
@@ -10,10 +10,11 @@
   background-color: white;
 
   @media only screen and (max-width: $bp-medium) {
-    height: 8rem;
+    height: $header-height-small;
   }
-
-  @include backgroundBlur();
+  @media only screen and (max-width: $bp-smallest) {
+    padding: 0 1.5rem;
+  }
 
   &__title {
     font-size: $large-font-size;

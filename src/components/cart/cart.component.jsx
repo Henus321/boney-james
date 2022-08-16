@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
 import CartItem from '../cart-item/cart-item.component';
 import Button from '../button/button.component';
 import './cart.styles.scss';
+import BackgroundBlur from '../background-blur/background-blur.component';
 
 const Cart = () => {
   const cart = useSelector(selectCart);
@@ -66,14 +67,7 @@ const Cart = () => {
 
   return (
     <>
-      <div
-        className={
-          isCartActive
-            ? 'header__background-blur--active'
-            : 'header__background-blur'
-        }
-        onClick={toggleCartMenu}
-      ></div>
+      <BackgroundBlur isActive={isCartActive} handler={toggleCartMenu} />
       <div className={isCartActive ? 'cart cart--active' : 'cart'}>
         <div className="cart__heading">
           <h2 className="cart__title">

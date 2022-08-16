@@ -8,6 +8,10 @@
   padding: 0 6rem 3rem;
   text-align: justify;
 
+  @media only screen and (max-width: $bp-small) {
+    padding: 0 3rem 3rem;
+  }
+
   &__title {
     font-size: $large-font-size;
     font-weight: normal;

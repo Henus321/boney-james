@@ -6,11 +6,12 @@ import {
 import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { getAuth } from 'firebase/auth';
 
+import BackgroundBlur from '../background-blur/background-blur.component';
 import SignIn from '../sign-in/sign-in.component';
 import SignUp from '../sign-up/sign-up.component';
 import UserDetails from '../user-details/user-details.component';
 import ProfileHeading from '../profile-heading/profile-heading.component';
-import './profile-details.styles.scss';
+import './profile.styles.scss';
 
 const Profile = () => {
   const isProfileMenuActive = useSelector(selectIsProfileMenuActive);
@@ -25,20 +26,12 @@ const Profile = () => {
 
   return (
     <>
+      <BackgroundBlur
+        isActive={isProfileMenuActive}
+        handler={toggleProfileMenuHandler}
+      />
       <div
-        className={
-          isProfileMenuActive
-            ? 'header__background-blur--active'
-            : 'header__background-blur'
-        }
-        onClick={toggleProfileMenuHandler}
-      ></div>
-      <div
-        className={
-          isProfileMenuActive
-            ? 'profile-details profile-details--active'
-            : 'profile-details'
-        }
+        className={isProfileMenuActive ? 'profile profile--active' : 'profile'}
       >
         {auth.currentUser ? (
           <UserDetails />

@@ -12,9 +12,9 @@ import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
 import { selectBookmarksQty } from '../../store/bookmarks/bookmarks.selector';
 
-import './header-profile.styles.scss';
+import './header-icons-menu.styles.scss';
 
-const HeaderProfile = () => {
+const HeaderIconsMenu = () => {
   const cartStatus = useSelector(selectCartStatus);
   const bookmarksQty = useSelector(selectBookmarksQty);
   const isCartActive = useSelector(selectIsCartActive);
@@ -36,42 +36,42 @@ const HeaderProfile = () => {
   };
 
   return (
-    <div className="header-profile">
-      <div className="header-profile__icon-container">
+    <div className="header-icons-menu">
+      <div className="header-icons-menu__icon-container">
         <FaHeart
-          className="header-profile__icon header-profile__icon-heart"
+          className="header-icons-menu__icon header-icons-menu__icon-heart"
           onClick={bookmarksNavigateHandler}
         />
         <span
           className={
             bookmarksQty > 0
-              ? 'header-profile__heart-span--active'
-              : 'header-profile__heart-span'
+              ? 'header-icons-menu__heart-span--active'
+              : 'header-icons-menu__heart-span'
           }
         ></span>
       </div>
-      <div className="header-profile__icon-container">
+      <div className="header-icons-menu__icon-container">
         <FaShoppingBag
-          className="header-profile__icon"
+          className="header-icons-menu__icon"
           onClick={toggleCartHandler}
         />
         <span
           className={
             cartStatus
-              ? 'header-profile__bag-span--active'
-              : 'header-profile__bag-span'
+              ? 'header-icons-menu__bag-span--active'
+              : 'header-icons-menu__bag-span'
           }
         ></span>
       </div>
-      <div className="header-profile__icon-container">
+      <div className="header-icons-menu__icon-container">
         <FaUser
-          className="header-profile__icon"
+          className="header-icons-menu__icon"
           onClick={toggleProfileMenuHandler}
         />
-        <span className="header-profile__user-span"></span>
+        <span className="header-icons-menu__user-span"></span>
       </div>
     </div>
   );
 };
 
-export default HeaderProfile;
+export default HeaderIconsMenu;
