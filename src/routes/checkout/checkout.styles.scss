@@ -9,9 +9,17 @@
   width: 100%;
   color: #333;
 
+  &__header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
   @media only screen and (max-width: $bp-medium) {
     margin: 0 auto 5rem;
     padding: 0.5rem;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    margin: 0 auto;
   }
 
   &__menu {

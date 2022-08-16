@@ -3,24 +3,21 @@
 
 .cart-item {
   display: grid;
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-column-gap: 2rem;
   padding: 2rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0.5rem;
+  }
+
   &__photo {
     height: auto;
-    width: 10vw;
+    width: 100%;
     display: block;
     object-fit: cover;
     grid-row: 1 / -1;
-
-    @media only screen and (max-width: $bp-medium) {
-      width: 20vw;
-    }
-    @media only screen and (max-width: $bp-small) {
-      width: 30vw;
-    }
   }
 
   &__description {

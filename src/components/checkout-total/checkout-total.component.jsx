@@ -43,7 +43,7 @@ const CheckoutTotal = () => {
   };
 
   const payForItems = () => {
-    // TEMPORARY, NAVIGATION TO PAY
+    // TEMPORARY, NAVIGATION TO PAYMENT?
     return auth.currentUser
       ? console.log('Redirection to payment')
       : toggleProfileMenuHandler();
