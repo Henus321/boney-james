@@ -10,7 +10,7 @@ import SignIn from '../sign-in/sign-in.component';
 import SignUp from '../sign-up/sign-up.component';
 import UserDetails from '../user-details/user-details.component';
 import ProfileHeading from '../profile-heading/profile-heading.component';
-import './profile.styles.scss';
+import './profile-details.styles.scss';
 
 const Profile = () => {
   const isProfileMenuActive = useSelector(selectIsProfileMenuActive);
@@ -34,7 +34,11 @@ const Profile = () => {
         onClick={toggleProfileMenuHandler}
       ></div>
       <div
-        className={isProfileMenuActive ? 'profile profile--active' : 'profile'}
+        className={
+          isProfileMenuActive
+            ? 'profile-details profile-details--active'
+            : 'profile-details'
+        }
       >
         {auth.currentUser ? (
           <UserDetails />

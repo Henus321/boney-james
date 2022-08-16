@@ -1,7 +1,6 @@
 @import '../../sass/mixins.styles.scss';
 @import '../../sass/variables.styles.scss';
 
-.profile {
+.profile-details {
   @include sideMenu();
-  height: 100vh;
 }

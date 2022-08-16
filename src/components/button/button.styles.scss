@@ -3,7 +3,6 @@
 
 .button {
   &--wide-black {
-    margin-top: auto;
     padding: 2rem;
     background-color: #555;
     color: #fff;
@@ -17,6 +16,7 @@
     padding: 2rem 3rem;
     font-size: $medium-font-size;
     border: none;
+    color: #111;
     background-color: transparent;
     border-left: 1px solid rgba(0, 0, 0, 0.05);
     cursor: pointer;
@@ -30,6 +30,7 @@
   &--item {
     margin-top: auto;
     align-self: flex-start;
+    color: #111;
     background-color: white;
     border: 1px solid #555;
     padding: 2rem 4rem;
