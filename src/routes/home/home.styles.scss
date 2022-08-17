@@ -9,6 +9,7 @@
 
   @media only screen and (max-width: $bp-medium) {
     grid-template-rows: 1.75fr 1fr;
+    margin: 0 auto 3rem;
   }
   @media only screen and (max-width: $bp-small) {
     grid-template-rows: 1fr 1fr;
