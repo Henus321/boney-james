@@ -16,31 +16,44 @@
     @media only screen and (max-width: $bp-medium) {
       position: relative;
       display: block;
+      width: 4rem;
+      height: 3rem;
       transition: transform 0.5s ease;
+      z-index: 10;
+    }
+  }
 
-      &,
-      &::before,
-      &::after {
-        width: 4rem;
-        height: 2px;
-        background-color: #111;
-      }
+  &__burger-icon {
+    display: none;
+    position: absolute;
+    z-index: 9;
 
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        transition: all 0.2s ease;
-      }
+    @media only screen and (max-width: $bp-medium) {
+      display: block;
+    }
 
-      &::before {
-        top: -1rem;
-      }
+    &,
+    &::before,
+    &::after {
+      width: 4rem;
+      height: 2px;
+      background-color: #111;
+    }
 
-      &::after {
-        top: 1rem;
-      }
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      transition: all 0.2s ease;
+    }
+
+    &::before {
+      top: -1rem;
+    }
+
+    &::after {
+      top: 1rem;
     }
   }
 
@@ -81,16 +94,16 @@
     display: flex;
   }
 
-  &__checkbox:checked + &__label {
+  &__checkbox:checked ~ &__burger-icon {
     background-color: transparent;
   }
 
-  &__checkbox:checked + &__label::before {
+  &__checkbox:checked ~ &__burger-icon::before {
     top: 0;
     transform: rotate(45deg);
   }
 
-  &__checkbox:checked + &__label::after {
+  &__checkbox:checked ~ &__burger-icon::after {
     top: 0;
     transform: rotate(-45deg);
   }

@@ -20,6 +20,7 @@ const HeaderNavigation = ({ isBurgerActive, setBurgerActive }) => {
         onChange={() => setBurgerActive(!isBurgerActive)}
       />
       <label className="header-navigation__label" htmlFor="checkbox"></label>
+      <span className="header-navigation__burger-icon"></span>
 
       <nav className="header-navigation__nav">
         <ul className="header-navigation__list">

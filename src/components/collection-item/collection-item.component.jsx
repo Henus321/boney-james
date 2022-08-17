@@ -1,14 +1,18 @@
+import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
+import { addToCart } from '../../store/cart/cart.actions';
 import PropTypes from 'prop-types';
 
+import Notification from '../notification/notification.component';
 import { FaHeart } from 'react-icons/fa';
 import './collection-item.styles.scss';
 
 const CollectionItem = ({ collectionItem }) => {
+  const [notification, setNotification] = useState(false);
   const bookmarksId = useSelector(selectBookmarksId);
   const {
     id,
@@ -19,6 +23,7 @@ const CollectionItem = ({ collectionItem }) => {
     possibleColors,
     color,
     season,
+    sizes,
   } = collectionItem;
 
   const bookmarked = bookmarksId.includes(id);
@@ -37,8 +42,22 @@ const CollectionItem = ({ collectionItem }) => {
     navigate(`/collection/${year}/${season}/item/${id}`);
   };
 
+  const toggleNotificationHandler = () => {
+    setNotification(true);
+  };
+
+  const AddToCartHandler = (item, currentSize) => {
+    dispatch(addToCart(item, currentSize));
+    toggleNotificationHandler();
+  };
+
   return (
     <div className="collection-item" key={id}>
+      <Notification
+        notification={notification}
+        setNotification={setNotification}
+        notificationMessage={'Товар добавлен'}
+      />
       <div className="collection-item__image-container">
         <img
           className="collection-item__image"
@@ -46,6 +65,19 @@ const CollectionItem = ({ collectionItem }) => {
           alt={name}
           onClick={navigateToItemHandler}
         />
+        <div className="collection-item__hover-container">
+          <h3 className="collection-item__hover-title">Добавить в корзину</h3>
+          {sizes &&
+            sizes.map((size) => (
+              <div
+                onClick={() => AddToCartHandler(collectionItem, size)}
+                className="collection-item__hover-size"
+                key={uuidv4()}
+              >
+                {size}
+              </div>
+            ))}
+        </div>
       </div>
       <span className="collection-item__name">{name}</span>
       <span className="collection-item__article">Арт.: {article}</span>
