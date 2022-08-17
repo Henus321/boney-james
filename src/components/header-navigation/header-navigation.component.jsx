@@ -1,14 +1,12 @@
-import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import DropMenu from '../drop-menu/drop-menu.component';
 import './header-navigation.styles.scss';
 
-const HeaderNavigation = () => {
-  const [checked, setChecked] = useState(false);
-
+const HeaderNavigation = ({ isBurgerActive, setBurgerActive }) => {
   const onToggleCheckbox = () => {
-    setChecked(!checked);
+    setBurgerActive(!isBurgerActive);
     window.scrollTo(0, 0);
   };
 
@@ -18,8 +16,8 @@ const HeaderNavigation = () => {
         className="header-navigation__checkbox"
         type="checkbox"
         id="checkbox"
-        checked={checked}
-        onChange={() => setChecked(!checked)}
+        checked={isBurgerActive}
+        onChange={() => setBurgerActive(!isBurgerActive)}
       />
       <label className="header-navigation__label" htmlFor="checkbox"></label>
 
@@ -50,6 +48,11 @@ const HeaderNavigation = () => {
       </nav>
     </div>
   );
+};
+
+HeaderNavigation.propTypes = {
+  isBurgerActive: PropTypes.bool,
+  setBurgerActive: PropTypes.func,
 };
 
 export default HeaderNavigation;

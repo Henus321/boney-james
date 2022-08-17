@@ -11,10 +11,11 @@ import {
 import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
 import { selectBookmarksQty } from '../../store/bookmarks/bookmarks.selector';
+import PropTypes from 'prop-types';
 
 import './header-icons-menu.styles.scss';
 
-const HeaderIconsMenu = () => {
+const HeaderIconsMenu = ({ setBurgerActive }) => {
   const cartStatus = useSelector(selectCartStatus);
   const bookmarksQty = useSelector(selectBookmarksQty);
   const isCartActive = useSelector(selectIsCartActive);
@@ -25,6 +26,7 @@ const HeaderIconsMenu = () => {
 
   const bookmarksNavigateHandler = () => {
     navigate('/bookmarks');
+    setBurgerActive(false);
   };
 
   const toggleCartHandler = () => {
@@ -72,6 +74,10 @@ const HeaderIconsMenu = () => {
       </div>
     </div>
   );
+};
+
+HeaderIconsMenu.propTypes = {
+  setBurgerActive: PropTypes.func,
 };
 
 export default HeaderIconsMenu;
