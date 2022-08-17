@@ -23,7 +23,9 @@ const Header = () => {
       <Link to="/" className="header__title">
         Boney James
       </Link>
-      <h2 className="header__title--small">BJ</h2>
+      <Link to="/" className="header__title--small">
+        BJ
+      </Link>
       <HeaderIconsMenu
         isBurgerActive={isBurgerActive}
         setBurgerActive={setBurgerActive}
