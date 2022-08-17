@@ -8,11 +8,11 @@ const DropMenu = ({ parentClassName }) => {
     <li className={`${parentClassName} drop-menu`}>
       Каталог
       <div className="drop-menu__list">
-        <NavLink className="drop-menu__item" to="/collection/autumn">
-          Осень 2021
+        <NavLink className="drop-menu__item" to="/collection/2021/autumn">
+          Осень
         </NavLink>
-        <NavLink className="drop-menu__item" to="/collection/spring">
-          Весна 2022
+        <NavLink className="drop-menu__item" to="/collection/2022/spring">
+          Весна
         </NavLink>
       </div>
     </li>

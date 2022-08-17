@@ -16,13 +16,15 @@ const Collection = () => {
   const currentCollection = useSelector(selectCurrentCollection);
   const isLoading = useSelector(selectIsCollectionLoading);
 
+  const dispatch = useDispatch();
   const params = useParams();
 
-  const seasonCollection = currentCollection.filter(
-    (item) => item.season === params.season
-  );
+  const season = params.season;
+  const year = params.year;
 
-  const dispatch = useDispatch();
+  const seasonCollection = currentCollection.filter(
+    (item) => item.season === season
+  );
 
   useEffect(() => {
     dispatch(fetchCollectionStartAsync());
@@ -44,9 +46,9 @@ const Collection = () => {
       <span className="collection__menu">
         <Link to="/">На главную</Link>
         <span> - </span>
-        <span>{seasonFromParams(params.season)}</span>
+        <span>{seasonFromParams(season)}</span>
       </span>
-      <h2 className="collection__title">Коллекция женских пальто - 2022</h2>
+      <h2 className="collection__title">Коллекция женских пальто - {year}</h2>
       <div className="collection__body">
         {isLoading ? (
           <Loader />

@@ -31,12 +31,12 @@ const HeaderNavigation = () => {
             </NavLink>
           </li>
           <li className="header-navigation__item-mobile">
-            <NavLink to="/collection/autumn" onClick={onToggleCheckbox}>
+            <NavLink to="/collection/2021/autumn" onClick={onToggleCheckbox}>
               Каталог Осень 2021
             </NavLink>
           </li>
           <li className="header-navigation__item-mobile">
-            <NavLink to="/collection/spring" onClick={onToggleCheckbox}>
+            <NavLink to="/collection/2022/spring" onClick={onToggleCheckbox}>
               Каталог Весна 2022
             </NavLink>
           </li>

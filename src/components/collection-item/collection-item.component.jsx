@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
@@ -25,13 +25,16 @@ const CollectionItem = ({ collectionItem }) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const params = useParams();
+
+  const year = params.year;
 
   const toggleBookmarkHandler = () => {
     dispatch(toggleBookmark(id));
   };
 
   const navigateToItemHandler = () => {
-    navigate(`/collection/${season}/item/${id}`);
+    navigate(`/collection/${year}/${season}/item/${id}`);
   };
 
   return (

@@ -35,15 +35,19 @@ const Item = () => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const bookmarked = bookmarksId.includes(params.coatId);
+  const coatId = params.coatId;
+  const season = params.season;
+  const year = params.year;
+
+  const bookmarked = bookmarksId.includes(coatId);
 
   useEffect(() => {
-    dispatch(fetchItemStartAsync(params.coatId));
+    dispatch(fetchItemStartAsync(coatId));
 
     return () => {
       dispatch(clearItem());
     };
-  }, [dispatch, params]);
+  }, [dispatch, coatId]);
 
   const toggleNotificationHandler = () => {
     setNotification(true);
@@ -59,7 +63,7 @@ const Item = () => {
   };
 
   const toggleBookmarkHandler = () => {
-    dispatch(toggleBookmark(params.coatId));
+    dispatch(toggleBookmark(coatId));
   };
 
   return (
@@ -79,7 +83,7 @@ const Item = () => {
               <p>
                 <Link
                   className="item__back-link"
-                  to={`/collection/${params.season}`}
+                  to={`/collection/${year}/${season}`}
                 >
                   Коллекция
                 </Link>
@@ -98,9 +102,9 @@ const Item = () => {
               <div className="item__item item__colors">
                 {colorId.map(([color, id]) => (
                   <Link
-                    to={`/collection/${params.season}/item/${id}`}
+                    to={`/collection/${year}/${season}/item/${id}`}
                     className={
-                      id === params.coatId
+                      id === coatId
                         ? `item__color item__color--${color} item__color--active`
                         : `item__color item__color--${color}`
                     }
