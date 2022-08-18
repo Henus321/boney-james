@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -6,13 +5,12 @@ import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
 import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
 import { addToCart } from '../../store/cart/cart.actions';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
-import Notification from '../notification/notification.component';
 import { FaHeart } from 'react-icons/fa';
 import './collection-item.styles.scss';
 
 const CollectionItem = ({ collectionItem }) => {
-  const [notification, setNotification] = useState(false);
   const bookmarksId = useSelector(selectBookmarksId);
   const {
     id,
@@ -42,22 +40,13 @@ const CollectionItem = ({ collectionItem }) => {
     navigate(`/collection/${year}/${season}/item/${id}`);
   };
 
-  const toggleNotificationHandler = () => {
-    setNotification(true);
-  };
-
   const AddToCartHandler = (item, currentSize) => {
     dispatch(addToCart(item, currentSize));
-    toggleNotificationHandler();
+    toast.success('Товар добавлен');
   };
 
   return (
     <div className="collection-item" key={id}>
-      <Notification
-        notification={notification}
-        setNotification={setNotification}
-        notificationMessage={'Товар добавлен'}
-      />
       <div className="collection-item__image-container">
         <img
           className="collection-item__image"

@@ -9,6 +9,7 @@ import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { toggleProfileMenu } from '../../store/profile/profile.actions';
 import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import Button from '../button/button.component';
 import './sign-up.styles.scss';
@@ -61,7 +62,7 @@ const SignUp = () => {
       resetFormFields();
       toggleProfileMenuHandler();
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message);
     }
   };
 

@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
@@ -11,21 +13,24 @@ import Checkout from './routes/checkout/checkout.component';
 
 function App() {
   return (
-    <div className="container">
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/collection/:year/:season" element={<Collection />} />
-        <Route
-          path="/collection/:year/:season/item/:coatId"
-          element={<Item />}
-        />
-        <Route path="/bookmarks" element={<Bookmarks />} />
-        <Route path="checkout" element={<Checkout />} />
-      </Routes>
-      <Footer />
-    </div>
+    <>
+      <ToastContainer position="bottom-right" closeOnClick autoClose={1500} />
+      <div className="container">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/collection/:year/:season" element={<Collection />} />
+          <Route
+            path="/collection/:year/:season/item/:coatId"
+            element={<Item />}
+          />
+          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="checkout" element={<Checkout />} />
+        </Routes>
+        <Footer />
+      </div>
+    </>
   );
 }
 

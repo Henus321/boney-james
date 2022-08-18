@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,9 +16,9 @@ import {
 } from '../../store/item/item.selector';
 import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
 import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
+import { toast } from 'react-toastify';
 
 import { FaHeart } from 'react-icons/fa';
-import Notification from '../../components/notification/notification.component';
 import Loader from '../../components/loader/loader.component';
 import Button from '../../components/button/button.component';
 import Slider from '../../components/slider/slider.component';
@@ -30,7 +30,6 @@ const Item = () => {
   const colorId = useSelector(selectColorId);
   const currentSize = useSelector(selectCurrentSize);
   const isLoading = useSelector(selectIsItemLoading);
-  const [notification, setNotification] = useState(false);
 
   const params = useParams();
   const dispatch = useDispatch();
@@ -49,13 +48,9 @@ const Item = () => {
     };
   }, [dispatch, coatId]);
 
-  const toggleNotificationHandler = () => {
-    setNotification(true);
-  };
-
   const addToCartHandler = () => {
     dispatch(addToCart(item, currentSize));
-    toggleNotificationHandler();
+    toast.success('Товар добавлен');
   };
 
   const setCurrentSizeHandler = (size) => {
@@ -68,11 +63,6 @@ const Item = () => {
 
   return (
     <div className="item">
-      <Notification
-        notification={notification}
-        setNotification={setNotification}
-        notificationMessage={'Товар добавлен'}
-      />
       {isLoading ? (
         <Loader />
       ) : (
