@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
@@ -22,15 +22,13 @@ const CollectionItem = ({ collectionItem }) => {
     color,
     season,
     sizes,
+    year,
   } = collectionItem;
 
   const bookmarked = bookmarksId.includes(id);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const params = useParams();
-
-  const year = params.year;
 
   const toggleBookmarkHandler = () => {
     dispatch(toggleBookmark(id));
