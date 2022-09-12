@@ -1,7 +1,5 @@
 import { createSelector } from 'reselect';
 
-const DEFAULT_SIZE = '42';
-
 const selectItemReducer = (state) => state.item;
 
 export const selectCurrentItem = createSelector(
@@ -12,11 +10,6 @@ export const selectCurrentItem = createSelector(
 export const selectColorId = createSelector(
   [selectItemReducer],
   (item) => item.colorId
-);
-
-export const selectCurrentSize = createSelector(
-  [selectItemReducer],
-  (item) => item.currentSize || DEFAULT_SIZE
 );
 
 export const selectIsItemLoading = createSelector(

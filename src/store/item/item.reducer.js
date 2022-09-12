@@ -30,11 +30,6 @@ export const itemReducer = (state = ITEM_INITIAL_STATE, { type, payload }) => {
         ...state,
         colorId: payload,
       };
-    case ITEM_ACTION_TYPES.SET_CURRENT_SIZE:
-      return {
-        ...state,
-        currentSize: payload,
-      };
     case ITEM_ACTION_TYPES.CLEAR_ITEM:
       return ITEM_INITIAL_STATE;
     default:

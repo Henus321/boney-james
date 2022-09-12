@@ -22,11 +22,6 @@ export const setColorId = (colorId) => ({
   payload: colorId,
 });
 
-export const setCurrentSize = (size) => ({
-  type: ITEM_ACTION_TYPES.SET_CURRENT_SIZE,
-  payload: size,
-});
-
 export const clearItem = () => ({
   type: ITEM_ACTION_TYPES.CLEAR_ITEM,
 });
@@ -50,7 +45,6 @@ export const fetchItemStartAsync = (params) => {
         )
         .map((item) => [item.color, item.id]);
       dispatch(setColorId(colorAndId));
-      dispatch(setCurrentSize());
     } catch (error) {
       console.log(error.message);
     }

@@ -2,33 +2,26 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../store/cart/cart.actions';
-import {
-  fetchItemStartAsync,
-  setCurrentSize,
-  clearItem,
-} from '../../store/item/item.actions';
+import { fetchItemStartAsync, clearItem } from '../../store/item/item.actions';
 import {
   selectCurrentItem,
   selectColorId,
-  selectCurrentSize,
   selectIsItemLoading,
 } from '../../store/item/item.selector';
 import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
 import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
-import { toast } from 'react-toastify';
 
 import { FaHeart } from 'react-icons/fa';
 import Loader from '../../components/loader/loader.component';
-import Button from '../../components/button/button.component';
 import Slider from '../../components/slider/slider.component';
+import ItemButton from '../../components/item-button/item-button.component';
+import ItemSizes from '../../components/item-sizes/item-sizes.component';
 import './item.styles.scss';
 
 const Item = () => {
   const bookmarksId = useSelector(selectBookmarksId);
   const item = useSelector(selectCurrentItem);
   const colorId = useSelector(selectColorId);
-  const currentSize = useSelector(selectCurrentSize);
   const isLoading = useSelector(selectIsItemLoading);
 
   const params = useParams();
@@ -47,15 +40,6 @@ const Item = () => {
       dispatch(clearItem());
     };
   }, [dispatch, coatId]);
-
-  const addToCartHandler = () => {
-    dispatch(addToCart(item, currentSize));
-    toast.success('Товар добавлен');
-  };
-
-  const setCurrentSizeHandler = (size) => {
-    dispatch(setCurrentSize(size));
-  };
 
   const toggleBookmarkHandler = () => {
     dispatch(toggleBookmark(coatId));
@@ -104,20 +88,7 @@ const Item = () => {
               </div>
               <span className="item__item">Размеры:</span>
               <div className="item__sizes">
-                {item.sizes &&
-                  item.sizes.map((size) => (
-                    <div
-                      onClick={() => setCurrentSizeHandler(size)}
-                      className={
-                        currentSize === size
-                          ? 'item__size--active'
-                          : 'item__size'
-                      }
-                      key={uuidv4()}
-                    >
-                      {size}
-                    </div>
-                  ))}
+                <ItemSizes />
               </div>
               <span className="item__item">
                 Страна-производитель: {item.country}
@@ -127,11 +98,7 @@ const Item = () => {
                 {item.description}
               </span>
               <div className="item__buttons-container">
-                <Button
-                  handler={addToCartHandler}
-                  buttonType="item"
-                  buttonText="Добавить в корзину"
-                />
+                <ItemButton />
                 <FaHeart
                   onClick={toggleBookmarkHandler}
                   className={

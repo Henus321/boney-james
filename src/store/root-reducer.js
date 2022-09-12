@@ -6,6 +6,7 @@ import { itemReducer } from './item/item.reducer';
 import { userReducer } from './user/user.reducer';
 import { profileReducer } from './profile/profile.reducer';
 import { bookmarksReducer } from './bookmarks/bookmarks.reducer';
+import { sizeReducer } from './size/size.reducer';
 
 export const rootReducer = combineReducers({
   collections: collectionReducer,
@@ -14,4 +15,5 @@ export const rootReducer = combineReducers({
   user: userReducer,
   profile: profileReducer,
   bookmarks: bookmarksReducer,
+  size: sizeReducer,
 });
