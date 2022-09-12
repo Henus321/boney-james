@@ -16,7 +16,7 @@ const Footer = () => {
         </span>
       </div>
 
-      <div>
+      <div className="footer__information">
         <h2 className="footer__title">Где купить?</h2>
         <p className="footer__text">
           Продукцию нашего бренда вы можете приобрести, в магазинах торговых
@@ -62,7 +62,6 @@ const Footer = () => {
           </a>
         </div>
       </div>
-
       <span className="footer__copyright">
         2022 &#169; Developed by Alexandr Erkhov
       </span>

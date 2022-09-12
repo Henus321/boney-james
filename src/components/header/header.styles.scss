@@ -7,9 +7,12 @@
   grid-column: 1 / -1;
   grid-template-columns: repeat(3, 1fr);
   padding: 0 3rem;
-  background-color: white;
+  background-color: #fff;
+  width: 100%;
 
   @media only screen and (max-width: $bp-medium) {
+    position: fixed;
+    z-index: 10000;
     height: $header-height-small;
   }
   @media only screen and (max-width: $bp-small) {
