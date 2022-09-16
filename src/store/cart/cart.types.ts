@@ -1,0 +1,69 @@
+export enum CART_ACTION_TYPES {
+  CHANGE_QUANTITY = '@@cart/CHANGE_QUANTITY',
+  DELETE_FROM_CART = '@@cart/DELETE_FROM_CART',
+  ADD_TO_CART = '@@cart/ADD_TO_CART',
+  CART_TO_INITIAL_STATE = '@@cart/CART_TO_INITIAL_STATE',
+  TOGGLE_CART = '@@cart/TOGGLE_CART',
+  SET_CART_TOTAL = '@@cart/SET_CART_TOTAL',
+  TOGGLE_CART_STATUS = '@@cart/TOGGLE_CART_STATUS',
+}
+
+export interface CartState {
+  cart: CartItem[];
+  cartTotal: number;
+  isCartActive: boolean;
+  cartStatus: boolean;
+}
+
+export interface CartItem {
+  name: string;
+  id: string;
+  price: number;
+  size: string;
+  quantity: number;
+  color: string;
+  mainPhotoUrl: string;
+}
+
+interface changeQuantity {
+  type: CART_ACTION_TYPES.CHANGE_QUANTITY;
+  payload: {
+    clickedItem: CartItem;
+    positiveOrNegativeOne: number;
+  };
+}
+interface deleteFromCart {
+  type: CART_ACTION_TYPES.DELETE_FROM_CART;
+  payload: CartItem;
+}
+interface addToCart {
+  type: CART_ACTION_TYPES.ADD_TO_CART;
+  payload: {
+    clickedItem: CartItem;
+    number: number;
+  };
+}
+interface cartToInitialState {
+  type: CART_ACTION_TYPES.CART_TO_INITIAL_STATE;
+}
+interface toggleCart {
+  type: CART_ACTION_TYPES.TOGGLE_CART;
+  payload: boolean;
+}
+interface setCartTotal {
+  type: CART_ACTION_TYPES.SET_CART_TOTAL;
+  payload: number;
+}
+interface toggleCartStatus {
+  type: CART_ACTION_TYPES.TOGGLE_CART_STATUS;
+  payload: boolean;
+}
+
+export type CartAction =
+  | changeQuantity
+  | deleteFromCart
+  | addToCart
+  | cartToInitialState
+  | toggleCart
+  | setCartTotal
+  | toggleCartStatus;

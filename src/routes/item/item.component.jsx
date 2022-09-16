@@ -74,17 +74,18 @@ const Item = () => {
               <span className="item__item">Рост: {item.height}</span>
               <span className="item__item">Цвета:</span>
               <div className="item__item item__colors">
-                {colorId.map(([color, id]) => (
-                  <Link
-                    to={`/collection/${year}/${season}/item/${id}`}
-                    className={
-                      id === coatId
-                        ? `item__color item__color--${color} item__color--active`
-                        : `item__color item__color--${color}`
-                    }
-                    key={id}
-                  />
-                ))}
+                {colorId &&
+                  colorId.map((colorId) => (
+                    <Link
+                      to={`/collection/${year}/${season}/item/${colorId.id}`}
+                      className={
+                        colorId.id === coatId
+                          ? `item__color item__color--${colorId.color} item__color--active`
+                          : `item__color item__color--${colorId.color}`
+                      }
+                      key={colorId.id}
+                    />
+                  ))}
               </div>
               <span className="item__item">Размеры:</span>
               <div className="item__sizes">

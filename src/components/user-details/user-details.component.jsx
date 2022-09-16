@@ -37,23 +37,17 @@ const UserDetails = () => {
 
   return (
     <div className="user-details">
-      {
-        <>
-          <div className="user-details__header">
-            <Button
-              buttonType="close"
-              handler={closeProfileMenuHandler}
-              buttonText="x"
-            />
-          </div>
-          <div className="user-details__info">
-            <span className="user-details__text">
-              Приветствуем вас, {name}!
-            </span>
-            <span className="user-details__text">Ваша почта: {email}</span>
-          </div>
-        </>
-      }
+      <div className="user-details__header">
+        <Button
+          buttonType="close"
+          handler={closeProfileMenuHandler}
+          buttonText="x"
+        />
+      </div>
+      <div className="user-details__info">
+        <span className="user-details__text">Приветствуем вас, {name}!</span>
+        <span className="user-details__text">Ваша почта: {email}</span>
+      </div>
       <Button
         buttonText="Выйти"
         buttonType="wide-black"

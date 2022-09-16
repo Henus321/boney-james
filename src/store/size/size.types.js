@@ -1,3 +1,0 @@
-export const SIZE_ACTION_TYPES = {
-  SET_CURRENT_SIZE: '@@size/SET_CURRENT_SIZE',
-};
