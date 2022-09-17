@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectCart } from '../../store/cart/cart.selectors';
+import { selectCart } from '../../store/selectors/cart.selectors';
 import { v4 as uuidv4 } from 'uuid';
 
 import CartItem from '../../components/cart-item/cart-item.component';

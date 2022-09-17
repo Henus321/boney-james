@@ -1,9 +1,9 @@
 import { getAuth } from 'firebase/auth';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, setUserToDefault } from '../../store/user/user.actions';
-import { toggleProfileMenu } from '../../store/profile/profile.actions';
-import { selectCurrentUser } from '../../store/user/user.selector';
+import { setUser, setUserToDefault } from '../../store/action-creators/user';
+import { toggleProfileMenu } from '../../store/action-creators/profile';
+import { selectCurrentUser } from '../../store/selectors/user.selector';
 
 import Button from '../button/button.component';
 import './user-details.styles.scss';

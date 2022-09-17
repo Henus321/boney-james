@@ -2,11 +2,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCartTotal,
   selectCartQuantity,
-} from '../../store/cart/cart.selectors';
-import { cartToInitialState } from '../../store/cart/cart.actions';
+} from '../../store/selectors/cart.selectors';
+import { cartToInitialState } from '../../store/action-creators/cart';
 import { getAuth } from 'firebase/auth';
-import { toggleProfileMenu } from '../../store/profile/profile.actions';
-import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
+import { toggleProfileMenu } from '../../store/action-creators/profile';
+import { selectIsProfileMenuActive } from '../../store/selectors/profile.selector';
 
 import { FaTrash } from 'react-icons/fa';
 import Button from '../button/button.component';

@@ -1,7 +1,10 @@
-import { deleteFromCart, changeQuantity } from '../../store/cart/cart.actions';
+import {
+  deleteFromCart,
+  changeQuantity,
+} from '../../store/action-creators/cart';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
-import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
+import { toggleBookmark } from '../../store/action-creators/bookmarks';
+import { selectBookmarksId } from '../../store/selectors/bookmarks.selector';
 import PropTypes from 'prop-types';
 
 import { FaHeart } from 'react-icons/fa';

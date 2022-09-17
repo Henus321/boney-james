@@ -6,8 +6,8 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { toggleProfileMenu } from '../../store/profile/profile.actions';
-import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
+import { toggleProfileMenu } from '../../store/action-creators/profile';
+import { selectIsProfileMenuActive } from '../../store/selectors/profile.selector';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 

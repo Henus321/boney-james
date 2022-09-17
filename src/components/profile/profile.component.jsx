@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   selectIsProfileMenuActive,
   selectMenuType,
-} from '../../store/profile/profile.selector';
-import { toggleProfileMenu } from '../../store/profile/profile.actions';
+} from '../../store/selectors/profile.selector';
+import { toggleProfileMenu } from '../../store/action-creators/profile';
 import { getAuth } from 'firebase/auth';
 
 import BackgroundBlur from '../background-blur/background-blur.component';

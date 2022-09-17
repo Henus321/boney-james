@@ -4,13 +4,13 @@ import {
   toggleCart,
   setCartTotal,
   toggleCartStatus,
-} from '../../store/cart/cart.actions';
+} from '../../store/action-creators/cart';
 import {
   selectCart,
   selectCartQuantity,
   selectCartTotal,
   selectIsCartActive,
-} from '../../store/cart/cart.selectors';
+} from '../../store/selectors/cart.selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 

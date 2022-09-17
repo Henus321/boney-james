@@ -1,8 +1,8 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleProfileMenu } from '../../store/profile/profile.actions';
-import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
+import { toggleProfileMenu } from '../../store/action-creators/profile';
+import { selectIsProfileMenuActive } from '../../store/selectors/profile.selector';
 import { toast } from 'react-toastify';
 
 import Button from '../button/button.component';

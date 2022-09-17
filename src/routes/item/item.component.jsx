@@ -2,14 +2,17 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchItemStartAsync, clearItem } from '../../store/item/item.actions';
+import {
+  fetchItemStartAsync,
+  clearItem,
+} from '../../store/action-creators/item';
 import {
   selectCurrentItem,
   selectColorId,
   selectIsItemLoading,
-} from '../../store/item/item.selector';
-import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
-import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
+} from '../../store/selectors/item.selector';
+import { toggleBookmark } from '../../store/action-creators/bookmarks';
+import { selectBookmarksId } from '../../store/selectors/bookmarks.selector';
 
 import { FaHeart } from 'react-icons/fa';
 import Loader from '../../components/loader/loader.component';

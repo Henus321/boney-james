@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../store/cart/cart.actions';
-import { selectCurrentItem } from '../../store/item/item.selector';
-import { selectSize } from '../../store/size/size.selector';
+import { addToCart } from '../../store/action-creators/cart';
+import { selectCurrentItem } from '../../store/selectors/item.selector';
+import { selectSize } from '../../store/selectors/size.selector';
 import { toast } from 'react-toastify';
 
 import './item-button.styles.scss';

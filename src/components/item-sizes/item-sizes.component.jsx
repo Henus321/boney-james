@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSize } from '../../store/size/size.selector';
-import { setCurrentSize } from '../../store/size/size.actions';
+import { selectSize } from '../../store/selectors/size.selector';
+import { setCurrentSize } from '../../store/action-creators/size';
 import { v4 as uuidv4 } from 'uuid';
 
 import './item-sizes.styles.scss';

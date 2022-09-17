@@ -3,14 +3,14 @@ import { FaHeart } from 'react-icons/fa';
 import { FaShoppingBag } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleCart } from '../../store/cart/cart.actions';
+import { toggleCart } from '../../store/action-creators/cart';
 import {
   selectIsCartActive,
   selectCartStatus,
-} from '../../store/cart/cart.selectors';
-import { toggleProfileMenu } from '../../store/profile/profile.actions';
-import { selectIsProfileMenuActive } from '../../store/profile/profile.selector';
-import { selectBookmarksQty } from '../../store/bookmarks/bookmarks.selector';
+} from '../../store/selectors/cart.selectors';
+import { toggleProfileMenu } from '../../store/action-creators/profile';
+import { selectIsProfileMenuActive } from '../../store/selectors/profile.selector';
+import { selectBookmarksQty } from '../../store/selectors/bookmarks.selector';
 import PropTypes from 'prop-types';
 
 import './header-icons-menu.styles.scss';

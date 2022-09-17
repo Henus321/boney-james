@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { selectBookmarksId } from '../../store/bookmarks/bookmarks.selector';
-import { toggleBookmark } from '../../store/bookmarks/bookmarks.actions';
-import { addToCart } from '../../store/cart/cart.actions';
+import { selectBookmarksId } from '../../store/selectors/bookmarks.selector';
+import { toggleBookmark } from '../../store/action-creators/bookmarks';
+import { addToCart } from '../../store/action-creators/cart';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
