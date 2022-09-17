@@ -1,4 +1,0 @@
-export const USER_ACTION_TYPES = {
-  SET_USER_TO_DEFAULT: '@@user/SET_USER_TO_DEFAULT',
-  SET_CURRENT_USER: '@@user/SET_CURRENT_USER',
-};
