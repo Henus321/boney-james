@@ -18,6 +18,12 @@ const initialItem: Item = {
   country: '',
   season: '',
   id: '',
+  mainPhotoUrl: '',
+  description: '',
+  possibleColors: [''],
+  sizes: [''],
+  year: '',
+  quantity: 0,
 };
 
 const initialColorId: ColorId = {
@@ -26,7 +32,7 @@ const initialColorId: ColorId = {
 };
 
 const initialState: ItemState = {
-  item: initialItem,
+  currentItem: initialItem,
   colorId: [initialColorId],
   isLoading: false,
   error: null,
@@ -52,7 +58,7 @@ export const itemReducer = (
       return {
         ...state,
         isLoading: false,
-        item: action.payload,
+        currentItem: action.payload,
       };
     case ITEM_ACTION_TYPES.SET_COLOR_AND_ID:
       return {

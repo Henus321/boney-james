@@ -1,5 +1,3 @@
-import { DocumentData } from 'firebase/firestore';
-
 export enum ITEM_ACTION_TYPES {
   FETCH_ITEM_START = '@@item/FETCH_ITEM_START',
   FETCH_ITEM_FAILURE = '@@item/FETCH_ITEM_FAILURE',
@@ -9,7 +7,7 @@ export enum ITEM_ACTION_TYPES {
 }
 
 export interface ItemState {
-  item: DocumentData;
+  currentItem: Item;
   colorId: ColorId[];
   isLoading: boolean;
   error: string | null;
@@ -27,6 +25,13 @@ export interface Item {
   country: string;
   season: string;
   id: string;
+  mainPhotoUrl: string;
+  possibleColors: string[];
+  sizes: string[];
+  year: string;
+  quantity: number;
+  description: string;
+  size?: string;
 }
 
 export interface ColorId {
@@ -45,12 +50,12 @@ export interface FetchItemFailure {
 
 export interface FetchItemSuccess {
   type: ITEM_ACTION_TYPES.FETCH_ITEM_SUCCESS;
-  payload: DocumentData;
+  payload: Item;
 }
 
 export interface SetColorAndId {
   type: ITEM_ACTION_TYPES.SET_COLOR_AND_ID;
-  payload: any[];
+  payload: ColorId[];
 }
 
 export interface ClearItem {

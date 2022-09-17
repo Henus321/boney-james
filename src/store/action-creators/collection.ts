@@ -4,6 +4,7 @@ import {
   CollectionAction,
   COLLECTION_ACTION_TYPES,
 } from '../../types/collection';
+import { Item } from '../../types/item';
 import { Dispatch } from 'redux';
 
 export const fetchCollectionStartAsync = () => {
@@ -18,7 +19,7 @@ export const fetchCollectionStartAsync = () => {
       const querySnapshop = await getDocs(q);
       const colletionArray = querySnapshop.docs.map((docSnapshot) =>
         docSnapshot.data()
-      );
+      ) as Item[];
       dispatch({
         type: COLLECTION_ACTION_TYPES.FETCH_COLLECTION_SUCCESS,
         payload: colletionArray,

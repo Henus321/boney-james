@@ -1,5 +1,5 @@
-import { Item } from '../../types/item';
 import { CART_ACTION_TYPES } from '../../types/cart';
+import { Item } from '../../types/item';
 
 export const addToCart = (clickedItem: Item, size: string) => ({
   type: CART_ACTION_TYPES.ADD_TO_CART,

@@ -1,7 +1,7 @@
 import { CartAction, CartState, CART_ACTION_TYPES } from '../../types/cart';
 
 const initialState: CartState = {
-  cart: [],
+  currentCart: [],
   cartTotal: 0,
   isCartActive: false,
   cartStatus: false,
@@ -15,7 +15,7 @@ export const cartReducer = (
     case CART_ACTION_TYPES.CHANGE_QUANTITY:
       return {
         ...state,
-        cart: state.cart.map((prevItem) => {
+        currentCart: state.currentCart.map((prevItem) => {
           if (
             prevItem.id === action.payload.clickedItem.id &&
             prevItem.size === action.payload.clickedItem.size &&
@@ -30,20 +30,18 @@ export const cartReducer = (
           return { ...prevItem };
         }),
       };
-
     case CART_ACTION_TYPES.DELETE_FROM_CART:
       return {
         ...state,
-        cart: state.cart.filter(
+        currentCart: state.currentCart.filter(
           (curItem) =>
             curItem.id !== action.payload.id ||
             curItem.size !== action.payload.size
         ),
       };
-
     case CART_ACTION_TYPES.ADD_TO_CART:
       let sameIdAndSize = false;
-      const allItems = state.cart.map((prevItem) => {
+      const allItems = state.currentCart.map((prevItem) => {
         if (
           prevItem.id === action.payload.clickedItem.id &&
           prevItem.size === action.payload.clickedItem.size
@@ -57,14 +55,13 @@ export const cartReducer = (
       if (sameIdAndSize) {
         return {
           ...state,
-          cart: allItems,
+          currentCart: allItems,
         };
       }
-
       return {
         ...state,
-        cart: [
-          ...state.cart,
+        currentCart: [
+          ...state.currentCart,
           {
             ...action.payload.clickedItem,
             size: action.payload.clickedItem.size,

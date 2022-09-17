@@ -1,3 +1,5 @@
+import { Item } from './item';
+
 export enum CART_ACTION_TYPES {
   CHANGE_QUANTITY = '@@cart/CHANGE_QUANTITY',
   DELETE_FROM_CART = '@@cart/DELETE_FROM_CART',
@@ -9,37 +11,27 @@ export enum CART_ACTION_TYPES {
 }
 
 export interface CartState {
-  cart: CartItem[];
+  currentCart: Item[];
   cartTotal: number;
   isCartActive: boolean;
   cartStatus: boolean;
 }
 
-export interface CartItem {
-  name: string;
-  id: string;
-  price: number;
-  size: string;
-  quantity: number;
-  color: string;
-  mainPhotoUrl: string;
-}
-
 interface changeQuantity {
   type: CART_ACTION_TYPES.CHANGE_QUANTITY;
   payload: {
-    clickedItem: CartItem;
+    clickedItem: Item;
     positiveOrNegativeOne: number;
   };
 }
 interface deleteFromCart {
   type: CART_ACTION_TYPES.DELETE_FROM_CART;
-  payload: CartItem;
+  payload: Item;
 }
 interface addToCart {
   type: CART_ACTION_TYPES.ADD_TO_CART;
   payload: {
-    clickedItem: CartItem;
+    clickedItem: Item;
     number: number;
   };
 }

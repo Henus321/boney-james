@@ -2,19 +2,17 @@ import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import Loader from './components/loader/loader.component';
-import Header from './components/header/header.component';
-import Footer from './components/footer/footer.component';
+import Loader from './components/loader/Loader';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Home = lazy(() => import('./routes/home/home.component'));
-const About = lazy(() => import('./routes/about/about.component'));
-const Collection = lazy(
-  () => import('./routes/collection/collection.component')
-);
-const Item = lazy(() => import('./routes/item/item.component'));
-const Bookmarks = lazy(() => import('./routes/bookmarks/bookmarks.component'));
-const Checkout = lazy(() => import('./routes/checkout/checkout.component'));
+const Home = lazy(() => import('./routes/home/Home'));
+const About = lazy(() => import('./routes/about/About'));
+const Collection = lazy(() => import('./routes/collection/Collection'));
+const Item = lazy(() => import('./routes/item/Item'));
+const Bookmarks = lazy(() => import('./routes/bookmarks/Bookmarks'));
+const Checkout = lazy(() => import('./routes/checkout/Checkout'));
 
 const App = () => {
   return (

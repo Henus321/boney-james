@@ -1,4 +1,5 @@
 import { DocumentData } from 'firebase/firestore';
+import { Item } from '../types/item';
 
 export enum COLLECTION_ACTION_TYPES {
   FETCH_COLLECTION_START = '@@collection/FETCH_COLLECTION_START',
@@ -7,7 +8,7 @@ export enum COLLECTION_ACTION_TYPES {
 }
 
 export interface CollectionState {
-  currentCollection: DocumentData;
+  currentCollection: Item[];
   isLoading: boolean;
   error: string | null;
 }
@@ -18,7 +19,7 @@ interface fetchCollectionStart {
 
 interface fetchCollectionSuccess {
   type: COLLECTION_ACTION_TYPES.FETCH_COLLECTION_SUCCESS;
-  payload: DocumentData;
+  payload: Item[];
 }
 
 interface fetchCollectionFailure {

@@ -13,7 +13,9 @@ export const fetchItemStartAsync = (params: string) => {
       const q = query(collectionRef);
       const querySnapshop = await getDocs(q);
       const data = querySnapshop.docs.map((docSnapshot) => docSnapshot.data());
-      const [collectionItem] = data.filter((item) => item.id === params);
+      const [collectionItem] = data.filter(
+        (item) => item.id === params
+      ) as Item[];
       dispatch({
         type: ITEM_ACTION_TYPES.FETCH_ITEM_SUCCESS,
         payload: collectionItem,
