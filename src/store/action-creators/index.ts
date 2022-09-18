@@ -6,6 +6,7 @@ import * as ProfileActionCreators from './profile';
 import * as SizeActionCreators from './size';
 import * as UserActionCreators from './user';
 
+// eslint-disable-next-line
 export default {
   ...BookmarksActionCreators,
   ...CartActionCreators,

@@ -31,6 +31,7 @@ const Cart: React.FC = () => {
       setCartTotal(total);
     }
     if (currentCart.length === 0) setCartTotal(defaultCartTotal);
+    // eslint-disable-next-line
   }, [currentCart]);
 
   const itemsQuantityName = (cartLength: number) => {
@@ -46,18 +47,18 @@ const Cart: React.FC = () => {
     }
   };
 
-  const toggleCartMenu = () => {
-    toggleCart(!isCartActive);
+  const closeCartMenu = () => {
+    toggleCart(false);
   };
 
   const navigateToCheckout = () => {
     navigate('/checkout');
-    toggleCart(!isCartActive);
+    toggleCart(false);
   };
 
   return (
     <>
-      <BackgroundBlur isActive={isCartActive} handler={toggleCartMenu} />
+      <BackgroundBlur isActive={isCartActive} handler={closeCartMenu} />
       <div className={isCartActive ? 'cart cart--active' : 'cart'}>
         <div className="cart__heading">
           <h2 className="cart__title">
@@ -67,7 +68,7 @@ const Cart: React.FC = () => {
               {itemsQuantityName(cartQuantity)}
             </span>
           </h2>
-          <Button buttonType="close" handler={toggleCartMenu} buttonText="x" />
+          <Button buttonType="close" handler={closeCartMenu} buttonText="x" />
         </div>
         <div className="cart__items-container">
           {currentCart.length > 0 ? (

@@ -24,6 +24,7 @@ const Collection: React.FC = () => {
 
   useEffect(() => {
     fetchCollectionStartAsync();
+    // eslint-disable-next-line
   }, []);
 
   const seasonFromParams = (season: string) =>

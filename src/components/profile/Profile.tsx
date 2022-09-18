@@ -18,14 +18,13 @@ const Profile: React.FC = () => {
 
   const auth = getAuth();
 
-  const toggleProfileMenuHandler = () =>
-    toggleProfileMenu(!isProfileMenuActive);
+  const closeProfileMenuHandler = () => toggleProfileMenu(false);
 
   return (
     <>
       <BackgroundBlur
         isActive={isProfileMenuActive}
-        handler={toggleProfileMenuHandler}
+        handler={closeProfileMenuHandler}
       />
       <div
         className={isProfileMenuActive ? 'profile profile--active' : 'profile'}

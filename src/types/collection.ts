@@ -1,4 +1,3 @@
-import { DocumentData } from 'firebase/firestore';
 import { Item } from '../types/item';
 
 export enum COLLECTION_ACTION_TYPES {

@@ -21,6 +21,7 @@ const UserDetails: React.FC = () => {
       };
       setUser(curUser);
     }
+    // eslint-disable-next-line
   }, [auth.currentUser]);
 
   const closeProfileMenuHandler = () => toggleProfileMenu(false);

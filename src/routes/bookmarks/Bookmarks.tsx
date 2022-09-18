@@ -21,6 +21,7 @@ const Bookmarks: React.FC = () => {
 
   useEffect(() => {
     fetchCollectionStartAsync();
+    // eslint-disable-next-line
   }, []);
 
   return (
