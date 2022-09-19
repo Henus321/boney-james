@@ -1,6 +1,7 @@
 import { getAuth } from 'firebase/auth';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { toast } from 'react-toastify';
 
 import { FaTrash } from 'react-icons/fa';
 import Button from '../button/Button';
@@ -41,7 +42,7 @@ const CheckoutTotal = () => {
   const payForItems = () => {
     // TEMPORARY, NAVIGATION TO PAYMENT?
     return auth.currentUser
-      ? console.log('Redirection to payment')
+      ? toast.error('The purchase is temporarily unavailable')
       : toggleProfileMenuHandler();
   };
 
