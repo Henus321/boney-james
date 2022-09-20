@@ -32,7 +32,7 @@ interface addToCart {
   type: CART_ACTION_TYPES.ADD_TO_CART;
   payload: {
     clickedItem: Item;
-    number: number;
+    size: string;
   };
 }
 interface cartToInitialState {

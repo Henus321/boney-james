@@ -44,7 +44,7 @@ export const cartReducer = (
       const allItems = state.currentCart.map((prevItem) => {
         if (
           prevItem.id === action.payload.clickedItem.id &&
-          prevItem.size === action.payload.clickedItem.size
+          prevItem.size === action.payload.size
         ) {
           sameIdAndSize = true;
           return { ...prevItem, quantity: prevItem.quantity + 1 };
@@ -64,7 +64,7 @@ export const cartReducer = (
           ...state.currentCart,
           {
             ...action.payload.clickedItem,
-            size: action.payload.clickedItem.size,
+            size: action.payload.size,
           },
         ],
       };
