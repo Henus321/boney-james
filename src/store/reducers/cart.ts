@@ -3,6 +3,7 @@ import { CartAction, CartState, CART_ACTION_TYPES } from '../../types/cart';
 const initialState: CartState = {
   currentCart: [],
   cartTotal: 0,
+  cartQuantity: 0,
   isCartActive: false,
   cartStatus: false,
 };
@@ -12,7 +13,7 @@ export const cartReducer = (
   action: CartAction
 ) => {
   switch (action.type) {
-    case CART_ACTION_TYPES.CHANGE_QUANTITY:
+    case CART_ACTION_TYPES.CHANGE_ITEM_QUANTITY:
       return {
         ...state,
         currentCart: state.currentCart.map((prevItem) => {
@@ -79,6 +80,11 @@ export const cartReducer = (
       return {
         ...state,
         cartTotal: action.payload,
+      };
+    case CART_ACTION_TYPES.SET_CART_QUANTITY:
+      return {
+        ...state,
+        cartQuantity: action.payload,
       };
     case CART_ACTION_TYPES.TOGGLE_CART_STATUS:
       return {

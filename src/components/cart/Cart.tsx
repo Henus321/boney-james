@@ -10,15 +10,12 @@ import BackgroundBlur from '../background-blur/BackgroundBlur';
 import './cart.scss';
 
 const Cart: React.FC = () => {
-  const { toggleCart, toggleCartStatus, setCartTotal } = useActions();
-  const { currentCart, cartTotal, isCartActive } = useTypedSelector(
-    (state) => state.cart
-  );
+  const { toggleCart, toggleCartStatus, setCartTotal, setCartQuantity } =
+    useActions();
+  const { currentCart, cartTotal, cartQuantity, isCartActive } =
+    useTypedSelector((state) => state.cart);
 
-  const cartQuantity = currentCart.reduce((acc: number, item: any) => {
-    return acc + item.quantity;
-  }, 0);
-  const defaultCartTotal = 0;
+  const defaultCart = 0;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,9 +25,16 @@ const Cart: React.FC = () => {
         const curValue = item.price * item.quantity;
         return acc + curValue;
       }, 0);
+      const cartQty = currentCart.reduce((acc: number, item: any) => {
+        return acc + item.quantity;
+      }, 0);
       setCartTotal(total);
+      setCartQuantity(cartQty);
     }
-    if (currentCart.length === 0) setCartTotal(defaultCartTotal);
+    if (currentCart.length === 0) {
+      setCartTotal(defaultCart);
+      setCartQuantity(defaultCart);
+    }
     // eslint-disable-next-line
   }, [currentCart]);
 

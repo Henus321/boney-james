@@ -10,17 +10,17 @@ interface CartItemProps {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ cartItem }) => {
-  const { changeQuantity, deleteFromCart, toggleBookmark } = useActions();
+  const { changeItemQuantity, deleteFromCart, toggleBookmark } = useActions();
   const { bookmarksId } = useTypedSelector((state) => state.bookmarks);
   const { name, id, price, size, quantity, color, mainPhotoUrl } = cartItem;
   const bookmarked = bookmarksId.includes(id);
 
   const decreaseQuantityHandler = () => {
-    changeQuantity(cartItem, -1);
+    changeItemQuantity(cartItem, -1);
   };
 
   const increaseQuantityHandler = () => {
-    changeQuantity(cartItem, +1);
+    changeItemQuantity(cartItem, +1);
   };
 
   const deleteFromCartHandler = () => {

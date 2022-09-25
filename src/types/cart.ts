@@ -1,24 +1,26 @@
 import { Item } from './item';
 
 export enum CART_ACTION_TYPES {
-  CHANGE_QUANTITY = '@@cart/CHANGE_QUANTITY',
+  CHANGE_ITEM_QUANTITY = '@@cart/CHANGE_ITEM_QUANTITY',
   DELETE_FROM_CART = '@@cart/DELETE_FROM_CART',
   ADD_TO_CART = '@@cart/ADD_TO_CART',
   CART_TO_INITIAL_STATE = '@@cart/CART_TO_INITIAL_STATE',
   TOGGLE_CART = '@@cart/TOGGLE_CART',
   SET_CART_TOTAL = '@@cart/SET_CART_TOTAL',
+  SET_CART_QUANTITY = '@@cart/SET_CART_QUANTITY',
   TOGGLE_CART_STATUS = '@@cart/TOGGLE_CART_STATUS',
 }
 
 export interface CartState {
   currentCart: Item[];
   cartTotal: number;
+  cartQuantity: number;
   isCartActive: boolean;
   cartStatus: boolean;
 }
 
-interface changeQuantity {
-  type: CART_ACTION_TYPES.CHANGE_QUANTITY;
+interface changeItemQuantity {
+  type: CART_ACTION_TYPES.CHANGE_ITEM_QUANTITY;
   payload: {
     clickedItem: Item;
     positiveOrNegativeOne: number;
@@ -46,16 +48,21 @@ interface setCartTotal {
   type: CART_ACTION_TYPES.SET_CART_TOTAL;
   payload: number;
 }
+interface setCartQuantity {
+  type: CART_ACTION_TYPES.SET_CART_QUANTITY;
+  payload: number;
+}
 interface toggleCartStatus {
   type: CART_ACTION_TYPES.TOGGLE_CART_STATUS;
   payload: boolean;
 }
 
 export type CartAction =
-  | changeQuantity
+  | changeItemQuantity
   | deleteFromCart
   | addToCart
   | cartToInitialState
   | toggleCart
   | setCartTotal
+  | setCartQuantity
   | toggleCartStatus;
