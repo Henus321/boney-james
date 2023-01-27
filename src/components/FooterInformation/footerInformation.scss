@@ -1,0 +1,37 @@
+@import "../../sass/variables";
+
+.footer-information {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-column-gap: 8rem;
+  margin-bottom: 3rem;
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+
+    ul {
+      list-style: none;
+    }
+
+    h3,
+    li,
+    span,
+    p {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: $color-grey;
+
+      &:hover {
+        color: $color-light-grey;
+      }
+
+      &:active {
+        color: $color-black;
+      }
+    }
+  }
+}

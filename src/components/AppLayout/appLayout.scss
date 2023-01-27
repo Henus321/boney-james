@@ -1,0 +1,11 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content-container {
+    padding: 1rem 0.5rem;
+    flex: 1;
+    margin-bottom: 5rem;
+  }
+}

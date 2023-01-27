@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchCollection } from "../../store/collection/collection.slice";
 
+import "./collection.scss";
+
 const Collection = () => {
   const { collection } = useAppSelector((state) => state.collection);
 
