@@ -1,0 +1,14 @@
+@import "../../sass/variables";
+
+.header {
+  min-height: 10rem;
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: 0 3rem;
+
+  h1 {
+    color: $color-grey;
+  }
+}

@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
+import Loading from "../../components/Loading/Loading";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchCollection } from "../../store/collection/collection.slice";
 
+import "./collection.scss";
+
 const Collection = () => {
-  const { collection } = useAppSelector((state) => state.collection);
+  const { collection, isLoading } = useAppSelector((state) => state.collection);
 
   const dispatch = useAppDispatch();
 
@@ -13,9 +16,9 @@ const Collection = () => {
 
   return (
     <div>
-      {collection.map((item) => (
-        <span key={item.slug}>{item.name}</span>
-      ))}
+      {isLoading && <Loading />}
+      {!isLoading &&
+        collection.map((item) => <span key={item.slug}>{item.name}</span>)}
     </div>
   );
 };
