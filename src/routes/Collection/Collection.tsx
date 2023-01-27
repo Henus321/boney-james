@@ -1,25 +1,19 @@
-import React, { useEffect } from "react";
-import Loading from "../../components/Loading/Loading";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchCollection } from "../../store/collection/collection.slice";
+import React from "react";
+
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
+import CollectionGrid from "../../components/CollectionGrid/CollectionGrid";
 
 import "./collection.scss";
 
 const Collection = () => {
-  const { collection, isLoading } = useAppSelector((state) => state.collection);
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCollection());
-  }, [dispatch]);
-
   return (
-    <div>
-      {isLoading && <Loading />}
-      {!isLoading &&
-        collection.map((item) => <span key={item.slug}>{item.name}</span>)}
-    </div>
+    <>
+      <Breadcrumb />
+      <div className="collection">
+        <h2 className="title-secondary">Коллекция женских пальто</h2>
+        <CollectionGrid />
+      </div>
+    </>
   );
 };
 

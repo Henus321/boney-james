@@ -1,0 +1,18 @@
+.bookmark-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
