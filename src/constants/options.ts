@@ -19,3 +19,14 @@ export const SOCIAL_NETWORKS = [
     icon: React.createElement(FaFacebook),
   },
 ];
+
+export const NOT_FOUND_OPTIONS = {
+  PAGE_NOT_FOUND: {
+    title: "Страница не найдена",
+    text: "Что-то пошло не так...",
+  },
+  WORK_IN_PROGRESS: {
+    title: "Страница на реконструкции",
+    text: "Попробуйте зайти позднее...",
+  },
+};
