@@ -1,21 +1,21 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IItem } from "../../models";
-import { ICollectionState } from "../../models/collection";
-import collectionService from "./collection.service";
+import { IItem, IItemState } from "../../models";
+import itemService from "./item.service";
 
-const initialState: ICollectionState = {
-  collection: [],
+const initialState: IItemState = {
+  item: null,
+  color: "",
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: "",
 };
 
-export const fetchCollection = createAsyncThunk(
-  "collection/fetch",
-  async (_, thunkAPI) => {
+export const fetchItem = createAsyncThunk(
+  "item/fetch",
+  async (slug: string, thunkAPI) => {
     try {
-      return await collectionService.fetchCollection();
+      return await itemService.fetchItem(slug);
     } catch (error: any) {
       const message =
         (error.response &&
@@ -29,26 +29,30 @@ export const fetchCollection = createAsyncThunk(
   }
 );
 
-export const collectionSlice = createSlice({
-  name: "collection",
+export const itemSlice = createSlice({
+  name: "item",
   initialState,
   reducers: {
     reset: () => initialState,
+    setColor: (state, action: PayloadAction<string>) => {
+      state.color = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCollection.pending, (state) => {
+      .addCase(fetchItem.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
-        fetchCollection.fulfilled.type,
-        (state, action: PayloadAction<IItem[]>) => {
+        fetchItem.fulfilled.type,
+        (state, action: PayloadAction<IItem>) => {
           state.isLoading = false;
-          state.collection = action.payload;
+          state.isSuccess = true;
+          state.item = action.payload;
         }
       )
       .addCase(
-        fetchCollection.rejected.type,
+        fetchItem.rejected.type,
         (state, action: PayloadAction<string>) => {
           state.isLoading = false;
           state.isError = true;
@@ -58,5 +62,5 @@ export const collectionSlice = createSlice({
   },
 });
 
-export const { reset } = collectionSlice.actions;
-export default collectionSlice.reducer;
+export const { reset, setColor } = itemSlice.actions;
+export default itemSlice.reducer;
