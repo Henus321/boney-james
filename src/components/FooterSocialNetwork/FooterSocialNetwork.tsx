@@ -1,6 +1,5 @@
 import React from "react";
 import { SOCIAL_NETWORKS } from "../../constants";
-import { v4 as uuidv4 } from "uuid";
 
 import "./footerSocialNetwork.scss";
 
@@ -9,10 +8,10 @@ const FooterSocialNetwork = () => {
     <div className="footer-social-network">
       <h2 className="title-secondary">Следите за нами</h2>
       <ul>
-        {SOCIAL_NETWORKS.map((item) => (
-          <li key={uuidv4()}>
-            <a href={item.link} rel="noopener noreferrer" target="_blank">
-              {item.icon}
+        {SOCIAL_NETWORKS.map(({ link, icon }) => (
+          <li key={link}>
+            <a href={link} rel="noopener noreferrer" target="_blank">
+              {icon}
             </a>
           </li>
         ))}
