@@ -15,10 +15,24 @@
   }
 
   &__circle {
-    background-color: crimson;
     border-radius: 50%;
     height: 1.2rem;
     width: 1.2rem;
     cursor: pointer;
+  }
+
+  &__color {
+    &--beige {
+      background-color: #dac393;
+    }
+    &--grey {
+      background-color: #7a7a7a;
+    }
+    &--black {
+      background-color: #161616;
+    }
+    &--crimson {
+      background-color: #dc143c;
+    }
   }
 }

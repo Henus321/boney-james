@@ -16,12 +16,15 @@ const ColorCircle: React.FC<Props> = ({
 }) => {
   const isActive =
     currentColor.color === activeColor.color ? "color-picker--active" : "";
+
   return (
     <div
       className={`color-picker ${isActive}`}
       onClick={() => setActiveColor(currentColor)}
     >
-      <span className="color-picker__circle" color={currentColor.color} />
+      <span
+        className={`color-picker__circle color-picker__color--${currentColor.color}`}
+      />
     </div>
   );
 };

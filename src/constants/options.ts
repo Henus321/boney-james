@@ -30,3 +30,7 @@ export const NOT_FOUND_OPTIONS = {
     text: "Попробуйте зайти позднее...",
   },
 };
+
+export const PAGE_SIZE = 6;
+
+export const DEFAULT_PAGE = 1;
