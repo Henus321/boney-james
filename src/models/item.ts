@@ -10,7 +10,6 @@ export interface IItem {
   cost: number;
   description: string;
   name: string;
-  article: string;
   sizes: ISize[];
   slug: string;
 }

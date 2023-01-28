@@ -1,0 +1,85 @@
+@import "../../sass/variables";
+
+.collection-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  &__image-container {
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    overflow: hidden;
+
+    img {
+      grid-row: span 3;
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        filter: contrast(80%);
+      }
+
+      &:hover ~ div {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__image-popup {
+    grid-row: 3 / 4;
+    position: absolute;
+    background-color: $color-white-transparent;
+    bottom: 0;
+    width: 100%;
+    padding: 2rem 0;
+    transform: translateY(101%);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(0);
+    }
+
+    h3 {
+      text-align: center;
+      font-weight: normal;
+      color: $color-light-grey;
+      margin-bottom: 0.5rem;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    span {
+      cursor: pointer;
+      margin: 1rem;
+      white-space: nowrap;
+
+      &:hover {
+        color: $color-light-grey;
+      }
+
+      &:active {
+        color: $color-black;
+      }
+    }
+  }
+
+  &__actions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 1rem;
+  }
+
+  &__colors-container {
+    display: flex;
+  }
+}

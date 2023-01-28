@@ -7,6 +7,7 @@ import {
   CHECKOUT_ROUTE,
   PROFILE_ROUTE,
 } from "../constants";
+import { IColor } from "../models";
 
 export const getLocaleName = (name: string, payload: string | undefined) => {
   const route = `/${name.split("/")[1]}`;
@@ -32,3 +33,6 @@ export const getLocaleName = (name: string, payload: string | undefined) => {
       return "Страница не найдена";
   }
 };
+
+export const getTitlePhoto = (allColors: IColor[], currentColor: IColor) =>
+  allColors.find((item) => item.color === currentColor.color)?.photos[0];

@@ -1,8 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { DEFAULT_ROUTE, NOT_FOUND_OPTIONS, WIP_ROUTE } from "../../constants";
+import {
+  DEFAULT_ROUTE,
+  NOT_FOUND_OPTIONS,
+  WIP_ROUTE,
+  ITEM_ROUTE,
+} from "../../constants";
 
 import Collection from "../../routes/Collection/Collection";
+import Item from "../../routes/Item/Item";
 import PageNotFound from "../../routes/PageNotFound/PageNotFound";
 import AppLayout from "../AppLayout/AppLayout";
 
@@ -11,6 +17,7 @@ const AppRouter = () => {
     <Routes>
       <Route path={DEFAULT_ROUTE} element={<AppLayout />}>
         <Route index element={<Collection />} />
+        <Route path={`${ITEM_ROUTE}/:slug`} element={<Item />} />
         <Route
           path={WIP_ROUTE}
           element={
