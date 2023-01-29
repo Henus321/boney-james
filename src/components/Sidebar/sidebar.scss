@@ -1,0 +1,47 @@
+@import "../../sass/variables";
+@import "../../sass/animations";
+
+.sidebar {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  opacity: 0;
+  animation: disappear 0.3s ease-in;
+  visibility: hidden;
+
+  &--active {
+    animation: appear 0.3s ease-out;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__background {
+    display: block;
+    width: 66.6666%;
+    height: 100%;
+    background-color: transparent;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 33.3333%;
+    height: 100%;
+    background-color: $color-white;
+    animation: slideBack 0.3s ease-in;
+  }
+
+  &--active &__content {
+    animation: slideForth 0.3s ease-out;
+  }
+
+  &__header {
+    background-color: orangered;
+  }
+}

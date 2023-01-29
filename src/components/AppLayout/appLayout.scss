@@ -4,6 +4,7 @@
   flex-direction: column;
 
   &__content-container {
+    position: relative;
     padding: 1rem 0.5rem;
     flex: 1;
     margin-bottom: 5rem;
