@@ -7,12 +7,14 @@ interface Props {
   options: IOptions[];
   activeColor: string;
   setActiveColor: (arg: string) => void;
+  className?: string;
 }
 
 const ColorPicker: React.FC<Props> = ({
   options,
   activeColor,
   setActiveColor,
+  className,
 }) => {
   useEffect(() => {
     if (activeColor) {
@@ -33,7 +35,7 @@ const ColorPicker: React.FC<Props> = ({
       : "";
 
   return (
-    <div className="color-picker">
+    <div className={`color-picker ${className}`}>
       {options.map(({ color, id }) => (
         <div
           key={id}

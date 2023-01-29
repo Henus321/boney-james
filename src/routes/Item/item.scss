@@ -10,7 +10,19 @@
     align-items: flex-start;
   }
 
-  &__sizes-container {
+  &__element {
+    margin-bottom: 0.5rem;
+  }
+
+  &__actions-container {
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  &__bookmark-button {
+    margin-left: 1.25rem;
   }
 }

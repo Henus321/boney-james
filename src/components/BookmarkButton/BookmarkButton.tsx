@@ -3,9 +3,13 @@ import { FaHeart } from "react-icons/fa";
 
 import "./bookmarkButton.scss";
 
-const BookmarkButton = () => {
+interface Props {
+  className?: string;
+}
+
+const BookmarkButton: React.FC<Props> = ({ className }) => {
   return (
-    <button className="bookmark-button">
+    <button className={`bookmark-button ${className}`}>
       <FaHeart />
     </button>
   );

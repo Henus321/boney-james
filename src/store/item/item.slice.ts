@@ -5,6 +5,7 @@ import itemService from "./item.service";
 const initialState: IItemState = {
   item: null,
   color: "",
+  size: "",
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -37,6 +38,9 @@ export const itemSlice = createSlice({
     setColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload;
     },
+    setSize: (state, action: PayloadAction<string>) => {
+      state.size = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -62,5 +66,5 @@ export const itemSlice = createSlice({
   },
 });
 
-export const { reset, setColor } = itemSlice.actions;
+export const { reset, setColor, setSize } = itemSlice.actions;
 export default itemSlice.reducer;
