@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { IItem, IColor } from "../../models";
+import { createSearchParams, useNavigate } from "react-router-dom";
+import { IItem } from "../../models";
 import { beautifyCost, getTitlePhoto } from "../../utils";
-import { v4 as uuidv4 } from "uuid";
 import { ITEM_ROUTE } from "../../constants";
 
 import ColorPicker from "../ColorPicker/ColorPicker";
@@ -15,26 +14,33 @@ interface Props {
 }
 
 const CollectionItem: React.FC<Props> = ({ item }) => {
-  const { colors, sizes, cost, name, slug } = item;
-  const [activeColor, setActiveColor] = useState<IColor>(colors[0]);
-
-  const titlePhoto = getTitlePhoto(colors, activeColor);
+  const { options, sizes, cost, name, slug } = item;
+  const [activeColor, setActiveColor] = useState("");
 
   const navigate = useNavigate();
 
   const onClick = (slug: string) => {
-    navigate(`${ITEM_ROUTE}/${slug}`);
+    const params = `?color=${activeColor}`;
+
+    navigate({
+      pathname: `${ITEM_ROUTE}/${slug}`,
+      search: `${createSearchParams(params)}`,
+    });
   };
 
   return (
     <div className="collection-item">
       <div className="collection-item__image-container">
-        <img src={titlePhoto} alt="Coat" onClick={() => onClick(slug)} />
+        <img
+          src={getTitlePhoto(options, activeColor)}
+          alt="Coat"
+          onClick={() => onClick(slug)}
+        />
         <div className="collection-item__image-popup">
           <h3>Добавить в корзину</h3>
           <div>
             {sizes.map((size) => (
-              <span key={uuidv4()}>{size}</span>
+              <span key={`${name}${size}`}>{size}</span>
             ))}
           </div>
         </div>
@@ -42,16 +48,11 @@ const CollectionItem: React.FC<Props> = ({ item }) => {
       <span>{name}</span>
       <span>{beautifyCost(cost)}</span>
       <div className="collection-item__actions-container">
-        <div className="collection-item__colors-container">
-          {colors.map((colorItem) => (
-            <ColorPicker
-              key={uuidv4()}
-              currentColor={colorItem}
-              activeColor={activeColor}
-              setActiveColor={setActiveColor}
-            />
-          ))}
-        </div>
+        <ColorPicker
+          options={options}
+          activeColor={activeColor}
+          setActiveColor={setActiveColor}
+        />
         <BookmarkButton />
       </div>
     </div>

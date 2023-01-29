@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IItem, ICollectionState } from "../../models";
+import { IItem } from "../../models";
+import { ICollectionState } from "../../models/collection";
 import collectionService from "./collection.service";
 
 const initialState: ICollectionState = {

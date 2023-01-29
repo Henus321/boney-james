@@ -7,7 +7,7 @@ import {
   CHECKOUT_ROUTE,
   PROFILE_ROUTE,
 } from "../constants";
-import { IColor } from "../models";
+import { IItem, IOptions } from "../models";
 
 export const getLocaleName = (name: string, payload: string | undefined) => {
   const route = `/${name.split("/")[1]}`;
@@ -34,5 +34,20 @@ export const getLocaleName = (name: string, payload: string | undefined) => {
   }
 };
 
-export const getTitlePhoto = (allColors: IColor[], currentColor: IColor) =>
-  allColors.find((item) => item.color === currentColor.color)?.photos[0];
+export const getTitlePhoto = (options: IOptions[], activeColor: string) =>
+  options.find((option) => option.color === activeColor)?.photos[0];
+
+export const getColor = (
+  color: string,
+  colorParams: string | null,
+  item: IItem | null
+) => {
+  if (color) return color;
+
+  if (colorParams) return colorParams;
+
+  const firstColor = item?.options[0].color;
+  if (firstColor) return firstColor;
+
+  return "";
+};

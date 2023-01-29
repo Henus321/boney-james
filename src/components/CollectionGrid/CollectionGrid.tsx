@@ -32,7 +32,11 @@ const CollectionGrid = () => {
           {collectionItems.map((item: IItem) => (
             <CollectionItem key={item.slug} item={item} />
           ))}
-          <Button onClick={onShowMore} disabled={disabled}>
+          <Button
+            onClick={onShowMore}
+            disabled={disabled}
+            className="collection-grid__button"
+          >
             Показать еще
           </Button>
         </>

@@ -4,6 +4,18 @@
   margin-bottom: 1rem;
   text-align: center;
 
+  a {
+    color: $color-grey;
+
+    &:hover {
+      color: $color-light-grey;
+    }
+
+    &:active {
+      color: $color-black;
+    }
+  }
+
   span {
     color: $color-light-grey;
   }
