@@ -1,6 +1,11 @@
-export interface ICart {
-  name: string;
-  color: string;
+import { IItem } from "./item";
+
+export interface ICartItem extends IItem {
   size: string;
-  slug: string;
+  color: string;
+  quantity: number;
+}
+
+export interface ICartState {
+  cart: ICartItem[];
 }

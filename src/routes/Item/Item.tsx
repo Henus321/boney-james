@@ -8,16 +8,17 @@ import {
 } from "../../store/item/item.slice";
 import { useParams, useSearchParams } from "react-router-dom";
 import { beautifyCost, getColor } from "../../utils";
+import { IItem } from "../../models";
+import { addOrIncreaseItem } from "../../store/cart/cart.slice";
 
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import Slider from "../../components/Slider/Slider";
 import ColorPicker from "../../components/ColorPicker/ColorPicker";
 import SizePicker from "../../components/SizePicker/SizePicker";
+import BookmarkButton from "../../components/BookmarkButton/BookmarkButton";
+import Button from "../../components/Button/Button";
 
 import "./item.scss";
-import Button from "../../components/Button/Button";
-import BookmarkButton from "../../components/BookmarkButton/BookmarkButton";
-import { ICart } from "../../models/cart";
 
 const Item = () => {
   const { item, color, size, isSuccess } = useAppSelector(
@@ -50,10 +51,8 @@ const Item = () => {
 
   const setActiveSize = (size: string) => dispatch(setSize(size));
 
-  const onFinish = (cartData: ICart) => {
-    // dispatch addToCart
-    console.log("Добавляю в корзину :", cartData);
-  };
+  const onFinish = (item: IItem, color: string, size: string) =>
+    dispatch(addOrIncreaseItem({ ...item, color, size, quantity: 1 }));
 
   return (
     <>
@@ -78,11 +77,7 @@ const Item = () => {
               setActiveSize={setActiveSize}
             />
             <div className="item__actions-container">
-              <Button
-                onClick={() =>
-                  onFinish({ name: item.name, slug: item.slug, color, size })
-                }
-              >
+              <Button onClick={() => onFinish(item, color, size)}>
                 В корзину
               </Button>
               <BookmarkButton className="item__bookmark-button" />
