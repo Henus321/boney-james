@@ -7,9 +7,9 @@ import {
   openProfile,
 } from "../../store/sidebar/sidebar.slice";
 
-import "./headerMenu.scss";
+import "./headerSidebarMenu.scss";
 
-const HeaderMenu = () => {
+const HeaderSidebarMenu = () => {
   const dispatch = useAppDispatch();
 
   const onBookmarksOpen = () => dispatch(openBookmarks());
@@ -19,7 +19,7 @@ const HeaderMenu = () => {
   const onProfileOpen = () => dispatch(openProfile());
 
   return (
-    <div className="header-menu">
+    <div className="header-sidebar-menu">
       <FaHeart onClick={() => onBookmarksOpen()} />
       <FaShoppingBag onClick={() => onCartOpen()} />
       <FaUser onClick={() => onProfileOpen()} />
@@ -27,4 +27,4 @@ const HeaderMenu = () => {
   );
 };
 
-export default HeaderMenu;
+export default HeaderSidebarMenu;

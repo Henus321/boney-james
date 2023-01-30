@@ -20,9 +20,7 @@ const Sidebar = () => {
     firstRender.current = true;
   }, [firstRender]);
 
-  const onClose = () => {
-    dispatch(closeAll());
-  };
+  const onClose = () => dispatch(closeAll());
 
   return (
     <>
@@ -30,9 +28,6 @@ const Sidebar = () => {
         <div className={`sidebar ${isActive}`}>
           <div className="sidebar__background" onClick={() => onClose()} />
           <div className="sidebar__content">
-            <div className="sidebar__header">
-              <button onClick={() => onClose()}>close</button>
-            </div>
             {bookmarks && <Bookmarks />}
             {cart && <Cart />}
             {profile && <Profile />}
