@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { IOptions } from "../../models";
+import ColorItem from "../ColorItem/ColorItem";
 
 import "./colorPicker.scss";
 
@@ -42,9 +43,7 @@ const ColorPicker: React.FC<Props> = ({
           className={`color-picker__color-background ${isActive(color)}`}
           onClick={() => setActiveColor(color)}
         >
-          <span
-            className={`color-picker__color color-picker__color--${color}`}
-          />
+          <ColorItem color={color} />
         </div>
       ))}
     </div>
