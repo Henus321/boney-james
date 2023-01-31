@@ -40,5 +40,3 @@ export const SIDE_MENU_TITLE = {
   cart: "Корзина",
   profile: "Профиль",
 };
-
-export const MAX_QUANTITY = 10;

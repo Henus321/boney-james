@@ -1,8 +1,7 @@
 import React from "react";
 import { SIDE_MENU_TITLE } from "../../constants";
 import { useAppSelector } from "../../hooks";
-import { ICartItem } from "../../models";
-import { beautifyCost } from "../../utils";
+import { getTotal } from "../../utils";
 
 import SidebarHeader from "../SidebarHeader/SidebarHeader";
 import Button from "../Button/Button";
@@ -14,14 +13,6 @@ const Cart = () => {
   const { cart } = useAppSelector((state) => state.cart);
 
   const onFinish = () => console.log("Оформить заказ");
-
-  const getTotal = (cart: ICartItem[]) => {
-    const total = cart.reduce(
-      (acc, item) => acc + item.cost * item.quantity,
-      0
-    );
-    return beautifyCost(total);
-  };
 
   return (
     <div className="cart">

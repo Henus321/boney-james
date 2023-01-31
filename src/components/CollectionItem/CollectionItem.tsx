@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import { IItem, ICartItem } from "../../models";
 import { beautifyCost, getTitlePhoto } from "../../utils";
-import { ITEM_ROUTE } from "../../constants";
+import { ITEM_ROUTE, ITEM_SUCCESS_MESSAGE } from "../../constants";
 import { useAppDispatch } from "../../hooks";
 import { addOrIncreaseItem } from "../../store/cart/cart.slice";
+import { toast } from "react-toastify";
 
 import ColorPicker from "../ColorPicker/ColorPicker";
 import BookmarkButton from "../BookmarkButton/BookmarkButton";
@@ -40,6 +41,7 @@ const CollectionItem: React.FC<Props> = ({ item }) => {
     };
 
     dispatch(addOrIncreaseItem(cartItem));
+    toast.success(ITEM_SUCCESS_MESSAGE);
   };
 
   return (

@@ -10,6 +10,8 @@ import { useParams, useSearchParams } from "react-router-dom";
 import { beautifyCost, getColor } from "../../utils";
 import { IItem } from "../../models";
 import { addOrIncreaseItem } from "../../store/cart/cart.slice";
+import { toast } from "react-toastify";
+import { ITEM_SUCCESS_MESSAGE } from "../../constants";
 
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import Slider from "../../components/Slider/Slider";
@@ -51,8 +53,10 @@ const Item = () => {
 
   const setActiveSize = (size: string) => dispatch(setSize(size));
 
-  const onFinish = (item: IItem, color: string, size: string) =>
+  const onFinish = (item: IItem, color: string, size: string) => {
     dispatch(addOrIncreaseItem({ ...item, color, size, quantity: 1 }));
+    toast.success(ITEM_SUCCESS_MESSAGE);
+  };
 
   return (
     <>
@@ -67,7 +71,7 @@ const Item = () => {
             <ColorPicker
               className="item__element"
               options={item.options}
-              activeColor={getColor(color, colorParams, item)}
+              activeColor={getColor(colorParams, item)}
               setActiveColor={setActiveColor}
             />
             <SizePicker

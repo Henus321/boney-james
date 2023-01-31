@@ -12,14 +12,19 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    cursor: pointer;
+
+    &:hover {
+      filter: contrast(80%);
+    }
   }
 
-  &__info {
+  &__information {
     display: flex;
     flex-direction: column;
   }
 
-  &__item {
+  &__element {
     display: flex;
     margin-bottom: 0.5rem;
   }
