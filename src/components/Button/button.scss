@@ -4,6 +4,9 @@
   grid-column: 1 / 4;
   align-self: center;
   justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.6rem 1.2rem;
   font-family: inherit;
   font-size: $font-size-default;
@@ -33,5 +36,10 @@
     color: $color-light-grey;
     border: 1px solid $color-dark-milk;
     cursor: auto;
+  }
+
+  &__reverse {
+    background-color: $color-grey;
+    color: $color-milk;
   }
 }

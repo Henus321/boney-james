@@ -12,29 +12,10 @@
     height: 2rem;
     width: 2rem;
     margin: 1rem 0.3rem 1rem 0;
+    cursor: pointer;
 
     &--active {
       border: 1px solid rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  &__color {
-    border-radius: 50%;
-    height: 1.2rem;
-    width: 1.2rem;
-    cursor: pointer;
-
-    &--beige {
-      background-color: #dac393;
-    }
-    &--grey {
-      background-color: #7a7a7a;
-    }
-    &--black {
-      background-color: #161616;
-    }
-    &--crimson {
-      background-color: #dc143c;
     }
   }
 }

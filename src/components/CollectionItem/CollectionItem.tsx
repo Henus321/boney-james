@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
-import { IItem } from "../../models";
+import { IItem, ICartItem } from "../../models";
 import { beautifyCost, getTitlePhoto } from "../../utils";
-import { ITEM_ROUTE } from "../../constants";
+import { ITEM_ROUTE, ITEM_SUCCESS_MESSAGE } from "../../constants";
+import { useAppDispatch } from "../../hooks";
+import { addOrIncreaseItem } from "../../store/cart/cart.slice";
+import { toast } from "react-toastify";
 
 import ColorPicker from "../ColorPicker/ColorPicker";
 import BookmarkButton from "../BookmarkButton/BookmarkButton";
@@ -18,6 +21,7 @@ const CollectionItem: React.FC<Props> = ({ item }) => {
   const [activeColor, setActiveColor] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const onClick = (slug: string) => {
     const params = `?color=${activeColor}`;
@@ -26,6 +30,18 @@ const CollectionItem: React.FC<Props> = ({ item }) => {
       pathname: `${ITEM_ROUTE}/${slug}`,
       search: `${createSearchParams(params)}`,
     });
+  };
+
+  const onSizeClick = (item: IItem, color: string, size: string) => {
+    const cartItem: ICartItem = {
+      ...item,
+      color,
+      size,
+      quantity: 1,
+    };
+
+    dispatch(addOrIncreaseItem(cartItem));
+    toast.success(ITEM_SUCCESS_MESSAGE);
   };
 
   return (
@@ -40,7 +56,12 @@ const CollectionItem: React.FC<Props> = ({ item }) => {
           <h3>Добавить в корзину</h3>
           <div>
             {sizes.map((size) => (
-              <span key={`${name}${size}`}>{size}</span>
+              <span
+                onClick={() => onSizeClick(item, activeColor, size)}
+                key={`${name}${size}`}
+              >
+                {size}
+              </span>
             ))}
           </div>
         </div>

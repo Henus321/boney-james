@@ -7,6 +7,7 @@ interface Props {
   onClick: () => void;
   disabled?: boolean;
   className?: string;
+  reverse?: boolean;
 }
 
 const Button: React.FC<Props> = ({
@@ -14,10 +15,13 @@ const Button: React.FC<Props> = ({
   onClick,
   disabled = false,
   className,
+  reverse = false,
 }) => {
+  const isReverseColor = reverse ? "button__reverse" : "";
+
   return (
     <button
-      className={`button ${className}`}
+      className={`button ${className} ${isReverseColor}`}
       onClick={() => onClick()}
       disabled={disabled}
     >

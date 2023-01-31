@@ -5,9 +5,9 @@ import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
 
 const persistConfig = {
-  key: "collection",
+  key: "cart",
   storage,
-  whitelist: ["collection"],
+  whitelist: ["cart"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
