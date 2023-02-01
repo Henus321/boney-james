@@ -1,36 +1,3 @@
-@import "../../sass/variables";
-
 .size-picker {
   display: flex;
-
-  &__size {
-    margin-right: 0.5rem;
-    width: 5rem;
-    height: 4.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: $font-size-small;
-    color: $color-grey;
-    background-color: $color-milk;
-    border: 1px solid $color-grey;
-    border-radius: 0.5rem;
-    cursor: pointer;
-
-    &:hover {
-      color: $color-milk;
-      background-color: $color-grey;
-    }
-
-    &:active {
-      color: $color-white;
-      background-color: $color-black;
-      border: 1px solid $color-black;
-    }
-
-    &--active {
-      color: $color-milk;
-      background-color: $color-grey;
-    }
-  }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { SIDE_MENU_TITLE } from "../../constants";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { clearBookmarks } from "../../store/bookmarks/bookmarks.slice";
 
 import Button from "../Button/Button";
 import BookmarksItem from "../BookmarksItem/BookmarksItem";
@@ -11,7 +12,9 @@ import "./bookmarks.scss";
 const Bookmarks = () => {
   const { bookmarks } = useAppSelector((state) => state.bookmarks);
 
-  const onClear = () => console.log("clear");
+  const dispatch = useAppDispatch();
+
+  const onClear = () => dispatch(clearBookmarks());
 
   return (
     <div className="bookmarks">
@@ -22,10 +25,10 @@ const Bookmarks = () => {
       {bookmarks.length > 0 && (
         <>
           <div className="bookmarks__content">
-            {bookmarks.map((bookmarksItem) => (
+            {bookmarks.map((bookmark) => (
               <BookmarksItem
-                key={`${bookmarksItem.slug}${bookmarksItem.color}`}
-                bookmarksItem={bookmarksItem}
+                key={`${bookmark.slug}${bookmark.color}`}
+                bookmark={bookmark}
               />
             ))}
           </div>

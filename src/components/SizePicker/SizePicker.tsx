@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import SizeItem from "../SizeItem/SizeItem";
+
 import "./sizePicker.scss";
 
 interface Props {
@@ -28,19 +30,15 @@ const SizePicker: React.FC<Props> = ({
     // eslint-disable-next-line
   }, []);
 
-  const isActive = (currentSize: string) =>
-    currentSize === activeSize ? "size-picker__size--active" : "";
-
   return (
     <div className={`size-picker ${className}`}>
       {sizes.map((size) => (
-        <span
-          className={`size-picker__size ${isActive(size)}`}
-          key={size}
-          onClick={() => setActiveSize(size)}
-        >
-          {size}
-        </span>
+        <SizeItem
+          key={`${size}-size-picker`}
+          size={size}
+          activeSize={activeSize}
+          onClick={setActiveSize}
+        />
       ))}
     </div>
   );

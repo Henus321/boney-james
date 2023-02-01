@@ -1,0 +1,60 @@
+@import "../../sass/variables";
+
+.bookmark-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid $color-black-border;
+
+  img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+
+    &:hover {
+      filter: contrast(80%);
+    }
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__element {
+    display: flex;
+    margin-bottom: 0.5rem;
+  }
+
+  &__color-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__color {
+    margin-left: 0.5rem;
+    transform: translateY(1px);
+  }
+
+  &__size {
+    margin-right: 0.5rem;
+    width: 4.5rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-small;
+    color: $color-black;
+    background-color: $color-milk;
+    border-radius: 0.5rem;
+  }
+
+  &__bookmark-button {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 0.5rem;
+  }
+}
