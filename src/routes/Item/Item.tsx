@@ -7,7 +7,7 @@ import {
   reset,
 } from "../../store/item/item.slice";
 import { useParams, useSearchParams } from "react-router-dom";
-import { beautifyCost, getColor } from "../../utils";
+import { beautifyCost, getBookmarksItem, getColor } from "../../utils";
 import { IItem } from "../../models";
 import { addOrIncreaseItem } from "../../store/cart/cart.slice";
 import { toast } from "react-toastify";
@@ -84,7 +84,10 @@ const Item = () => {
               <Button onClick={() => onFinish(item, color, size)}>
                 В корзину
               </Button>
-              <BookmarkButton className="item__bookmark-button" />
+              <BookmarkButton
+                item={getBookmarksItem(item, color)}
+                className="item__bookmark-button"
+              />
             </div>
           </div>
         </div>

@@ -3,12 +3,17 @@
   border: none;
   cursor: pointer;
 
+  &--active {
+    color: crimson;
+  }
+
   svg {
     width: 1.6rem;
     height: 1.6rem;
+    transition: transform 0.1s ease;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.15);
     }
 
     &:active {

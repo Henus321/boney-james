@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import { IItem, ICartItem } from "../../models";
-import { beautifyCost, getTitlePhoto } from "../../utils";
+import { beautifyCost, getBookmarksItem, getTitlePhoto } from "../../utils";
 import { ITEM_ROUTE, ITEM_SUCCESS_MESSAGE } from "../../constants";
 import { useAppDispatch } from "../../hooks";
 import { addOrIncreaseItem } from "../../store/cart/cart.slice";
@@ -74,7 +74,7 @@ const CollectionItem: React.FC<Props> = ({ item }) => {
           activeColor={activeColor}
           setActiveColor={setActiveColor}
         />
-        <BookmarkButton />
+        <BookmarkButton item={getBookmarksItem(item, activeColor)} />
       </div>
     </div>
   );
