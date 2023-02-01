@@ -6,7 +6,7 @@ import {
   decreaseItem,
   deleteItem,
 } from "../../store/cart/cart.slice";
-import { beautifyCost, getTitlePhoto } from "../../utils";
+import { beautifyCost, getBookmarksItem, getTitlePhoto } from "../../utils";
 import { FaTrash } from "react-icons/fa";
 import { closeAll } from "../../store/sidebar/sidebar.slice";
 import { createSearchParams, useNavigate } from "react-router-dom";
@@ -23,10 +23,10 @@ interface Props {
 }
 
 const CartItem: React.FC<Props> = ({ cartItem }) => {
+  const decreaseDisabled = cartItem.quantity <= 1;
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const decreaseDisabled = cartItem.quantity <= 1;
 
   const onIncrease = (cartItem: ICartItem) =>
     dispatch(addOrIncreaseItem(cartItem));
@@ -86,7 +86,10 @@ const CartItem: React.FC<Props> = ({ cartItem }) => {
             >
               <FaTrash />
             </Button>
-            <BookmarkButton className="cart-item__bookmark-button" />
+            <BookmarkButton
+              item={getBookmarksItem(cartItem, cartItem.color)}
+              className="cart-item__bookmark-button"
+            />
           </div>
         </div>
       </div>
