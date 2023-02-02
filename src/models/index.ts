@@ -4,3 +4,4 @@ export * from "./item";
 export * from "./shared";
 export * from "./sidebar";
 export * from "./bookmarks";
+export * from "./shops";

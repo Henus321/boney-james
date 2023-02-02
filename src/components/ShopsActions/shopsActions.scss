@@ -1,0 +1,58 @@
+@import "../../sass/variables";
+
+.shops-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  padding: 2rem 3rem;
+  background-color: $color-milk;
+
+  &__element {
+    display: flex;
+    flex-direction: column;
+    min-width: 22rem;
+    margin-right: 2rem;
+
+    label {
+      font-size: $font-size-small;
+      color: $color-light-grey;
+    }
+
+    input {
+      border: none;
+      padding: 0.5rem 0;
+      font-size: $font-size-default;
+      font-family: inherit;
+      background-color: transparent;
+      border-bottom: 1px solid $color-dark-milk;
+      transition: all 0.5s ease-in;
+      outline: none;
+
+      &:focus {
+        border-bottom: 1px solid $color-grey;
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+      }
+    }
+
+    select {
+      min-width: 20rem;
+      border: none;
+      padding: 0.5rem 0;
+      font-size: $font-size-default;
+      font-family: inherit;
+      background-color: transparent;
+      border-bottom: 1px solid $color-dark-milk;
+      transition: all 0.5s ease-in;
+      outline: none;
+      transform: translateX(-2px);
+      cursor: pointer;
+
+      &:focus {
+        border-bottom: 1px solid $color-grey;
+      }
+    }
+  }
+}
