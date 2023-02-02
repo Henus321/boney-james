@@ -20,7 +20,7 @@ const AppRouter = () => {
       <Route path={DEFAULT_ROUTE} element={<AppLayout />}>
         <Route index element={<Collection />} />
         <Route path={`${ITEM_ROUTE}/:slug`} element={<Item />} />
-        <Route path={`${SHOPS_ROUTE}`} element={<Shops />} />
+        <Route path={`${SHOPS_ROUTE}/:city?`} element={<Shops />} />
         <Route
           path={WIP_ROUTE}
           element={

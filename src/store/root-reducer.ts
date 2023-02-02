@@ -7,6 +7,7 @@ import itemReducer from "./item/item.slice";
 import sidebarReducer from "./sidebar/sidebar.slice";
 import cartReducer from "./cart/cart.slice";
 import bookmarksReducer from "./bookmarks/bookmarks.slice";
+import shopsReducer from "./shops/shops.slice";
 
 const cartPersistConfig = {
   key: "cart",
@@ -26,4 +27,5 @@ export const rootReducer = combineReducers({
   sidebar: sidebarReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),
   bookmarks: persistReducer(bookmarksPersistConfig, bookmarksReducer),
+  shops: shopsReducer,
 });
