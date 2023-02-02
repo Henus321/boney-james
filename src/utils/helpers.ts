@@ -6,8 +6,9 @@ import {
   BOOKMARKS_ROUTE,
   CHECKOUT_ROUTE,
   PROFILE_ROUTE,
+  CITIES_OPTIONS,
 } from "../constants";
-import { IBookmarksItem, ICartItem, IItem, IOptions } from "../models";
+import { IBookmarksItem, ICartItem, IItem, IOptions, IShop } from "../models";
 import { beautifyCost } from "./typography";
 
 export const getLocaleName = (name: string, payload: string | undefined) => {
@@ -87,4 +88,38 @@ export const isBookmarked = (
     arrayItem.slug === item.slug && arrayItem.color === item.color;
 
   return bookmarks.some(check);
+};
+
+export const getFilteredShops = (
+  shops: IShop[] | null,
+  type: string,
+  search: string
+) => {
+  if (!shops) return null;
+
+  const filtered = shops.filter((shop) =>
+    shop.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+  );
+
+  if (!type) return filtered;
+
+  return filtered.filter((shop) => shop.type.value.includes(type));
+};
+
+const fixCityNameEnding = (localeName: string) => {
+  const cityName =
+    localeName.slice(-1) === "а" ? localeName.slice(0, -1) : localeName;
+
+  return cityName.concat("е");
+};
+
+export const getShopsTitle = (city: string | undefined) => {
+  const localeCityName = CITIES_OPTIONS.find(
+    (cityOption) => cityOption.value === city
+  )?.label;
+
+  const title = `Магазины в ${
+    localeCityName ? fixCityNameEnding(localeCityName) : "России"
+  }`;
+  return title;
 };

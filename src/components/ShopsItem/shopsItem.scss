@@ -1,0 +1,17 @@
+@import "../../sass/variables";
+
+.shops-item {
+  grid-column: span;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 4rem;
+  background-color: $color-milk;
+
+  &__element {
+    margin-bottom: 0.5rem;
+
+    &:first-child {
+      margin-bottom: 1rem;
+    }
+  }
+}

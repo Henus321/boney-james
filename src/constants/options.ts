@@ -40,3 +40,41 @@ export const SIDE_MENU_TITLE = {
   cart: "Корзина",
   profile: "Профиль",
 };
+
+export const CITIES_OPTIONS = [
+  {
+    label: " ",
+    value: "",
+  },
+  {
+    label: "Москва",
+    value: "moscow",
+  },
+  {
+    label: "Санкт-Петербург",
+    value: "saint-petersburg",
+  },
+  {
+    label: "Владивосток",
+    value: "vladivostok",
+  },
+];
+
+export const TYPE_OPTIONS = [
+  {
+    label: " ",
+    value: "",
+  },
+  {
+    label: "Одежда для женщин",
+    value: "woman",
+  },
+  {
+    label: "Одежда для мужчин",
+    value: "man",
+  },
+  {
+    label: "Одежда для детей",
+    value: "children",
+  },
+];
