@@ -18,7 +18,9 @@ const Bookmarks = () => {
 
   return (
     <div className="bookmarks">
-      <SidebarHeader title={SIDE_MENU_TITLE.bookmarks} />
+      <SidebarHeader>
+        <h3 className="title-tertiary">{SIDE_MENU_TITLE.bookmarks}</h3>
+      </SidebarHeader>
       {bookmarks.length === 0 && (
         <span className="bookmarks__empty">Нет закладок</span>
       )}

@@ -6,17 +6,17 @@ import { FaPlus } from "react-icons/fa";
 import "./sidebarHeader.scss";
 
 interface Props {
-  title: string;
+  children: React.ReactNode;
 }
 
-const SidebarHeader: React.FC<Props> = ({ title }) => {
+const SidebarHeader: React.FC<Props> = ({ children }) => {
   const dispatch = useAppDispatch();
 
   const onClose = () => dispatch(closeAll());
 
   return (
     <div className="sidebar-header">
-      <h3 className="sidebar-header__title title-tertiary">{title}</h3>
+      {children}
       <button
         className="sidebar-header__close-button"
         onClick={() => onClose()}

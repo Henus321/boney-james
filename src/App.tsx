@@ -4,6 +4,7 @@ import { TOAST_DURATION } from "./constants";
 
 import AppRouter from "./components/AppRouter/AppRouter";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import CheckAuthentication from "./components/CheckAuthentication/CheckAuthentication";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      <CheckAuthentication />
       <AppRouter />
       <ToastContainer autoClose={TOAST_DURATION} />
     </>

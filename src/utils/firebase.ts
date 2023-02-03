@@ -1,10 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-
-const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY;
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: FIREBASE_API_KEY,
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "boney-james-c978c.firebaseapp.com",
   projectId: "boney-james-c978c",
   storageBucket: "boney-james-c978c.appspot.com",
@@ -13,4 +12,7 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
+
 export const db = getFirestore();
+
+export const auth = getAuth();
