@@ -1,5 +1,5 @@
 import { collection, getDocs, query } from "@firebase/firestore";
-import { db } from "../../firebase.config";
+import { db } from "../../utils";
 
 const fetchCollection = async () => {
   const collectionRef = collection(db, "collection");
