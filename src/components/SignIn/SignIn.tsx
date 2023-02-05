@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useAppDispatch } from "../../hooks";
 import { signIn } from "../../store/user/user.slice";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+import Button from "../Button/Button";
 
 import "./signIn.scss";
 
@@ -31,27 +34,48 @@ const SignIn = () => {
 
   return (
     <div className="sign-in">
-      <h3>SIGN IN</h3>
       <form className="sign-in__form" id="sign-in" onSubmit={onSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          id="email"
-          value={email}
-          onChange={onChange}
-        />
-        <input
-          type={showPassword ? "text" : "password"}
-          placeholder="Password"
-          id="password"
-          value={password}
-          onChange={onChange}
-        />
-        <span onClick={() => setShowPassword((prevState) => !prevState)}>
-          show pass
-        </span>
+        <div className="sign-in__form-item">
+          <label htmlFor="email">Введите ваш e-mail</label>
+          <input
+            required
+            type="email"
+            id="email"
+            value={email}
+            onChange={onChange}
+          />
+        </div>
+        <div className="sign-in__form-item">
+          <label htmlFor="password">Введите пароль</label>
+          <div>
+            <input
+              required
+              type={showPassword ? "text" : "password"}
+              id="password"
+              value={password}
+              onChange={onChange}
+              autoComplete="off"
+            />
+            {showPassword ? (
+              <FaEye
+                onClick={() => setShowPassword((prevState) => !prevState)}
+              />
+            ) : (
+              <FaEyeSlash
+                onClick={() => setShowPassword((prevState) => !prevState)}
+              />
+            )}
+          </div>
+        </div>
       </form>
-      <button form="sign-in">submit</button>
+      <Button
+        className="sign-in__button"
+        form="sign-in"
+        onClick={() => ({})}
+        reverse
+      >
+        Войти
+      </Button>
     </div>
   );
 };

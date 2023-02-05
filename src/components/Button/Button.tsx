@@ -8,6 +8,7 @@ interface Props {
   disabled?: boolean;
   className?: string;
   reverse?: boolean;
+  form?: string;
 }
 
 const Button: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const Button: React.FC<Props> = ({
   disabled = false,
   className,
   reverse = false,
+  form,
 }) => {
   const isReverseColor = reverse ? "button__reverse" : "";
 
@@ -24,6 +26,7 @@ const Button: React.FC<Props> = ({
       className={`button ${className} ${isReverseColor}`}
       onClick={() => onClick()}
       disabled={disabled}
+      form={form}
     >
       {children}
     </button>
