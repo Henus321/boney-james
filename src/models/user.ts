@@ -9,6 +9,12 @@ export interface IUserCredentials {
   timestamp?: FieldValue;
 }
 
+export interface IUserPasswords {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
 export interface IUserState extends IState {
   user: User | null;
 }

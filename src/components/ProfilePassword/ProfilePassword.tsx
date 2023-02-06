@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { PASSWORD_MISMATCH_MESSAGE } from "../../constants";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { updateUserPassword } from "../../store/user/user.slice";
 
 import Button from "../Button/Button";
 
@@ -14,12 +16,21 @@ const initialFormData = {
 };
 
 const ProfilePassword = () => {
+  const { isSuccess, isError } = useAppSelector((state) => state.user);
+
   const [formData, setFormData] = useState(initialFormData);
   const { currentPassword, newPassword, confirmPassword } = formData;
 
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (isSuccess || isError) setFormData(initialFormData);
+    // eslint-disable-next-line
+  }, [isSuccess, isError]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
@@ -36,7 +47,7 @@ const ProfilePassword = () => {
       return;
     }
 
-    // dispatch(сменитьПароль(formData));
+    dispatch(updateUserPassword(formData));
   };
 
   return (

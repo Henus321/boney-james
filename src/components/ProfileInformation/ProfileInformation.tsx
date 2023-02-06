@@ -1,23 +1,35 @@
-import React, { useState } from "react";
-import { useAppSelector } from "../../hooks";
+import React, { useEffect, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { updateUser } from "../../store/user/user.slice";
 
 import Button from "../Button/Button";
 
 import "./profileInformation.scss";
 
 const ProfileInformation = () => {
-  const { user } = useAppSelector((state) => state.user);
+  const { user, isSuccess, isError } = useAppSelector((state) => state.user);
   const initialFormData = {
     name: user?.displayName === null ? undefined : user?.displayName,
     email: user?.email === null ? undefined : user?.email,
+    password: "",
   };
-
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
-  const { name, email } = formData;
+  const { name, email, password } = formData;
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (isSuccess || isError) setFormData(initialFormData);
+    // eslint-disable-next-line
+  }, [isSuccess, isError]);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    return null;
+
+    if (name && email && password)
+      dispatch(updateUser({ name, email, password }));
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,48 +48,66 @@ const ProfileInformation = () => {
       <h3 className="profile-information__title title-quaternary">
         Данные пользователя:
       </h3>
-      {user && (
-        <>
-          <form
-            className="profile-information__form"
-            id="profile-information"
-            onSubmit={onSubmit}
-          >
-            <div className="profile-information__form-item">
-              <label htmlFor="name">Ваше имя</label>
-              <input
-                required
-                type="text"
-                id="name"
-                value={name}
-                onChange={onChange}
+
+      <form
+        className="profile-information__form"
+        id="profile-information"
+        onSubmit={onSubmit}
+      >
+        <div className="profile-information__form-item">
+          <label htmlFor="name">Ваше имя</label>
+          <input
+            required
+            type="text"
+            id="name"
+            value={name}
+            onChange={onChange}
+          />
+        </div>
+        <div className="profile-information__form-item">
+          <label htmlFor="email">Ваш e-mail</label>
+          <input
+            required
+            type="email"
+            id="email"
+            value={email}
+            onChange={onChange}
+          />
+        </div>
+        <div className="profile-information__form-item">
+          <label htmlFor="password">Текущий Пароль</label>
+          <div>
+            <input
+              required
+              type={showPassword ? "text" : "password"}
+              id="password"
+              value={password}
+              onChange={onChange}
+            />
+            {showPassword ? (
+              <FaEye
+                onClick={() => setShowPassword((prevState) => !prevState)}
               />
-            </div>
-            <div className="profile-information__form-item">
-              <label htmlFor="email">Ваш e-mail</label>
-              <input
-                required
-                type="email"
-                id="email"
-                value={email}
-                onChange={onChange}
+            ) : (
+              <FaEyeSlash
+                onClick={() => setShowPassword((prevState) => !prevState)}
               />
-            </div>
-          </form>
-          <div className="profile-information__actions">
-            <Button className="profile-information__button" onClick={onCancel}>
-              Отмена
-            </Button>
-            <Button
-              className="profile-information__button"
-              form="profile-information"
-              onClick={() => ({})}
-            >
-              Подтвердить
-            </Button>
+            )}
           </div>
-        </>
-      )}
+        </div>
+      </form>
+      <div className="profile-information__actions">
+        <Button className="profile-information__button" onClick={onCancel}>
+          Отмена
+        </Button>
+        <Button
+          className="profile-information__button"
+          form="profile-information"
+          onClick={() => ({})}
+        >
+          Подтвердить
+        </Button>
+      </div>
     </div>
   );
 };
