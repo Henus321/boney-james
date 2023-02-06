@@ -17,7 +17,7 @@ const Cart = () => {
   return (
     <div className="cart">
       <SidebarHeader>
-        <h3 className="title-tertiary">{SIDE_MENU_TITLE.cart}</h3>
+        <h3 className="cart__title title-tertiary">{SIDE_MENU_TITLE.cart}</h3>
       </SidebarHeader>
       {cart.length === 0 && <span className="cart__empty">Нет предметов</span>}
       {cart.length > 0 && (

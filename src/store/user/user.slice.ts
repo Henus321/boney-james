@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
-import { IUserCredentials, IUserState } from "../../models";
+import { IUserCredentials, IUserPasswords, IUserState } from "../../models";
 import userService from "./user.service";
 
 const initialState: IUserState = {
@@ -60,11 +60,52 @@ export const logOut = createAsyncThunk("user/log-out", async (_, thunkAPI) => {
   }
 });
 
+export const updateUser = createAsyncThunk(
+  "user/update-user",
+  async (userData: IUserCredentials, thunkAPI) => {
+    try {
+      return await userService.updateUser(userData);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const updateUserPassword = createAsyncThunk(
+  "user/update-password",
+  async (passwords: IUserPasswords, thunkAPI) => {
+    try {
+      return await userService.updateUserPassword(passwords);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    reset: () => initialState,
+    reset: (state) => {
+      state.isError = false;
+      state.isSuccess = false;
+      state.isLoading = false;
+      state.message = "";
+    },
     setCurrentUser: (state, action: PayloadAction<User | null>) => {
       state.user = action.payload;
     },
@@ -106,7 +147,37 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-      });
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateUser.fulfilled.type, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(
+        updateUser.rejected.type,
+        (state, action: PayloadAction<string>) => {
+          state.isLoading = false;
+          state.isError = true;
+          state.message = action.payload;
+        }
+      )
+      .addCase(updateUserPassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateUserPassword.fulfilled.type, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(
+        updateUserPassword.rejected.type,
+        (state, action: PayloadAction<string>) => {
+          state.isLoading = false;
+          state.isError = true;
+          state.message = action.payload;
+        }
+      );
   },
 });
 
