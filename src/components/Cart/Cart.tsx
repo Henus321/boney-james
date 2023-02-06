@@ -1,7 +1,15 @@
-import React from "react";
-import { SIDE_MENU_TITLE } from "../../constants";
-import { useAppSelector } from "../../hooks";
+import React, { useEffect } from "react";
+import { ORDER_CREATE_MESSAGE, SIDE_MENU_TITLE } from "../../constants";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getTotal } from "../../utils";
+import { ICartItem } from "../../models";
+import { clearCart } from "../../store/cart/cart.slice";
+import {
+  createOrder,
+  reset as resetOrders,
+} from "../../store/orders/orders.slice";
+import { closeAll } from "../../store/sidebar/sidebar.slice";
+import { toast } from "react-toastify";
 
 import SidebarHeader from "../SidebarHeader/SidebarHeader";
 import Button from "../Button/Button";
@@ -10,9 +18,24 @@ import CartItem from "../CartItem/CartItem";
 import "./cart.scss";
 
 const Cart = () => {
-  const { cart } = useAppSelector((state) => state.cart);
+  const { cart: cartState, orders: ordersState } = useAppSelector(
+    (state) => state
+  );
+  const { cart } = cartState;
+  const { isSuccess } = ordersState;
 
-  const onFinish = () => console.log("Оформить заказ");
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(resetOrders());
+      dispatch(clearCart());
+      dispatch(closeAll());
+      toast.success(ORDER_CREATE_MESSAGE);
+    }
+  }, [dispatch, isSuccess]);
+
+  const onFinish = (cart: ICartItem[]) => dispatch(createOrder(cart));
 
   return (
     <div className="cart">
@@ -37,7 +60,8 @@ const Cart = () => {
             </div>
             <Button
               className="cart__checkout-button"
-              onClick={() => onFinish()}
+              onClick={onFinish}
+              value={cart}
               reverse
             >
               Оформить
