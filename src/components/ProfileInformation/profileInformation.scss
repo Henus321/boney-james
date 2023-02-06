@@ -1,0 +1,66 @@
+@import "../../sass/variables";
+
+.profile-information {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid $color-black-border;
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+
+    label {
+      font-size: $font-size-small;
+      color: $color-light-grey;
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      padding: 0.5rem 4.5rem 0.5rem 0rem;
+      font-size: $font-size-default;
+      font-family: inherit;
+      background-color: transparent;
+      border-bottom: 1px solid $color-dark-milk;
+      transition: all 0.5s ease-in;
+      outline: none;
+
+      &:focus {
+        border-bottom: 1px solid $color-grey;
+      }
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    margin: 1rem 0;
+  }
+
+  &__button {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+
+  &__cancel-icon {
+    transform: rotate(45deg);
+  }
+}

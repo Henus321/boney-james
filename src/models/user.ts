@@ -9,10 +9,6 @@ export interface IUserCredentials {
   timestamp?: FieldValue;
 }
 
-export interface IUser {
-  name: string;
-}
-
 export interface IUserState extends IState {
   user: User | null;
 }
