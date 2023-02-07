@@ -1,11 +1,11 @@
-import { FieldValue } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 import { ICartItem } from "./cart";
 import { IState } from "./shared";
 
 export interface IOrder {
   items: ICartItem[];
   userRef: string;
-  timestamp: FieldValue;
+  timestamp: Timestamp;
   id?: string;
 }
 

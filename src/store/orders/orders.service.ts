@@ -7,6 +7,7 @@ import {
   where,
   deleteDoc,
   doc,
+  Timestamp,
 } from "@firebase/firestore";
 import { CANT_FIND_USER_MESSAGE, USER_MISMATCH_MESSAGE } from "../../constants";
 import { ICartItem, IOrder } from "../../models";
@@ -18,7 +19,7 @@ const createOrder = async (cart: ICartItem[]) => {
   const order: IOrder = {
     items: cart,
     userRef: auth.currentUser.uid,
-    timestamp: serverTimestamp(),
+    timestamp: serverTimestamp() as Timestamp,
   };
 
   await addDoc(collection(db, "orders"), order);

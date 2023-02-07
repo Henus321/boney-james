@@ -9,7 +9,7 @@ import {
   updatePassword,
 } from "firebase/auth";
 import { IUserCredentials, IUserPasswords } from "../../models";
-import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { doc, serverTimestamp, setDoc, Timestamp } from "firebase/firestore";
 import { auth, db } from "../../utils";
 import { CANT_FIND_USER_MESSAGE } from "../../constants";
 
@@ -36,7 +36,7 @@ const signUp = async (userCredentials: IUserCredentials) => {
 
   const userCredentialsCopy = { ...userCredentials };
   delete userCredentialsCopy.password;
-  userCredentialsCopy.timestamp = serverTimestamp();
+  userCredentialsCopy.timestamp = serverTimestamp() as Timestamp;
 
   await setDoc(doc(db, "users", user.uid), userCredentialsCopy);
 };

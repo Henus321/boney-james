@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import {
   DEFAULT_ROUTE,
   WIP_ROUTE,
@@ -122,4 +123,8 @@ export const getShopsTitle = (city: string | undefined) => {
     localeCityName ? fixCityNameEnding(localeCityName) : "России"
   }`;
   return title;
+};
+
+export const convertTimestampToString = (timestamp: Timestamp) => {
+  return new Date(timestamp.seconds * 1000).toLocaleDateString("ru-RU");
 };

@@ -1,12 +1,12 @@
 import { User } from "firebase/auth";
-import { FieldValue } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 import { IState } from "./shared";
 
 export interface IUserCredentials {
   name?: string;
   email: string;
   password?: string;
-  timestamp?: FieldValue;
+  timestamp?: Timestamp;
 }
 
 export interface IUserPasswords {

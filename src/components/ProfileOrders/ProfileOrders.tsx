@@ -12,7 +12,9 @@ import ProfileOrderItem from "../ProfileOrderItem/ProfileOrderItem";
 import "./profileOrders.scss";
 
 const ProfileOrders = () => {
-  const { orders, isSuccess } = useAppSelector((state) => state.orders);
+  const { orders, isLoading, isSuccess, isError, message } = useAppSelector(
+    (state) => state.orders
+  );
 
   const dispatch = useAppDispatch();
 
@@ -25,6 +27,13 @@ const ProfileOrders = () => {
     }
   }, [dispatch, isSuccess]);
 
+  useEffect(() => {
+    if (isError) {
+      dispatch(resetOrders());
+      toast.error(message);
+    }
+  }, [dispatch, isError, message]);
+
   return (
     <div className="profile-orders">
       <h3 className="title-quaternary">Ваши заказы:</h3>
@@ -32,7 +41,7 @@ const ProfileOrders = () => {
         orders.map((order) => (
           <ProfileOrderItem key={order.id} order={order} />
         ))}
-      {orders.length === 0 && (
+      {!isLoading && orders.length === 0 && (
         <span className="profile-orders__empty">У вас пока нет заказов</span>
       )}
     </div>

@@ -1,7 +1,7 @@
 export const ITEM_SUCCESS_MESSAGE = "Товар добавлен!";
 
 export const ORDER_CREATE_MESSAGE =
-  "Заказ успешно оформлен! Следите за статусом в профиле";
+  "Заказ успешно оформлен! Подробности в профиле";
 
 export const ORDER_DELETE_MESSAGE = "Заказ успешно удален!";
 
