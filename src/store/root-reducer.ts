@@ -9,6 +9,7 @@ import cartReducer from "./cart/cart.slice";
 import bookmarksReducer from "./bookmarks/bookmarks.slice";
 import shopsReducer from "./shops/shops.slice";
 import userReducer from "./user/user.slice";
+import ordersReducer from "./orders/orders.slice";
 
 const cartPersistConfig = {
   key: "cart",
@@ -30,4 +31,5 @@ export const rootReducer = combineReducers({
   bookmarks: persistReducer(bookmarksPersistConfig, bookmarksReducer),
   shops: shopsReducer,
   user: userReducer,
+  orders: ordersReducer,
 });

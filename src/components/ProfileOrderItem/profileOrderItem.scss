@@ -1,3 +1,73 @@
+@import "../../sass/variables";
+
 .profile-order-item {
-  background-color: aquamarine;
+  display: block;
+  width: 100%;
+  padding: 1rem 0;
+  border-bottom: 1px solid $color-black-border;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  &__element {
+    display: flex;
+    margin-bottom: 1rem;
+
+    &:first-of-type {
+      margin-top: 1rem;
+    }
+
+    img {
+      display: block;
+      max-height: 12rem;
+      object-fit: cover;
+      cursor: pointer;
+
+      &:hover {
+        filter: contrast(80%);
+      }
+    }
+
+    span {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  &__color-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__color {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-left: 0.5rem;
+    transform: translateY(1px);
+  }
+
+  &__footer {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__button {
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid $color-black-border;
+
+    &:disabled {
+      border: 1px solid $color-black-border;
+      cursor: auto;
+    }
+  }
 }

@@ -4,7 +4,8 @@ import "./button.scss";
 
 interface Props {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick: (arg?: any) => void;
+  value?: any;
   disabled?: boolean;
   className?: string;
   reverse?: boolean;
@@ -14,6 +15,7 @@ interface Props {
 const Button: React.FC<Props> = ({
   children,
   onClick,
+  value,
   disabled = false,
   className,
   reverse = false,
@@ -24,7 +26,7 @@ const Button: React.FC<Props> = ({
   return (
     <button
       className={`button ${className} ${isReverseColor}`}
-      onClick={() => onClick()}
+      onClick={() => onClick(value)}
       disabled={disabled}
       form={form}
     >

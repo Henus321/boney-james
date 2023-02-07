@@ -14,7 +14,7 @@ function App() {
       <ScrollToTop />
       <CheckAuthentication />
       <AppRouter />
-      <ToastContainer autoClose={TOAST_DURATION} />
+      <ToastContainer position="bottom-right" autoClose={TOAST_DURATION} />
     </>
   );
 }

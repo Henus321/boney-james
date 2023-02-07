@@ -8,4 +8,8 @@ export interface ICartItem extends IItem {
 
 export interface ICartState {
   cart: ICartItem[];
+  isError: boolean;
+  isSuccess: boolean;
+  isLoading: boolean;
+  message: string;
 }
