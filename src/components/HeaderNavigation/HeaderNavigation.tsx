@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { CUSTOMERS_ROUTE, DEFAULT_ROUTE, SHOPS_ROUTE } from "../../constants";
 
 import "./headerNavigation.scss";
 
@@ -8,13 +9,13 @@ const HeaderNavigation = () => {
     <nav className="header-navigation">
       <ul>
         <li>
-          <NavLink to="/">Коллекция</NavLink>
+          <NavLink to={DEFAULT_ROUTE}>Коллекция</NavLink>
         </li>
         <li>
-          <NavLink to="/shops">Магазины</NavLink>
+          <NavLink to={SHOPS_ROUTE}>Магазины</NavLink>
         </li>
         <li>
-          <NavLink to="/about">Покупателям</NavLink>
+          <NavLink to={CUSTOMERS_ROUTE}>Покупателям</NavLink>
         </li>
       </ul>
     </nav>

@@ -17,7 +17,7 @@ const Button: React.FC<Props> = ({
   onClick,
   value,
   disabled = false,
-  className,
+  className = "",
   reverse = false,
   form,
 }) => {

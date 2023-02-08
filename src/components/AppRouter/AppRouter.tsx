@@ -6,12 +6,14 @@ import {
   WIP_ROUTE,
   ITEM_ROUTE,
   SHOPS_ROUTE,
+  CUSTOMERS_ROUTE,
 } from "../../constants";
 
 import Collection from "../../routes/Collection/Collection";
 import Item from "../../routes/Item/Item";
 import PageNotFound from "../../routes/PageNotFound/PageNotFound";
 import Shops from "../../routes/Shops/Shops";
+import Customers from "../../routes/Customers/Customers";
 import AppLayout from "../AppLayout/AppLayout";
 
 const AppRouter = () => {
@@ -21,6 +23,7 @@ const AppRouter = () => {
         <Route index element={<Collection />} />
         <Route path={`${ITEM_ROUTE}/:slug`} element={<Item />} />
         <Route path={`${SHOPS_ROUTE}/:city?`} element={<Shops />} />
+        <Route path={`${CUSTOMERS_ROUTE}`} element={<Customers />} />
         <Route
           path={WIP_ROUTE}
           element={

@@ -3,7 +3,7 @@ import {
   DEFAULT_ROUTE,
   WIP_ROUTE,
   SHOPS_ROUTE,
-  ABOUT_ROUTE,
+  CUSTOMERS_ROUTE,
   BOOKMARKS_ROUTE,
   CHECKOUT_ROUTE,
   PROFILE_ROUTE,
@@ -24,7 +24,7 @@ export const getLocaleName = (name: string, payload: string | undefined) => {
       return "Страница на реконструкции";
     case SHOPS_ROUTE:
       return "Магазины";
-    case ABOUT_ROUTE:
+    case CUSTOMERS_ROUTE:
       return "Покупателям";
     case BOOKMARKS_ROUTE:
       return "Избранное";
