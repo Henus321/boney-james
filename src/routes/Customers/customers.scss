@@ -1,0 +1,12 @@
+@import "../../sass/variables";
+
+.customers {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: $color-grey;
+  }
+}

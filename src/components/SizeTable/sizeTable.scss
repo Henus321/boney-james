@@ -1,0 +1,27 @@
+@import "../../sass/variables.scss";
+
+.size-table {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $color-white;
+
+  thead {
+    color: $color-light-grey;
+
+    tr {
+      border-bottom: 1px solid $color-black-border;
+    }
+  }
+
+  tr {
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-black-border;
+    }
+  }
+
+  td {
+    padding: 1.6rem 2rem;
+  }
+}
