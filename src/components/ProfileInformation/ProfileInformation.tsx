@@ -48,7 +48,6 @@ const ProfileInformation = () => {
       <h3 className="profile-information__title title-quaternary">
         Данные пользователя:
       </h3>
-
       <form
         className="profile-information__form"
         id="profile-information"
@@ -58,6 +57,7 @@ const ProfileInformation = () => {
           <label htmlFor="name">Ваше имя</label>
           <input
             required
+            autoComplete="off"
             type="text"
             id="name"
             value={name}
@@ -68,6 +68,7 @@ const ProfileInformation = () => {
           <label htmlFor="email">Ваш e-mail</label>
           <input
             required
+            autoComplete="off"
             type="email"
             id="email"
             value={email}
@@ -79,6 +80,7 @@ const ProfileInformation = () => {
           <div>
             <input
               required
+              autoComplete="off"
               type={showPassword ? "text" : "password"}
               id="password"
               value={password}

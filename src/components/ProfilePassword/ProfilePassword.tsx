@@ -65,6 +65,7 @@ const ProfilePassword = () => {
           <div>
             <input
               required
+              autoComplete="off"
               type={showCurrentPassword ? "text" : "password"}
               id="currentPassword"
               value={currentPassword}
@@ -90,6 +91,7 @@ const ProfilePassword = () => {
           <div>
             <input
               required
+              autoComplete="off"
               type={showNewPassword ? "text" : "password"}
               id="newPassword"
               value={newPassword}
@@ -111,6 +113,7 @@ const ProfilePassword = () => {
           <div>
             <input
               required
+              autoComplete="off"
               type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
               value={confirmPassword}

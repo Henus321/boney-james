@@ -49,6 +49,7 @@ const SignUp = () => {
           <label htmlFor="name">Введите ваше имя</label>
           <input
             required
+            autoComplete="off"
             type="text"
             id="name"
             value={name}
@@ -59,6 +60,7 @@ const SignUp = () => {
           <label htmlFor="email">Введите ваш e-mail</label>
           <input
             required
+            autoComplete="off"
             type="email"
             id="email"
             value={email}
@@ -70,6 +72,7 @@ const SignUp = () => {
           <div>
             <input
               required
+              autoComplete="off"
               type={showPassword ? "text" : "password"}
               id="password"
               value={password}
@@ -91,6 +94,7 @@ const SignUp = () => {
           <div>
             <input
               required
+              autoComplete="off"
               type={showPasswordConfirm ? "text" : "password"}
               id="passwordConfirm"
               value={passwordConfirm}

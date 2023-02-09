@@ -117,7 +117,6 @@ export const userSlice = createSlice({
       })
       .addCase(signUp.fulfilled.type, (state) => {
         state.isLoading = false;
-        state.isSuccess = true;
       })
       .addCase(signUp.rejected.type, (state, action: PayloadAction<string>) => {
         state.isLoading = false;
@@ -129,7 +128,6 @@ export const userSlice = createSlice({
       })
       .addCase(signIn.fulfilled.type, (state) => {
         state.isLoading = false;
-        state.isSuccess = true;
       })
       .addCase(signIn.rejected.type, (state, action: PayloadAction<string>) => {
         state.isLoading = false;
@@ -141,7 +139,6 @@ export const userSlice = createSlice({
       })
       .addCase(logOut.fulfilled.type, (state) => {
         state.isLoading = false;
-        state.isSuccess = true;
       })
       .addCase(logOut.rejected.type, (state, action: PayloadAction<string>) => {
         state.isLoading = false;
