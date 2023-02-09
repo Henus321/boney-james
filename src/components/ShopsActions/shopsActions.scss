@@ -1,4 +1,5 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .shops-actions {
   display: flex;
@@ -7,11 +8,24 @@
   margin-bottom: 1rem;
   background-color: $color-milk;
 
+  @include respond(mobile) {
+    flex-direction: column;
+  }
+
   &__element {
     display: flex;
     flex-direction: column;
-    min-width: 22rem;
+    min-width: 20rem;
     margin-right: 2rem;
+
+    @include respond(mobile) {
+      flex-direction: column;
+      margin-right: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
 
     label {
       font-size: $font-size-small;

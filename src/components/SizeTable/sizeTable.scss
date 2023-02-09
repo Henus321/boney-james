@@ -1,4 +1,5 @@
 @import "../../sass/variables.scss";
+@import "../../sass/mixins.scss";
 
 .size-table {
   margin-top: 1rem;
@@ -23,5 +24,10 @@
 
   td {
     padding: 1.6rem 2rem;
+
+    @include respond(mobile) {
+      padding: 0.8rem 1rem;
+      font-size: $font-size-smallest;
+    }
   }
 }
