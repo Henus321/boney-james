@@ -1,4 +1,5 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .collection-item {
   display: flex;
@@ -41,8 +42,10 @@
     transform: translateY(101%);
     transition: all 0.3s ease;
 
-    &:hover {
-      transform: translateY(0);
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(0);
+      }
     }
 
     h3 {

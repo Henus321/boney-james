@@ -128,3 +128,16 @@ export const getShopsTitle = (city: string | undefined) => {
 export const convertTimestampToString = (timestamp: Timestamp) => {
   return new Date(timestamp.seconds * 1000).toLocaleDateString("ru-RU");
 };
+
+export const getWindowDimensions = () => {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+};
+
+export const getPageSize = (width: number) => {
+  if (width > 1800) return 8;
+  return 6;
+};
