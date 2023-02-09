@@ -12,7 +12,8 @@
     left: 0;
     width: 100%;
     z-index: 100;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: $color-white-transparent;
+    box-shadow: 0 4px 2px -2px $color-black-border;
 
     &--active {
       display: block;
@@ -34,6 +35,10 @@
       margin-bottom: 6rem;
       height: 100%;
       width: 100%;
+      font-size: $font-size-big;
+    }
+
+    @include respond(mobile) {
       font-size: $font-size-medium;
     }
 
@@ -41,6 +46,15 @@
       position: relative;
       padding: 1rem;
       margin-right: 1.6rem;
+
+      @include respond(tab-land) {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+      }
+
+      @include respond(mobile) {
+        margin-bottom: 1rem;
+      }
     }
 
     a {
