@@ -26,9 +26,17 @@ const Slider: React.FC<Props> = ({ item }) => {
       className="slider"
       modules={[Navigation, A11y]}
       spaceBetween={5}
-      slidesPerView={2}
+      slidesPerView={3}
       navigation
       pagination={{ clickable: true }}
+      breakpoints={{
+        1500: {
+          slidesPerView: 3,
+        },
+        900: {
+          slidesPerView: 2,
+        },
+      }}
     >
       {photos &&
         photos.map((photo, i) => (
