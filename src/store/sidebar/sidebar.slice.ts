@@ -7,7 +7,7 @@ const initialState: ISidebarState = {
   profile: false,
 };
 
-export const itemSlice = createSlice({
+export const sidebarSlice = createSlice({
   name: "sidebar",
   initialState,
   reducers: {
@@ -25,5 +25,5 @@ export const itemSlice = createSlice({
 });
 
 export const { closeAll, openBookmarks, openCart, openProfile } =
-  itemSlice.actions;
-export default itemSlice.reducer;
+  sidebarSlice.actions;
+export default sidebarSlice.reducer;

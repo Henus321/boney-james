@@ -10,6 +10,7 @@ import bookmarksReducer from "./bookmarks/bookmarks.slice";
 import shopsReducer from "./shops/shops.slice";
 import userReducer from "./user/user.slice";
 import ordersReducer from "./orders/orders.slice";
+import burgerReducer from "./burger/burger.slice";
 
 const cartPersistConfig = {
   key: "cart",
@@ -32,4 +33,5 @@ export const rootReducer = combineReducers({
   shops: shopsReducer,
   user: userReducer,
   orders: ordersReducer,
+  burger: burgerReducer,
 });

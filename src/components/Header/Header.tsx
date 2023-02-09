@@ -12,6 +12,7 @@ const Header = () => {
       <HeaderNavigation />
       <Link to="/">
         <h1 className="header__title title-primary">Boney James</h1>
+        <h1 className="header__title-mobile title-primary">BJ</h1>
       </Link>
       <HeaderSidebarMenu />
     </header>

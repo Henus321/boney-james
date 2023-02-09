@@ -1,4 +1,5 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .footer-information {
   display: grid;
@@ -6,9 +7,32 @@
   grid-column-gap: 8rem;
   margin-bottom: 3rem;
 
+  @include respond(tab-port) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+
   &__column {
     display: flex;
     flex-direction: column;
+
+    @include respond(tab-port) {
+      align-items: center;
+      text-align: center;
+
+      &:first-child {
+        display: none;
+      }
+    }
+
+    @include respond(mobile) {
+      &:nth-child(even) {
+        display: none;
+      }
+    }
 
     ul {
       list-style: none;

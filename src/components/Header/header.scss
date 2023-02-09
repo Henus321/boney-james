@@ -1,14 +1,42 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .header {
-  min-height: 10rem;
+  height: 10rem;
   display: grid;
   grid-template-columns: 1fr min-content 1fr;
   align-items: center;
   justify-items: center;
   padding: 0 3rem;
 
+  @include respond(tab-port) {
+    height: 8rem;
+  }
+
+  @include respond(mobile) {
+    padding: 0 1rem;
+  }
+
   &__title {
+    font-size: 3rem;
     color: $color-grey;
+
+    @include respond(tab-port) {
+      font-size: 2.5rem;
+    }
+
+    @include respond(mobile) {
+      display: none;
+    }
+  }
+
+  &__title-mobile {
+    display: none;
+    font-size: 3rem;
+    color: $color-grey;
+
+    @include respond(mobile) {
+      display: block;
+    }
   }
 }
