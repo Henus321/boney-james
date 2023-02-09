@@ -1,13 +1,13 @@
 @import "../../sass/mixins.scss";
 
 .item {
-  height: 70vh;
+  min-height: 70vh;
   display: grid;
   grid-template-columns: 4fr 3fr;
   grid-column-gap: 2rem;
 
   @include respond(tab-land) {
-    grid-template-columns: 5fr 3fr;
+    grid-template-columns: 5fr 2.5fr;
   }
 
   @include respond(tab-port) {
