@@ -22,7 +22,7 @@ const Cart = () => {
     (state) => state
   );
   const { cart } = cartState;
-  const { isSuccess } = ordersState;
+  const { isSuccess, isError, message } = ordersState;
 
   const dispatch = useAppDispatch();
 
@@ -34,6 +34,13 @@ const Cart = () => {
       toast.success(ORDER_CREATE_MESSAGE);
     }
   }, [dispatch, isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+      dispatch(resetOrders());
+    }
+  }, [dispatch, isError, message]);
 
   const onFinish = (cart: ICartItem[]) => dispatch(createOrder(cart));
 

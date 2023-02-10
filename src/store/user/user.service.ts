@@ -11,7 +11,7 @@ import {
 import { IUserCredentials, IUserPasswords } from "../../models";
 import { doc, serverTimestamp, setDoc, Timestamp } from "firebase/firestore";
 import { auth, db } from "../../utils";
-import { CANT_FIND_USER_MESSAGE } from "../../constants";
+import { UNAUTHORISED_MESSAGE } from "../../constants";
 
 const signUp = async (userCredentials: IUserCredentials) => {
   const { name, email, password } = userCredentials;
@@ -28,7 +28,7 @@ const signUp = async (userCredentials: IUserCredentials) => {
 
   const user = userCredential.user;
 
-  if (!auth.currentUser) throw new Error(CANT_FIND_USER_MESSAGE);
+  if (!auth.currentUser) throw new Error(UNAUTHORISED_MESSAGE);
 
   await updateProfile(auth.currentUser, {
     displayName: name,
@@ -56,7 +56,7 @@ const logOut = async () => await signOut(auth);
 const updateUser = async (userCredentials: IUserCredentials) => {
   const { name, email, password } = userCredentials;
 
-  if (!auth.currentUser) throw new Error(CANT_FIND_USER_MESSAGE);
+  if (!auth.currentUser) throw new Error(UNAUTHORISED_MESSAGE);
 
   const currentEmail = auth.currentUser.email ? auth.currentUser.email : "";
 
