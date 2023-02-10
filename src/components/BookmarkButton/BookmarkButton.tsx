@@ -12,7 +12,7 @@ interface Props {
   item: IBookmarksItem;
 }
 
-const BookmarkButton: React.FC<Props> = ({ className, item }) => {
+const BookmarkButton: React.FC<Props> = ({ className = "", item }) => {
   const { bookmarks } = useAppSelector((state) => state.bookmarks);
 
   const dispatch = useAppDispatch();

@@ -15,7 +15,7 @@ const ColorPicker: React.FC<Props> = ({
   options,
   activeColor,
   setActiveColor,
-  className,
+  className = "",
 }) => {
   useEffect(() => {
     if (activeColor) {

@@ -11,7 +11,7 @@ interface Props {
 
 const SizeItem: React.FC<Props> = ({
   size,
-  className,
+  className = "",
   activeSize,
   onClick = () => ({}),
 }) => {
