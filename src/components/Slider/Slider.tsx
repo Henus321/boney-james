@@ -29,6 +29,11 @@ const Slider: React.FC<Props> = ({ item }) => {
       slidesPerView={2}
       navigation
       pagination={{ clickable: true }}
+      breakpoints={{
+        1500: {
+          slidesPerView: 3,
+        },
+      }}
     >
       {photos &&
         photos.map((photo, i) => (

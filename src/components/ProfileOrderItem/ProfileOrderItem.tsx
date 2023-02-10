@@ -51,7 +51,7 @@ const ProfileOrderItem: React.FC<Props> = ({ order }) => {
       {order.items.map((item) => (
         <div
           className="profile-order-item__element"
-          key={`${item.slug}${item.color}${order.id}`}
+          key={`${item.slug}${item.color}${item.size}${order.id}`}
         >
           <img
             onClick={() => onPhotoClick(item)}
@@ -68,6 +68,8 @@ const ProfileOrderItem: React.FC<Props> = ({ order }) => {
                 color={item.color}
               />
             </span>
+            <span>Размер: {item.size}</span>
+            <span>Кол-во: {item.quantity}</span>
           </div>
         </div>
       ))}

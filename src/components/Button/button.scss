@@ -1,7 +1,7 @@
 @import "../../sass/variables";
 
 .button {
-  grid-column: 1 / 4;
+  grid-column: 1 / -1;
   align-self: center;
   justify-self: center;
   display: flex;
@@ -20,9 +20,11 @@
   border-radius: 0.5rem;
   cursor: pointer;
 
-  &:hover {
-    color: $color-milk;
-    background-color: $color-grey;
+  @media (hover: hover) {
+    &:hover {
+      color: $color-milk;
+      background-color: $color-grey;
+    }
   }
 
   &:active {

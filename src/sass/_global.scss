@@ -1,5 +1,6 @@
 @import "variables";
 @import "typography";
+@import "mixins";
 
 *,
 *::before,
@@ -7,11 +8,24 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px, 12/16 = 75%
+  }
 }
 
 body {

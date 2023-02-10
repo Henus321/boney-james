@@ -1,5 +1,6 @@
 @import "../../sass/variables";
 @import "../../sass/animations";
+@import "../../sass/mixins";
 
 .sidebar {
   display: flex;
@@ -10,7 +11,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 100;
+  z-index: 200;
   opacity: 0;
   animation: disappear 0.3s ease-in;
   visibility: hidden;
@@ -26,6 +27,18 @@
     width: 60%;
     height: 100%;
     background-color: transparent;
+
+    @include respond(tab-land) {
+      width: 50%;
+    }
+
+    @include respond(tab-port) {
+      width: 33.333333%;
+    }
+
+    @include respond(mobile) {
+      width: 0;
+    }
   }
 
   &__content {
@@ -34,6 +47,18 @@
     height: 100%;
     background-color: $color-white;
     animation: slideBack 0.3s ease-in;
+
+    @include respond(tab-land) {
+      width: 50%;
+    }
+
+    @include respond(tab-port) {
+      width: 66.666666%;
+    }
+
+    @include respond(mobile) {
+      width: 100%;
+    }
   }
 
   &--active &__content {

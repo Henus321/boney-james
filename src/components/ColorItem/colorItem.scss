@@ -1,18 +1,32 @@
+@import "../../sass/variables.scss";
+
 .color-item {
   border-radius: 50%;
   height: 1.2rem;
   width: 1.2rem;
 
   &--beige {
-    background-color: #dac393;
+    background-color: $coat-color-beige;
+  }
+  &--light-beige {
+    background-color: $coat-color-light-beige;
   }
   &--grey {
-    background-color: #7a7a7a;
+    background-color: $coat-color-grey;
   }
   &--black {
-    background-color: #161616;
+    background-color: $coat-color-black;
   }
-  &--crimson {
-    background-color: #dc143c;
+  &--dark-blue {
+    background-color: $coat-color-dark-blue;
+  }
+  &--dark-green {
+    background-color: $coat-color-dark-green;
+  }
+  &--turquoise {
+    background-color: $coat-color-turquoiser;
+  }
+  &--milk {
+    background-color: $coat-color-milk;
   }
 }
