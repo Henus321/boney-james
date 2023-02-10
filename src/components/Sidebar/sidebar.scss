@@ -15,6 +15,7 @@
   opacity: 0;
   animation: disappear 0.3s ease-in;
   visibility: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
 
   &--active {
     animation: appear 0.3s ease-out;

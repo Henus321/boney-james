@@ -1,11 +1,25 @@
+@import "../../sass/mixins";
+
 .app-layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 
+  @include respond(tab-land) {
+    margin-top: 10rem;
+  }
+
+  @include respond(tab-port) {
+    margin-top: 8rem;
+  }
+
+  @include respond(mobile) {
+    margin-top: 6rem;
+  }
+
   &__content-container {
     position: relative;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem;
     flex: 1;
     margin-bottom: 5rem;
   }
