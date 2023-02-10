@@ -9,12 +9,12 @@ import {
   doc,
   Timestamp,
 } from "@firebase/firestore";
-import { CANT_FIND_USER_MESSAGE, USER_MISMATCH_MESSAGE } from "../../constants";
+import { UNAUTHORISED_MESSAGE, USER_MISMATCH_MESSAGE } from "../../constants";
 import { ICartItem, IOrder } from "../../models";
 import { db, auth } from "../../utils";
 
 const createOrder = async (cart: ICartItem[]) => {
-  if (!auth || !auth.currentUser) throw new Error(CANT_FIND_USER_MESSAGE);
+  if (!auth || !auth.currentUser) throw new Error(UNAUTHORISED_MESSAGE);
 
   const order: IOrder = {
     items: cart,
@@ -35,7 +35,7 @@ const deleteOrder = async (order: IOrder) => {
 };
 
 const fetchOrders = async () => {
-  if (!auth || !auth.currentUser) throw new Error(CANT_FIND_USER_MESSAGE);
+  if (!auth || !auth.currentUser) throw new Error(UNAUTHORISED_MESSAGE);
 
   const uid = auth.currentUser.uid;
 
