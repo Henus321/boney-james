@@ -7,10 +7,11 @@
 
   @include respond(tab-land) {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 10rem;
     left: 0;
     width: 100%;
+    height: 100%;
     z-index: 100;
     background-color: $color-white-transparent;
     box-shadow: 0 4px 2px -2px $color-black-border;
@@ -23,6 +24,9 @@
   @include respond(tab-port) {
     top: 8rem;
   }
+  @include respond(mobile) {
+    top: 6rem;
+  }
 
   &__list {
     display: flex;
@@ -31,10 +35,9 @@
     @include respond(tab-land) {
       flex-direction: column;
       align-items: center;
-      margin-top: 3rem;
-      margin-bottom: 6rem;
       height: 100%;
       width: 100%;
+      margin-top: 1rem;
       font-size: $font-size-big;
     }
 

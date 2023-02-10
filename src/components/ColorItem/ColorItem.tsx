@@ -7,7 +7,7 @@ interface Props {
   className?: string;
 }
 
-const ColorItem: React.FC<Props> = ({ color, className }) => {
+const ColorItem: React.FC<Props> = ({ color, className = "" }) => {
   return <div className={`color-item color-item--${color} ${className}`} />;
 };
 

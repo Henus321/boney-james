@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { CUSTOMERS_ROUTE, DEFAULT_ROUTE, SHOPS_ROUTE } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { closeBurger } from "../../store/burger/burger.slice";
@@ -13,11 +13,13 @@ const HeaderNavigation = () => {
 
   const isBurgerActive = burger ? "header-navigation--active" : "";
 
+  const { pathname } = useLocation();
   const dispatch = useAppDispatch();
 
-  const onClick = () => {
-    dispatch(closeBurger());
-  };
+  useEffect(() => {
+    if (burger) dispatch(closeBurger());
+    // eslint-disable-next-line
+  }, [dispatch, pathname]);
 
   return (
     <>
@@ -25,19 +27,13 @@ const HeaderNavigation = () => {
       <nav className={`header-navigation ${isBurgerActive}`}>
         <ul className="header-navigation__list">
           <li>
-            <NavLink onClick={() => onClick()} to={DEFAULT_ROUTE}>
-              Коллекция
-            </NavLink>
+            <NavLink to={DEFAULT_ROUTE}>Коллекция</NavLink>
           </li>
           <li>
-            <NavLink onClick={() => onClick()} to={SHOPS_ROUTE}>
-              Магазины
-            </NavLink>
+            <NavLink to={SHOPS_ROUTE}>Магазины</NavLink>
           </li>
           <li>
-            <NavLink onClick={() => onClick()} to={CUSTOMERS_ROUTE}>
-              Покупателям
-            </NavLink>
+            <NavLink to={CUSTOMERS_ROUTE}>Покупателям</NavLink>
           </li>
         </ul>
       </nav>

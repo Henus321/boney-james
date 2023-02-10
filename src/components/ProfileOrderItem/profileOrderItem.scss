@@ -24,8 +24,10 @@
       object-fit: cover;
       cursor: pointer;
 
-      &:hover {
-        filter: contrast(80%);
+      @media (hover: hover) {
+        &:hover {
+          filter: contrast(80%);
+        }
       }
     }
 

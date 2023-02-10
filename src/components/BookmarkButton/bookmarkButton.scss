@@ -1,23 +1,28 @@
+@import "../../sass/variables";
+
 .bookmark-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  color: $color-black;
 
   &--active {
-    color: crimson;
+    color: $color-crimson;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 
   svg {
     width: 1.6rem;
     height: 1.6rem;
     transition: transform 0.1s ease;
-
-    &:hover {
-      transform: scale(1.15);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
   }
 }

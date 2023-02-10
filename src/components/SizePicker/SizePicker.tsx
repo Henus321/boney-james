@@ -15,7 +15,7 @@ const SizePicker: React.FC<Props> = ({
   sizes,
   activeSize,
   setActiveSize,
-  className,
+  className = "",
 }) => {
   useEffect(() => {
     if (activeSize) {
