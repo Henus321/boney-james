@@ -57,7 +57,9 @@ const ShopsActions: React.FC<Props> = ({ setSearch }) => {
           id="city-select"
         >
           {CITIES_OPTIONS.map(({ value, label }) => (
-            <option key={value} value={value} label={label} />
+            <option key={value} value={value}>
+              {label}
+            </option>
           ))}
         </select>
       </div>
@@ -69,7 +71,9 @@ const ShopsActions: React.FC<Props> = ({ setSearch }) => {
           id="type-select"
         >
           {TYPE_OPTIONS.map(({ value, label }) => (
-            <option key={value} value={value} label={label} />
+            <option key={value} value={value}>
+              {label}
+            </option>
           ))}
         </select>
       </div>
