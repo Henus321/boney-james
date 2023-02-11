@@ -2,9 +2,9 @@
   "name": "boney-james",
   "version": "1.0.0",
   "scripts": {
-    "dev": "webpack serve --mode development",
-    "prod": "webpack serve --mode production",
-    "build": "webpack",
+    "dev": "webpack serve --mode=development",
+    "prod": "webpack serve --mode=production",
+    "build": "webpack --mode=production",
     "lint": "eslint --ext .ts,.tsx src --fix",
     "prettier": "prettier --write",
     "test": "react-scripts test",
