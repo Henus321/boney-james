@@ -4,10 +4,6 @@ import { addOrIncItem } from "../../utils";
 
 const initialState: ICartState = {
   cart: [],
-  isError: false,
-  isSuccess: false,
-  isLoading: false,
-  message: "",
 };
 
 export const cartSlice = createSlice({

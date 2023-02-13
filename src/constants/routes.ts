@@ -1,4 +1,5 @@
 export const DEFAULT_ROUTE = "/";
+export const COLLECTION_ROUTE = "/";
 export const WIP_ROUTE = "/work-in-progress";
 export const ITEM_ROUTE = "/item";
 export const SHOPS_ROUTE = "/shops";

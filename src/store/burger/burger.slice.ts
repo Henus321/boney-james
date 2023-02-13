@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IBurgerState } from "../../models/burger";
 
-const initialState: { burger: boolean } = {
+const initialState: IBurgerState = {
   burger: false,
 };
 
