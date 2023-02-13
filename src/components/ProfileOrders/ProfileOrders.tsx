@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { ORDER_DELETE_MESSAGE } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import { sortOrders } from "../../utils";
 import {
   fetchOrders,
   reset as resetOrders,
 } from "../../store/orders/orders.slice";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 
 import ProfileOrderItem from "../ProfileOrderItem/ProfileOrderItem";
 
@@ -15,6 +17,9 @@ const ProfileOrders = () => {
   const { orders, isLoading, isSuccess, isError, message } = useAppSelector(
     (state) => state.orders
   );
+  const [isDescending, setIsDescending] = useState(false);
+
+  const sortedOrders = sortOrders(orders, isDescending);
 
   const dispatch = useAppDispatch();
 
@@ -34,11 +39,20 @@ const ProfileOrders = () => {
     }
   }, [dispatch, isError, message]);
 
+  const onToggleSortMode = () => setIsDescending((prevState) => !prevState);
+
   return (
     <div className="profile-orders">
-      <h3 className="title-quaternary">Ваши заказы:</h3>
-      {orders.length > 0 &&
-        orders.map((order) => (
+      <div className="profile-orders__header">
+        <h3 className="title-quaternary">Ваши заказы:</h3>
+        {sortedOrders.length > 1 && (
+          <button onClick={() => onToggleSortMode()}>
+            {isDescending ? <FaCaretUp /> : <FaCaretDown />}
+          </button>
+        )}
+      </div>
+      {sortedOrders.length > 0 &&
+        sortedOrders.map((order) => (
           <ProfileOrderItem key={order.id} order={order} />
         ))}
       {!isLoading && orders.length === 0 && (

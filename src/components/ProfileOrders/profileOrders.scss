@@ -7,6 +7,22 @@
   width: 100%;
   border-bottom: 1px solid $color-black-border;
 
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      color: $color-grey;
+      border: none;
+      cursor: pointer;
+      font-size: $font-size-medium;
+    }
+  }
+
   &__empty {
     margin: auto;
     padding: 2.5rem;
