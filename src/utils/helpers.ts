@@ -9,7 +9,14 @@ import {
   PROFILE_ROUTE,
   CITIES_OPTIONS,
 } from "../constants";
-import { IBookmarksItem, ICartItem, IItem, IOptions, IShop } from "../models";
+import {
+  IBookmarksItem,
+  ICartItem,
+  IItem,
+  IOptions,
+  IOrder,
+  IShop,
+} from "../models";
 import { beautifyCost } from "./typography";
 
 export const getLocaleName = (name: string, payload: string | undefined) => {
@@ -140,4 +147,12 @@ export const getWindowDimensions = () => {
 export const getPageSize = (width: number) => {
   if (width > 1800) return 8;
   return 6;
+};
+
+export const sortOrders = (orders: IOrder[], isDescending: boolean) => {
+  const arr = [...orders];
+  return arr.sort((a, b) => {
+    if (!isDescending) return a.timestamp.seconds - b.timestamp.seconds;
+    return b.timestamp.seconds - a.timestamp.seconds;
+  });
 };
