@@ -40,6 +40,7 @@ const ColorPicker: React.FC<Props> = ({
       {options.map(({ color, id }) => (
         <div
           key={id}
+          data-testid="color-picker"
           className={`color-picker__color-background ${isActive(color)}`}
           onClick={() => setActiveColor(color)}
         >
