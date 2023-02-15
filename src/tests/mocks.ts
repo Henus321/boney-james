@@ -1,4 +1,5 @@
-import { IBookmarksItem, ICartItem, IItem, IShop } from "../models";
+import { Timestamp } from "firebase/firestore";
+import { IBookmarksItem, ICartItem, IItem, IOrder, IShop } from "../models";
 
 export const mockState = {
   collection: {
@@ -52,6 +53,17 @@ export const mockState = {
   burger: {
     burger: false,
   },
+};
+
+export const mockAuthenticatedUser = {
+  user: {
+    displayName: "Test User",
+    email: "testuser@gmail.com",
+  },
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: "",
 };
 
 export const mockCollection: IItem[] = [
@@ -487,5 +499,92 @@ export const mockCart: ICartItem[] = [
     ],
     sizes: ["XS 42", "S 44", "M 46", "L 48"],
     slug: "single-coat",
+  },
+];
+
+export const mockOrders: IOrder[] = [
+  {
+    items: [
+      {
+        color: "grey",
+        cost: 10990,
+        description:
+          "Классическое прямое двубортное пальто с четырьмя пуговицами.",
+        name: "Прямое пальто",
+        quantity: 1,
+        size: "XS 42",
+        options: [
+          {
+            color: "grey",
+            id: "c597455b-29da-4627-b099-8a6fe54f6860",
+            photos: [
+              "https://firebasestorage.googleapis.com/v0/b/boney-…=media&token=1e4192f9-7478-40ad-b70b-b9d221a3fc33",
+              "https://firebasestorage.googleapis.com/v0/b/boney-…=media&token=844a4eb9-0d5f-4940-9944-7df156671ddc",
+              "https://firebasestorage.googleapis.com/v0/b/boney-…=media&token=02918c23-2b9f-4651-8b51-85431fd42031",
+              "https://firebasestorage.googleapis.com/v0/b/boney-…=media&token=8e0ffa5c-ffe3-420e-afdb-ec47e219c273",
+            ],
+          },
+          {
+            color: "black",
+            id: "25e2d037-2215-4ce7-b6dd-1d040740e8a6",
+            photos: [
+              "https://firebasestorage.googleapis.com/v0/b/boney-…=media&token=26f42d47-200a-417b-b63d-367ed3bfd68d",
+              "https://firebasestorage.googleapis.com/v0/b/boney-…=media&token=fa4a2f94-a6df-4492-9e2d-76b7cfa540b2",
+              "https://firebasestorage.googleapis.com/v0/b/boney-…=media&token=883288f3-7b09-427a-b6e5-ac883bce9e6d",
+              "https://firebasestorage.googleapis.com/v0/b/boney-…=media&token=8a091cec-516b-470e-b6fb-5cfbd5dc7ce5",
+            ],
+          },
+        ],
+        sizes: ["XS 42", "S 44", "M 46", "L 48"],
+        slug: "straight-coat",
+      },
+    ],
+    userRef: "kxSKXCOVeNQIpyPBTaar9AShcE42",
+    timestamp: {
+      nanoseconds: 634000000,
+      seconds: 1676295868,
+    } as Timestamp,
+    id: "loYMWFBImOq4QEnE0aB0",
+  },
+  {
+    items: [
+      {
+        color: "dark-blue",
+        cost: 10999,
+        description:
+          "Элегантное короткое пальто на кнопках, прямой крой и воротник-стойка.",
+        name: "Короткое пальто",
+        quantity: 3,
+        size: "L 48",
+        options: [
+          {
+            color: "dark-blue",
+            id: "378cc4b1-90a8-4c98-a342-c7540a50ba9e",
+            photos: [
+              "https://firebasestorage.googleapis.com/v0/b/boney-james-c978c.appspot.com/o/2016%2F2021-a-005-1.jpg?alt=media&token=4f301a1d-77d8-4e15-9117-a40ae1107a42",
+              "https://firebasestorage.googleapis.com/v0/b/boney-james-c978c.appspot.com/o/2016%2F2021-a-005-2.jpg?alt=media&token=3c6cce45-978c-4b8f-a25f-7529c36d948d",
+              "https://firebasestorage.googleapis.com/v0/b/boney-james-c978c.appspot.com/o/2016%2F2021-a-005-3.jpg?alt=media&token=698d4f96-c5b4-4bcf-91e5-71cbb3147290",
+            ],
+          },
+          {
+            color: "turquoise",
+            id: "10061d1b-504b-4525-9f99-3dca9abdbb4d",
+            photos: [
+              "https://firebasestorage.googleapis.com/v0/b/boney-james-c978c.appspot.com/o/2016%2F2021-a-005-6.jpg?alt=media&token=669b7b47-4f74-4684-a50b-8415e3e75cde",
+              "https://firebasestorage.googleapis.com/v0/b/boney-james-c978c.appspot.com/o/2016%2F2021-a-005-7.jpg?alt=media&token=7609c089-9e0b-44a8-afa8-1988548d7acf",
+              "https://firebasestorage.googleapis.com/v0/b/boney-james-c978c.appspot.com/o/2016%2F2021-a-005-8.jpg?alt=media&token=d8dcd203-61fe-4177-baa1-df2ad0ba2f7c",
+            ],
+          },
+        ],
+        sizes: ["XS 42", "S 44", "M 46", "L 48"],
+        slug: "short-coat",
+      },
+    ],
+    userRef: "kxSKXCOVeNQIpyPBTaar9AShcE42",
+    timestamp: {
+      nanoseconds: 634000000,
+      seconds: 1676295868,
+    } as Timestamp,
+    id: "nRmwW9iiOQAON2SGPVZp",
   },
 ];
