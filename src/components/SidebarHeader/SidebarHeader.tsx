@@ -18,6 +18,7 @@ const SidebarHeader: React.FC<Props> = ({ children }) => {
     <div className="sidebar-header">
       {children}
       <button
+        data-testid="sidebar-close-btn"
         className="sidebar-header__close-button"
         onClick={() => onClose()}
       >

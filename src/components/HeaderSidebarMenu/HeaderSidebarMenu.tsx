@@ -27,15 +27,20 @@ const HeaderSidebarMenu = () => {
   return (
     <ul className="header-sidebar-menu">
       <li
+        data-testid="sidebar-menu-bookmarks"
         className={isEmpty(bookmarks.bookmarks)}
         onClick={() => onBookmarksOpen()}
       >
         <FaHeart className="header-sidebar-menu__bookmark-icon" />
       </li>
-      <li className={isEmpty(cart.cart)} onClick={() => onCartOpen()}>
+      <li
+        data-testid="sidebar-menu-cart"
+        className={isEmpty(cart.cart)}
+        onClick={() => onCartOpen()}
+      >
         <FaShoppingBag />
       </li>
-      <li onClick={() => onProfileOpen()}>
+      <li data-testid="sidebar-menu-profile" onClick={() => onProfileOpen()}>
         <FaUser />
       </li>
     </ul>

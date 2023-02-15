@@ -29,7 +29,7 @@ const BookmarksItem: React.FC<Props> = ({ bookmark }) => {
     });
   };
   return (
-    <div className="bookmark-item">
+    <div data-testid="bookmark-item" className="bookmark-item">
       <img
         onClick={() => onPhotoClick(bookmark)}
         src={getTitlePhoto(bookmark.options, bookmark.color)}
