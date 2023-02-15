@@ -22,6 +22,7 @@ const Accordion = () => {
       {FAQ.map((item, index) => (
         <div className="accordion__item" key={index}>
           <div
+            data-testid="question"
             className="accordion__question"
             onClick={() => toggleItem(index)}
           >
@@ -31,6 +32,7 @@ const Accordion = () => {
             </span>
           </div>
           <div
+            data-testid="answer"
             className={
               isActive(active, index)
                 ? "accordion__answer accordion__answer--active"

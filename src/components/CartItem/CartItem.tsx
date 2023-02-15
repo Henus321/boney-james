@@ -46,7 +46,7 @@ const CartItem: React.FC<Props> = ({ cartItem }) => {
   };
 
   return (
-    <div className="cart-item">
+    <div data-testid="cart-item" className="cart-item">
       <img
         onClick={() => onPhotoClick(cartItem)}
         src={getTitlePhoto(cartItem.options, cartItem.color)}
@@ -81,6 +81,7 @@ const CartItem: React.FC<Props> = ({ cartItem }) => {
           </div>
           <div className="cart-item__action">
             <Button
+              dataTestid="cart-item-delete-btn"
               className="cart-item__button"
               onClick={() => onDelete(cartItem)}
             >

@@ -45,7 +45,7 @@ const CollectionItem: React.FC<Props> = ({ item }) => {
   };
 
   return (
-    <div className="collection-item">
+    <div data-testid={item.slug} className="collection-item">
       <div className="collection-item__image-container">
         <img
           src={getTitlePhoto(options, activeColor)}

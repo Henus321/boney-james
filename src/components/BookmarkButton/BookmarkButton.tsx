@@ -23,6 +23,7 @@ const BookmarkButton: React.FC<Props> = ({ className = "", item }) => {
 
   return (
     <button
+      data-testid="bookmark-button"
       onClick={() => onClick(item)}
       className={`bookmark-button ${className} ${
         isBookmarked(bookmarks, item) ? "bookmark-button--active" : ""
