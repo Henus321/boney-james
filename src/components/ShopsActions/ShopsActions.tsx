@@ -23,6 +23,7 @@ const ShopsActions: React.FC<Props> = ({ setSearch }) => {
 
   const onCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const city = e.target.value;
+
     navigate(`${SHOPS_ROUTE}${city ? `/${city}` : ""}`);
   };
 
@@ -43,6 +44,7 @@ const ShopsActions: React.FC<Props> = ({ setSearch }) => {
       <div className="shops-actions__element">
         <label htmlFor="name-input">Название</label>
         <input
+          data-testid="shops-name-input"
           onChange={(e) => onNameChange(e)}
           id="name-input"
           autoComplete="off"
@@ -52,6 +54,7 @@ const ShopsActions: React.FC<Props> = ({ setSearch }) => {
       <div className="shops-actions__element">
         <label htmlFor="city-select">Город</label>
         <select
+          data-testid="shops-city-select"
           defaultValue={city}
           onChange={(e) => onCityChange(e)}
           id="city-select"
@@ -66,6 +69,7 @@ const ShopsActions: React.FC<Props> = ({ setSearch }) => {
       <div className="shops-actions__element">
         <label htmlFor="type-select">Тип</label>
         <select
+          data-testid="shops-type-select"
           defaultValue={type}
           onChange={(e) => onTypeChange(e)}
           id="type-select"
