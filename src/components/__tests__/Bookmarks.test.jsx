@@ -18,7 +18,7 @@ afterEach(() => {
 });
 
 describe("Bookmarks", () => {
-  it("adds bookmarks from the collection page", async () => {
+  it("should add bookmarks from the collection page", async () => {
     jest
       .spyOn(collectionService, "fetchCollection")
       .mockResolvedValue(mockCollection);
@@ -35,7 +35,7 @@ describe("Bookmarks", () => {
     expect(screen.getAllByTestId("bookmark-item")).toHaveLength(2);
   });
 
-  it("adds bookmarks from the item page", async () => {
+  it("should add bookmarks from the item page", async () => {
     jest.spyOn(itemService, "fetchItem").mockResolvedValue(mockCollection[0]);
 
     await act(async () =>
@@ -51,7 +51,7 @@ describe("Bookmarks", () => {
     expect(screen.getAllByTestId("bookmark-item")).toHaveLength(1);
   });
 
-  it("adds bookmarks from prefilled cart", async () => {
+  it("should add bookmarks from prefilled cart", async () => {
     await act(async () =>
       renderTestApp(CUSTOMERS_ROUTE, {
         ...mockState,
@@ -78,7 +78,7 @@ describe("Bookmarks", () => {
     expect(screen.getAllByTestId("bookmark-item")).toHaveLength(3);
   });
 
-  it("clear prefilled bookmarks", async () => {
+  it("should clear prefilled bookmarks", async () => {
     await act(async () =>
       renderTestApp(CUSTOMERS_ROUTE, {
         ...mockState,
@@ -101,7 +101,7 @@ describe("Bookmarks", () => {
     expect(screen.queryByTestId("bookmark-item")).not.toBeInTheDocument();
   });
 
-  it("deletes part of prefilled bookmarks", async () => {
+  it("should delete part of prefilled bookmarks", async () => {
     await act(async () =>
       renderTestApp(CUSTOMERS_ROUTE, {
         ...mockState,

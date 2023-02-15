@@ -18,7 +18,7 @@ afterEach(() => {
 });
 
 describe("Cart", () => {
-  it("adds items to cart from collection page", async () => {
+  it("should add items to cart from collection page", async () => {
     jest
       .spyOn(collectionService, "fetchCollection")
       .mockResolvedValue(mockCollection);
@@ -38,7 +38,7 @@ describe("Cart", () => {
     expect(screen.getAllByTestId("cart-item")).toHaveLength(2);
   });
 
-  it("adds items to cart from item page", async () => {
+  it("should add items to cart from item page", async () => {
     jest.spyOn(itemService, "fetchItem").mockResolvedValue(mockCollection[0]);
 
     await act(async () =>
@@ -62,7 +62,7 @@ describe("Cart", () => {
     expect(screen.getAllByTestId("cart-item")).toHaveLength(3);
   });
 
-  it("deletes part of cart items from prefilled cart", async () => {
+  it("should delete part of cart items from prefilled cart", async () => {
     await act(async () =>
       renderTestApp(CUSTOMERS_ROUTE, {
         ...mockState,
@@ -84,7 +84,7 @@ describe("Cart", () => {
     expect(screen.getAllByTestId("cart-item")).toHaveLength(1);
   });
 
-  it("clears cart after checkout", async () => {
+  it("should clear cart after checkout", async () => {
     jest.spyOn(ordersService, "createOrder").mockResolvedValue(mockCart);
 
     await act(async () =>

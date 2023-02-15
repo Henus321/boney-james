@@ -10,7 +10,7 @@ afterEach(() => {
 });
 
 describe("Shops", () => {
-  it("filters shops by name on input change", async () => {
+  it("should filter shops by name on input change", async () => {
     jest.useFakeTimers();
     jest.spyOn(shopsService, "fetchShops").mockResolvedValue(mockShops);
 
@@ -30,7 +30,7 @@ describe("Shops", () => {
     expect(screen.queryByText(mockShops[1].name)).not.toBeInTheDocument();
   });
 
-  it("changes title on city option select", async () => {
+  it("should change title on city option select", async () => {
     jest.spyOn(shopsService, "fetchShops").mockResolvedValue(mockShops);
 
     await act(async () => renderTestApp(SHOPS_ROUTE, mockState));
@@ -55,7 +55,7 @@ describe("Shops", () => {
     ).toBeInTheDocument();
   });
 
-  it("filters shops by type on option select", async () => {
+  it("should filter shops by type on option select", async () => {
     jest.spyOn(shopsService, "fetchShops").mockResolvedValue(mockShops);
 
     await act(async () => renderTestApp(SHOPS_ROUTE, mockState));

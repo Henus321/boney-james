@@ -17,7 +17,7 @@ afterEach(() => {
 });
 
 describe("Item", () => {
-  it("changes active class on size picker click", async () => {
+  it("should change active class on size picker click", async () => {
     jest.spyOn(itemService, "fetchItem").mockResolvedValue(mockCollection[0]);
 
     await act(async () =>
@@ -37,7 +37,7 @@ describe("Item", () => {
     expect(secondSizeSpan).toHaveClass(activeSizeClassName);
   });
 
-  it("changes image on color picker click", async () => {
+  it("should change image on color picker click", async () => {
     jest.spyOn(itemService, "fetchItem").mockResolvedValue(mockCollection[0]);
 
     const firstColorImageUrl = mockCollection[0].options[0].photos[0];
@@ -67,7 +67,7 @@ describe("Item", () => {
     );
   });
 
-  it("navigates to main page on breadcrumb click", async () => {
+  it("should navigate to main page on breadcrumb click", async () => {
     jest
       .spyOn(collectionService, "fetchCollection")
       .mockResolvedValue(mockCollection);

@@ -12,7 +12,7 @@ afterEach(() => {
 });
 
 describe("Collection", () => {
-  it("changes image on color picker click", async () => {
+  it("should change image on color picker click", async () => {
     jest
       .spyOn(collectionService, "fetchCollection")
       .mockResolvedValue(mockCollection);
@@ -35,7 +35,7 @@ describe("Collection", () => {
     expect(image.getAttribute("src")).toEqual(secondColorImageUrl);
   });
 
-  it("navigates to item on image click", async () => {
+  it("should navigate to item on image click", async () => {
     jest
       .spyOn(collectionService, "fetchCollection")
       .mockResolvedValue(mockCollection);

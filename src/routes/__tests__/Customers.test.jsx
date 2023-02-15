@@ -4,7 +4,7 @@ import { renderTestApp, mockState } from "../../tests";
 import userEvent from "@testing-library/user-event";
 
 describe("Customers", () => {
-  it("changes active class on question click", async () => {
+  it("should change active class on question click", async () => {
     await act(async () => renderTestApp(CUSTOMERS_ROUTE, mockState));
 
     const activeAnswerClassName = "accordion__answer--active";

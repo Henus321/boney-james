@@ -14,4 +14,7 @@ This project deployed on netlify: [boney-james.netlify.app/](https://boney-james
 - Firebase
   - Authentication
   - Firestore Database
+  - Storage
 - SCSS
+- Webpack
+- React Testing Library
