@@ -2,16 +2,14 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { toggleBurger } from "../../store/burger/burger.slice";
 
-import "./burger.scss";
+import "./burgerMenuButton.scss";
 
 const Burger = () => {
   const { burger } = useAppSelector((state) => state.burger);
 
   const dispatch = useAppDispatch();
 
-  const onBurgerToggle = () => {
-    dispatch(toggleBurger());
-  };
+  const onBurgerToggle = () => dispatch(toggleBurger());
 
   return (
     <div className="burger">

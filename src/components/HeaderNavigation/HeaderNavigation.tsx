@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { FaCircle } from "react-icons/fa";
 import { CUSTOMERS_ROUTE, DEFAULT_ROUTE, SHOPS_ROUTE } from "../../constants";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { closeBurger } from "../../store/burger/burger.slice";
 
-import Burger from "../Burger/Burger";
+import BurgerMenuButton from "../BurgerMenuButton/BurgerMenuButton";
 
 import "./headerNavigation.scss";
 
 const HeaderNavigation = () => {
   const { burger } = useAppSelector((state) => state.burger);
+  const [navClicked, setNavClicked] = useState(false);
 
   const isBurgerActive = burger ? "header-navigation--active" : "";
 
@@ -19,21 +21,34 @@ const HeaderNavigation = () => {
   useEffect(() => {
     if (burger) dispatch(closeBurger());
     // eslint-disable-next-line
-  }, [dispatch, pathname]);
+  }, [dispatch, pathname, navClicked]);
+
+  const onNavClick = () => {
+    if (burger) setNavClicked((prevState) => !prevState);
+  };
 
   return (
     <>
-      <Burger />
-      <nav className={`header-navigation ${isBurgerActive}`}>
+      <BurgerMenuButton />
+      <nav
+        className={`header-navigation ${isBurgerActive}`}
+        onClick={() => onNavClick()}
+      >
         <ul className="header-navigation__list">
           <li>
-            <NavLink to={DEFAULT_ROUTE}>Коллекция</NavLink>
+            <NavLink to={DEFAULT_ROUTE}>
+              <span>Коллекция</span> <FaCircle />
+            </NavLink>
           </li>
           <li>
-            <NavLink to={SHOPS_ROUTE}>Магазины</NavLink>
+            <NavLink to={SHOPS_ROUTE}>
+              <span>Магазины</span> <FaCircle />
+            </NavLink>
           </li>
           <li>
-            <NavLink to={CUSTOMERS_ROUTE}>Покупателям</NavLink>
+            <NavLink to={CUSTOMERS_ROUTE}>
+              <span>Покупателям</span> <FaCircle />
+            </NavLink>
           </li>
         </ul>
       </nav>
